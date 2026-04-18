@@ -11,10 +11,7 @@ export function useScrollReveal<T extends HTMLElement>(threshold = 0.12) {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setVisible(true);
-            observer.unobserve(entry.target);
-          }
+          setVisible(entry.isIntersecting);
         });
       },
       { threshold },
