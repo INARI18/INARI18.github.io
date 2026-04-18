@@ -1,7 +1,7 @@
-import { CharacterCard } from 'components/CharacterCard/CharacterCard';
-import { Reveal } from 'components/Reveal/Reveal';
-import { techStack } from 'data/techStack';
-import styles from './About.module.css';
+import { CharacterCard } from "components/CharacterCard/CharacterCard";
+import { Reveal } from "components/Reveal/Reveal";
+import { techStack } from "data/techStack";
+import styles from "./About.module.css";
 
 export function About() {
   return (
@@ -22,7 +22,8 @@ export function About() {
 
           <Reveal delay={2} className={styles.bio}>
             <h2>
-              Cybersecurity researcher &amp;<br />
+              Cybersecurity researcher &amp;
+              <br />
               <em>full-stack developer.</em>
             </h2>
             <p>
@@ -31,14 +32,7 @@ export function About() {
               incidents. Co-author of two published papers — one awarded 2nd
               Best Paper at WRSEG 2025.
             </p>
-            <p>
-              On the dev side, I build full-stack web apps with Next.js,
-              TypeScript and Firebase/MongoDB for research groups at my
-              university. I care about clean code, accessibility, and turning
-              complex problems into interfaces people actually want to use.
-            </p>
-            <p>📍 Alegrete, RS · Open to research &amp; dev opportunities.</p>
-
+            <p></p>
             <div className={styles.stackSection}>
               <div className={styles.stackLabel}>// TECH STACK</div>
               <div className={styles.tagCloud}>

@@ -1,0 +1,28 @@
+.wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem;
+}
+
+.line {
+  flex: 1;
+  height: 0;
+  border-top: 1px dashed var(--text-dim);
+  opacity: 0.7;
+}
+
+.invader {
+  display: block;
+  shape-rendering: crispEdges;
+  flex-shrink: 0;
+  opacity: 0.4;
+  color: var(--text-dim);
+}
+
+.invader rect {
+  fill: currentColor;
+}

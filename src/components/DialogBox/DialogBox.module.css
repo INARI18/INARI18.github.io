@@ -1,0 +1,97 @@
+.box {
+  border: 3px solid var(--text);
+  border-radius: var(--radius-sm);
+  background: var(--bg);
+  padding: 1.5rem 1.75rem;
+  display: grid;
+  grid-template-columns: 1.55fr 1fr;
+  gap: 1.75rem;
+  font-family: 'VT323', monospace;
+  font-size: 1.35rem;
+  color: var(--text);
+  outline: none;
+  min-height: 220px;
+  position: relative;
+}
+
+.box:focus-visible {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(var(--accent-rgb), 0.3);
+}
+
+.left {
+  border-right: 1px dashed var(--border-2);
+  padding-right: 1.5rem;
+}
+
+.dialogText {
+  white-space: pre-line;
+  letter-spacing: 0.04em;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.infoLink {
+  display: inline-block;
+  margin-top: 0.5rem;
+  color: var(--accent);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  border-bottom: 1px dashed var(--accent);
+  word-break: break-all;
+  transition: color 0.15s;
+}
+
+.infoLink:hover {
+  color: var(--rose-glow);
+  border-bottom-color: var(--rose-glow);
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-top: 0.1rem;
+}
+
+.option {
+  background: transparent;
+  border: none;
+  color: var(--text);
+  font-family: inherit;
+  font-size: inherit;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+  padding: 0.15rem 0.3rem;
+  letter-spacing: 0.05em;
+  transition: color 0.1s;
+}
+
+.option:focus {
+  outline: none;
+}
+
+.optionActive {
+  color: var(--accent);
+}
+
+.cursor {
+  color: var(--accent);
+  width: 1ch;
+  display: inline-block;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.hint {
+  position: absolute;
+  bottom: 0.4rem;
+  right: 0.75rem;
+  font-family: 'VT323', monospace;
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  letter-spacing: 0.08em;
+}

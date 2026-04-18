@@ -1,6 +1,6 @@
 import { Reveal } from 'components/Reveal/Reveal';
-import { ContactForm } from 'components/ContactForm/ContactForm';
-import { contactItems } from 'data/contactItems';
+import { DialogBox } from 'components/DialogBox/DialogBox';
+import { Avatar } from 'components/Avatar/Avatar';
 import styles from './Contact.module.css';
 
 export function Contact() {
@@ -27,19 +27,12 @@ export function Contact() {
               inbox is always open — even if I&apos;m in the middle of a
               dungeon.
             </p>
-            <ul className={styles.items}>
-              {contactItems.map((item) => (
-                <li key={item.text}>
-                  <span className={styles.icon} aria-hidden="true">
-                    {item.icon}
-                  </span>
-                  <span>{item.text}</span>
-                </li>
-              ))}
-            </ul>
           </div>
 
-          <ContactForm />
+          <div className={styles.dialogColumn}>
+            <Avatar />
+            <DialogBox />
+          </div>
         </Reveal>
       </div>
     </section>

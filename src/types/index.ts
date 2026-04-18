@@ -25,8 +25,3 @@ export type Stat = {
   label: string;
   value: number;
 };
-
-export type ContactItem = {
-  icon: string;
-  text: string;
-};

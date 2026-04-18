@@ -7,6 +7,11 @@ const r = (p: string) => fileURLToPath(new URL(p, import.meta.url));
 export default defineConfig({
   plugins: [react()],
   base: '/',
+  define: {
+    __BUILD_DATE__: JSON.stringify(
+      new Date().toISOString().slice(0, 10).replace(/-/g, '.'),
+    ),
+  },
   resolve: {
     alias: {
       components: r('./src/components'),

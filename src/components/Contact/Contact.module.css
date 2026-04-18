@@ -2,7 +2,7 @@
   background: linear-gradient(
     180deg,
     var(--bg) 0%,
-    rgba(46, 16, 101, 0.06) 100%
+    rgba(var(--rose-deep-rgb), 0.06) 100%
   );
 }
 
@@ -10,13 +10,14 @@
   display: grid;
   grid-template-columns: 1fr 1.6fr;
   gap: 4rem;
-  align-items: start;
+  align-items: center;
+  margin-top: -3.5rem;
 }
 
 .copy h3 {
   font-family: 'Press Start 2P', monospace;
   font-size: clamp(0.75rem, 1.8vw, 1rem);
-  color: white;
+  color: var(--text);
   line-height: 2;
   margin-bottom: 1.25rem;
 }
@@ -28,29 +29,18 @@
   margin-bottom: 2rem;
 }
 
-.items {
-  list-style: none;
+.dialogColumn {
   display: flex;
   flex-direction: column;
-  gap: 0.8rem;
-}
-
-.items li {
-  display: flex;
-  align-items: center;
+  align-items: stretch;
   gap: 0.75rem;
-  font-family: 'VT323', monospace;
-  font-size: 1.2rem;
-  color: var(--text-muted);
-  letter-spacing: 0.04em;
-}
-
-.icon {
-  color: var(--purple-light);
 }
 
 @media (max-width: 960px) {
   .grid {
     grid-template-columns: 1fr;
+    margin-top: 0;
+    align-items: stretch;
+    gap: 2rem;
   }
 }

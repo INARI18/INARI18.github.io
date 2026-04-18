@@ -53,7 +53,7 @@ section {
 .sec-label {
   font-family: 'VT323', monospace;
   font-size: 1.1rem;
-  color: var(--purple-light);
+  color: var(--rose-light);
   letter-spacing: 0.2em;
   margin-bottom: 0.4rem;
 }
@@ -61,20 +61,20 @@ section {
 .sec-title {
   font-family: 'Press Start 2P', monospace;
   font-size: clamp(0.95rem, 2.2vw, 1.45rem);
-  color: white;
+  color: var(--text);
   line-height: 1.5;
   margin-bottom: 0.75rem;
 }
 
 .sec-title em {
-  color: var(--purple-light);
+  color: var(--rose-light);
   font-style: normal;
 }
 
 .sec-bar {
   width: 56px;
   height: 4px;
-  background: var(--purple);
+  background: var(--rose);
   margin-bottom: 3.5rem;
   position: relative;
 }
@@ -86,7 +86,7 @@ section {
   top: 0;
   width: 4px;
   height: 4px;
-  background: var(--purple-glow);
+  background: var(--rose-glow);
 }
 
 /* ============================================================

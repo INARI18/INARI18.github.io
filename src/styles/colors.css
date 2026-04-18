@@ -2,21 +2,25 @@
    PALETTE — edit colors here; used across the whole app
    ============================================================ */
 :root {
-  --bg: #07070f;
-  --bg-card: #0d0d1c;
-  --bg-card-2: #131326;
-  --purple-deep: #2e1065;
-  --purple: #7c3aed;
-  --purple-mid: #9333ea;
-  --purple-light: #a855f7;
-  --purple-glow: #c084fc;
-  --purple-pale: #e9d5ff;
-  --accent: #f0abfc;
-  --text: #e2e8f0;
-  --text-muted: #94a3b8;
-  --text-dim: #475569;
-  --border: #1e1e38;
-  --border-2: #2d2d52;
+  --bg: #141414;
+  --bg-card: #1c1c1c;
+  --bg-card-2: #262626;
+  --rose-deep: #5a1f2a;
+  --rose: #8a2d44;
+  --rose-mid: #b8395a;
+  --rose-light: #eb4b69;
+  --rose-glow: #ff7a92;
+  --rose-pale: #ffd1dc;
+  --accent: #eb4b69;
+  --text: #e8d5c4;
+  --text-muted: #a89484;
+  --text-dim: #5a504a;
+  --border: #2a1f22;
+  --border-2: #4a2f36;
+
+  /* ---- RGB triplets (for use inside rgba()) ---- */
+  --accent-rgb: 235, 75, 105;
+  --rose-deep-rgb: 90, 31, 42;
 
   /* ---- radii (subtle; preserves pixel/retro feel) ---- */
   --radius-sm: 2px; /* buttons, tags, small chips */

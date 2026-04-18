@@ -1,0 +1,65 @@
+.wrap {
+  position: absolute;
+  right: 12%;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  animation: float 4s ease-in-out infinite;
+}
+
+.svg {
+  width: 280px;
+  height: 280px;
+  display: block;
+  shape-rendering: crispEdges;
+}
+
+.steam {
+  transform-origin: center bottom;
+  animation: steamRise 2.6s ease-out infinite;
+}
+
+.steam1 {
+  animation-delay: 0s;
+}
+.steam2 {
+  animation-delay: 0.85s;
+}
+.steam3 {
+  animation-delay: 1.7s;
+}
+
+@keyframes steamRise {
+  0% {
+    transform: translate(0, 8px);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.75;
+  }
+  60% {
+    transform: translate(-3px, -14px);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translate(2px, -32px);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 960px) {
+  .wrap {
+    position: relative;
+    right: auto;
+    top: auto;
+    transform: none;
+    margin: 0 0 1.5rem;
+    order: -1;
+    align-self: flex-start;
+    display: block;
+  }
+  .svg {
+    width: 130px;
+    height: 130px;
+  }
+}

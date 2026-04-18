@@ -7,6 +7,6 @@
 
 .star {
   position: absolute;
-  background: white;
+  background: var(--text);
   animation: tw var(--d, 3s) var(--dl, 0s) infinite;
 }

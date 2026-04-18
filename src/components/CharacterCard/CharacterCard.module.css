@@ -1,11 +1,11 @@
 .card {
   background: var(--bg-card);
-  border: 2px solid var(--purple);
+  border: 2px solid var(--rose);
   border-radius: var(--radius-md);
   position: relative;
   overflow: hidden;
   box-shadow:
-    0 0 40px rgba(124, 58, 237, 0.15),
+    0 0 40px rgba(var(--accent-rgb), 0.15),
     inset 0 0 40px rgba(0, 0, 0, 0.3);
 }
 
@@ -18,9 +18,9 @@
   height: 3px;
   background: linear-gradient(
     90deg,
-    var(--purple),
-    var(--purple-glow),
-    var(--purple)
+    var(--rose),
+    var(--rose-glow),
+    var(--rose)
   );
   animation: topGlow 3s ease-in-out infinite;
   z-index: 2;
@@ -28,19 +28,19 @@
 
 /* ========== WINDOW HEADER ========== */
 .head {
-  background: var(--purple-deep);
+  background: var(--rose-deep);
   padding: 0.55rem 1rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 0.75rem;
-  border-bottom: 1px solid var(--purple);
+  border-bottom: 1px solid var(--rose);
 }
 
 .headUrl {
   font-family: "VT323", monospace;
   font-size: 1.05rem;
-  color: var(--purple-glow);
+  color: var(--rose-glow);
   letter-spacing: 0.05em;
   white-space: nowrap;
   overflow: hidden;
@@ -56,9 +56,9 @@
 .headBtn {
   font-family: "Press Start 2P", monospace;
   font-size: 0.55rem;
-  color: var(--purple-glow);
+  color: var(--rose-glow);
   background: transparent;
-  border: 1px solid var(--purple);
+  border: 1px solid var(--rose);
   border-radius: var(--radius-sm);
   width: 18px;
   height: 16px;
@@ -101,7 +101,7 @@
 .statLabel {
   font-family: "Press Start 2P", monospace;
   font-size: 0.5rem;
-  color: var(--purple-pale);
+  color: var(--rose-pale);
   letter-spacing: 0.08em;
 }
 
@@ -118,9 +118,9 @@
 }
 
 .segOn {
-  background: var(--purple);
-  border-color: var(--purple-light);
-  box-shadow: 0 0 6px rgba(124, 58, 237, 0.6);
+  background: var(--rose);
+  border-color: var(--rose-light);
+  box-shadow: 0 0 6px rgba(var(--accent-rgb), 0.6);
 }
 
 /* ---------- RIGHT: avatar + role selector ---------- */
@@ -134,16 +134,16 @@
 .avatarFrame {
   width: 100%;
   aspect-ratio: 1 / 1;
-  border: 3px solid var(--purple);
+  border: 3px solid var(--rose);
   border-radius: var(--radius-md);
-  background: linear-gradient(135deg, var(--purple-deep), #0d0620);
+  background: linear-gradient(135deg, var(--rose-deep), var(--bg));
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   overflow: hidden;
   box-shadow:
-    0 0 24px rgba(124, 58, 237, 0.45),
+    0 0 24px rgba(var(--accent-rgb), 0.45),
     inset 0 0 20px rgba(0, 0, 0, 0.4);
 }
 
@@ -162,7 +162,7 @@
   right: -6px;
   width: 100%;
   height: 100%;
-  border: 2px solid rgba(46, 16, 101, 0.8);
+  border: 2px solid rgba(var(--rose-deep-rgb), 0.8);
   z-index: -1;
 }
 
@@ -171,8 +171,8 @@
   display: flex;
   align-items: center;
   gap: 0.35rem;
-  background: rgba(124, 58, 237, 0.08);
-  border: 1px solid var(--purple);
+  background: rgba(var(--accent-rgb), 0.08);
+  border: 1px solid var(--rose);
   border-radius: var(--radius-sm);
   padding: 0.3rem 0.4rem;
 }
@@ -180,7 +180,7 @@
 .arrow {
   font-family: "VT323", monospace;
   font-size: 1.1rem;
-  color: var(--purple-light);
+  color: var(--rose-light);
   background: transparent;
   border: none;
   cursor: pointer;
@@ -190,7 +190,7 @@
 }
 
 .arrow:hover {
-  color: var(--purple-glow);
+  color: var(--rose-glow);
 }
 
 .selText {
@@ -198,7 +198,7 @@
   text-align: center;
   font-family: "VT323", monospace;
   font-size: 0.95rem;
-  color: var(--purple-glow);
+  color: var(--rose-glow);
   letter-spacing: 0.05em;
   white-space: nowrap;
   overflow: hidden;
@@ -228,9 +228,9 @@
 }
 
 .socBtn:hover {
-  background: var(--purple);
-  color: white;
-  border-color: var(--purple-light);
+  background: var(--rose);
+  color: var(--text);
+  border-color: var(--rose-light);
 }
 
 /* ========== NAME PICKER (bottom) ========== */
@@ -239,8 +239,8 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.55rem 1rem;
-  background: var(--purple-deep);
-  border-top: 1px solid var(--purple);
+  background: var(--rose-deep);
+  border-top: 1px solid var(--rose);
 }
 
 .nameText {
@@ -248,15 +248,15 @@
   text-align: center;
   font-family: "Press Start 2P", monospace;
   font-size: 0.7rem;
-  color: white;
+  color: var(--text);
   letter-spacing: 0.12em;
-  text-shadow: 0 0 12px var(--purple);
+  text-shadow: 0 0 12px var(--rose);
 }
 
 .nameArrow {
   font-family: "VT323", monospace;
   font-size: 1.3rem;
-  color: var(--purple-light);
+  color: var(--rose-light);
   user-select: none;
 }
 

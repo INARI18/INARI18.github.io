@@ -2,10 +2,10 @@ import type { Project } from "types";
 
 export const projects: Project[] = [
   {
-    emoji: "🛡️",
+    emoji: "📋",
     title: "MulitaMiner",
     desc: "LLM-powered pipeline that extracts structured vulnerability data from unstructured security reports. Research project at RNP CT Cybersecurity.",
-    tags: ["Python", "LLMs", "Hugging Face", "Vulnerability Scanners"],
+    tags: ["Python", "LLMs", "Vulnerability Scanners"],
     repo: "https://github.com/AnonShield/MulitaMiner",
   },
   {
@@ -21,6 +21,13 @@ export const projects: Project[] = [
     desc: "Gamified educational platform that turns real cybersecurity incidents into interactive learning paths for students and professionals.",
     tags: ["Next.js", "TypeScript", "Firebase"],
     repo: "https://gt-lfi-dev-hackersdb.unihacker.club",
+  },
+  {
+    emoji: "🐱",
+    title: "MyDailyPet",
+    desc: "Mobile app to track and manage your pets' daily activities.",
+    tags: ["Expo Go", "TypeScript", "Firebase", "Figma"],
+    repo: "https://github.com/INARI18/My-Daily-Pet-v2",
   },
   {
     emoji: "🎓",
