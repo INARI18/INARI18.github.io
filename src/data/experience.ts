@@ -8,8 +8,7 @@ export const experience: Experience[] = [
     company: "at UNIPAMPA · RNP CT Cybersecurity",
     desc: "Research and development of MulitaMiner, an LLM-based pipeline that extracts structured vulnerability data from unstructured security reports. Co-authored a published paper on the approach.",
     tech: ["Python", "LLMs", "Vulnerability Scanners", ""],
-    highlight:
-      "2nd Best Paper award at WRSEG 2025 as first author — recognized for the vulnerability extraction pipeline.",
+    highlight: "2nd Best Paper award at WRSEG 2025 as first author.",
   },
   {
     year: "2025",
