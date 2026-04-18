@@ -1,0 +1,25 @@
+/* ============================================================
+   PALETTE — edit colors here; used across the whole app
+   ============================================================ */
+:root {
+  --bg: #07070f;
+  --bg-card: #0d0d1c;
+  --bg-card-2: #131326;
+  --purple-deep: #2e1065;
+  --purple: #7c3aed;
+  --purple-mid: #9333ea;
+  --purple-light: #a855f7;
+  --purple-glow: #c084fc;
+  --purple-pale: #e9d5ff;
+  --accent: #f0abfc;
+  --text: #e2e8f0;
+  --text-muted: #94a3b8;
+  --text-dim: #475569;
+  --border: #1e1e38;
+  --border-2: #2d2d52;
+
+  /* ---- radii (subtle; preserves pixel/retro feel) ---- */
+  --radius-sm: 2px; /* buttons, tags, small chips */
+  --radius-md: 4px; /* cards, panels, frames */
+  --radius-none: 0; /* stat segments, pixel-literal elements */
+}

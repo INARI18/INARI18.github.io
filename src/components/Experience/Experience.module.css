@@ -1,0 +1,240 @@
+.section {
+  background: linear-gradient(
+    180deg,
+    rgba(46, 16, 101, 0.06) 0%,
+    var(--bg) 100%
+  );
+}
+
+.bookWrap {
+  max-width: 900px;
+  margin: 0 auto;
+  perspective: 2200px;
+}
+
+.book {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: #100a20;
+  border: 2px solid var(--purple);
+  border-radius: var(--radius-md);
+  min-height: 380px;
+  position: relative;
+  overflow: hidden;
+  box-shadow:
+    0 0 60px rgba(124, 58, 237, 0.12),
+    inset 0 0 60px rgba(0, 0, 0, 0.5),
+    0 22px 40px rgba(0, 0, 0, 0.45);
+  transform-style: preserve-3d;
+  background-image: radial-gradient(
+    rgba(168, 85, 247, 0.04) 1px,
+    transparent 1px
+  );
+  background-size: 18px 18px;
+  background-color: #100a20;
+}
+
+/* Gutter shadow — darker region at the spine, like a real book's fold */
+.book::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 120px;
+  transform: translateX(-50%);
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0, 0, 0, 0.55) 0%,
+    rgba(0, 0, 0, 0.25) 35%,
+    transparent 75%
+  );
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* Spine line */
+.book::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    180deg,
+    var(--purple-deep),
+    var(--purple),
+    var(--purple-deep)
+  );
+  box-shadow: 0 0 12px var(--purple);
+  z-index: 4;
+}
+
+.page {
+  padding: 2.5rem;
+  position: relative;
+  z-index: 1;
+  backface-visibility: hidden;
+  transition:
+    transform 0.23s cubic-bezier(0.55, 0, 0.45, 1),
+    opacity 0.23s ease;
+}
+
+/* Pivots at the spine so pages rotate toward the center like closing a book */
+.pageLeft {
+  transform-origin: right center;
+}
+.pageRight {
+  transform-origin: left center;
+}
+
+/* Closed-book state: both pages rotate toward spine, dim out */
+.flipping .pageLeft {
+  transform: rotateY(80deg);
+  opacity: 0;
+}
+.flipping .pageRight {
+  transform: rotateY(-80deg);
+  opacity: 0;
+}
+
+.pgNo {
+  font-family: "VT323", monospace;
+  font-size: 0.95rem;
+  color: var(--text-dim);
+  letter-spacing: 0.12em;
+  margin-bottom: 1.75rem;
+}
+
+.year {
+  display: inline-block;
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.55rem;
+  color: var(--purple-light);
+  background: rgba(124, 58, 237, 0.12);
+  border: 1px solid var(--purple);
+  border-radius: var(--radius-sm);
+  padding: 0.25rem 0.6rem;
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.06em;
+}
+
+.title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 0.25rem;
+}
+
+.company {
+  font-family: "VT323", monospace;
+  font-size: 1.2rem;
+  color: var(--purple-glow);
+  letter-spacing: 0.06em;
+  margin-bottom: 1rem;
+}
+
+.desc {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+
+.techHeading {
+  font-family: "VT323", monospace;
+  font-size: 1.15rem;
+  color: var(--purple-glow);
+  letter-spacing: 0.1em;
+  margin-bottom: 0.6rem;
+}
+
+.techList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.3rem;
+}
+
+.techChip {
+  font-family: "VT323", monospace;
+  font-size: 1rem;
+  padding: 0.1rem 0.55rem;
+  background: rgba(124, 58, 237, 0.1);
+  border: 1px solid var(--border-2);
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+}
+
+.highlight {
+  background: rgba(124, 58, 237, 0.06);
+  border-left: 3px solid var(--purple);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding: 0.9rem 1rem;
+  margin-top: 1.5rem;
+}
+
+.hlLabel {
+  font-family: "VT323", monospace;
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  letter-spacing: 0.1em;
+  margin-bottom: 0.4rem;
+}
+
+.hlText {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.75;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.btn {
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.55rem;
+  padding: 0.7rem 1.2rem;
+  background: transparent;
+  border: 2px solid var(--purple);
+  border-radius: var(--radius-sm);
+  color: var(--purple-light);
+  cursor: pointer;
+  letter-spacing: 0.06em;
+  transition: all 0.2s;
+}
+
+.btn:hover:not(:disabled) {
+  background: var(--purple);
+  color: white;
+}
+
+.btn:disabled {
+  opacity: 0.25;
+  cursor: not-allowed;
+}
+
+.counter {
+  font-family: "VT323", monospace;
+  font-size: 1.35rem;
+  color: var(--text-dim);
+  letter-spacing: 0.1em;
+}
+
+@media (max-width: 960px) {
+  .book {
+    grid-template-columns: 1fr;
+  }
+  .book::before {
+    display: none;
+  }
+  .page:first-child {
+    border-bottom: 2px solid var(--purple);
+  }
+}

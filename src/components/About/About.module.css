@@ -1,0 +1,76 @@
+.section {
+  background: linear-gradient(
+    180deg,
+    var(--bg) 0%,
+    rgba(46, 16, 101, 0.06) 100%
+  );
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 400px 1fr;
+  gap: 3.5rem;
+  align-items: start;
+}
+
+.bio h2 {
+  font-family: 'Press Start 2P', monospace;
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  color: white;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+.bio h2 em {
+  color: var(--purple-light);
+  font-style: normal;
+}
+
+.bio p {
+  color: var(--text-muted);
+  line-height: 1.95;
+  font-size: 1rem;
+  margin-bottom: 1.1rem;
+}
+
+.stackSection {
+  margin-top: 2rem;
+}
+
+.stackLabel {
+  font-family: 'VT323', monospace;
+  font-size: 1.3rem;
+  color: var(--purple-glow);
+  letter-spacing: 0.12em;
+  margin-bottom: 0.9rem;
+}
+
+.tagCloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.tag {
+  font-family: 'VT323', monospace;
+  font-size: 1.1rem;
+  padding: 0.2rem 0.75rem;
+  background: rgba(124, 58, 237, 0.08);
+  border: 1px solid var(--purple);
+  border-radius: var(--radius-sm);
+  color: var(--purple-pale);
+  letter-spacing: 0.04em;
+  cursor: default;
+  transition: all 0.2s;
+}
+
+.tag:hover {
+  background: rgba(124, 58, 237, 0.28);
+  box-shadow: 0 0 12px rgba(124, 58, 237, 0.3);
+}
+
+@media (max-width: 960px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

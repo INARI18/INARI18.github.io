@@ -1,0 +1,19 @@
+.footer {
+  border-top: 1px solid var(--border-2);
+  padding: 2rem 4rem;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.footer p {
+  font-family: 'VT323', monospace;
+  font-size: 1.1rem;
+  color: var(--text-dim);
+  letter-spacing: 0.1em;
+}
+
+.footer em {
+  color: var(--purple-light);
+  font-style: normal;
+}

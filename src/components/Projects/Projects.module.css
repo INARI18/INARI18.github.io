@@ -1,0 +1,110 @@
+.section {
+  overflow: visible;
+}
+
+.hint {
+  font-family: 'VT323', monospace;
+  color: var(--text-muted);
+  margin-top: 0.75rem;
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+}
+
+/* ========== STAGE ========== */
+.stage {
+  position: relative;
+  height: 520px;
+  margin-top: 3rem;
+  perspective: 1200px;
+}
+
+.backdrop {
+  position: absolute;
+  inset: -50vmax;
+  z-index: 1;
+  cursor: pointer;
+}
+
+/* ========== CARD WRAPPER ========== */
+.cardWrap {
+  --center: calc((var(--n) - 1) / 2);
+  --offset: calc(var(--i) - var(--center));
+  --abs: calc(var(--offset) * var(--offset));
+
+  position: absolute;
+  left: 50%;
+  top: 20px;
+  width: 280px;
+  transform-origin: 50% 110%;
+  cursor: pointer;
+  outline: none;
+  transform: translateX(-50%)
+    translateX(calc(var(--offset) * 70px))
+    rotate(calc(var(--offset) * 8deg))
+    translateY(calc(var(--abs) * 6px));
+  z-index: calc(10 + var(--i));
+  filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.55));
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+    filter 0.3s ease, opacity 0.3s ease;
+}
+
+.cardWrap:focus-visible {
+  outline: 2px solid var(--purple-glow);
+  outline-offset: 6px;
+}
+
+/* ========== HOVER (lifted, rotation preserved) ========== */
+.cardWrap.hovered {
+  transform: translateX(-50%)
+    translateX(calc(var(--offset) * 70px))
+    rotate(calc(var(--offset) * 8deg))
+    translateY(calc(var(--abs) * 6px - 40px))
+    scale(1.04);
+  z-index: 80;
+  filter: drop-shadow(0 20px 36px rgba(124, 58, 237, 0.55));
+}
+
+/* ========== FOCUSED ========== */
+.focused .cardWrap {
+  filter: blur(3px) brightness(0.4);
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.focused .cardWrap.active {
+  transform: translateX(-50%) translateY(-30px) scale(1.08) rotate(0deg);
+  filter: drop-shadow(0 0 30px rgba(124, 58, 237, 0.6));
+  opacity: 1;
+  z-index: 100;
+  pointer-events: auto;
+}
+
+/* ========== MOBILE FALLBACK ========== */
+@media (max-width: 768px) {
+  .stage {
+    position: static;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    perspective: none;
+  }
+  .cardWrap {
+    position: static;
+    width: 100%;
+    max-width: 400px;
+    transform: none !important;
+    filter: none !important;
+    opacity: 1 !important;
+    z-index: auto !important;
+    pointer-events: auto !important;
+  }
+  .backdrop {
+    display: none;
+  }
+  .hint {
+    display: none;
+  }
+}

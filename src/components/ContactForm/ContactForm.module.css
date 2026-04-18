@@ -1,0 +1,137 @@
+.term {
+  background: var(--bg-card);
+  border: 2px solid var(--purple);
+  border-radius: var(--radius-md);
+  box-shadow: 0 0 30px rgba(124, 58, 237, 0.1);
+  overflow: hidden;
+}
+
+.bar {
+  background: var(--purple-deep);
+  padding: 0.7rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border-bottom: 1px solid var(--purple);
+}
+
+.dots {
+  display: flex;
+  gap: 5px;
+}
+
+.dots span {
+  width: 10px;
+  height: 10px;
+  display: block;
+}
+
+.dots span:nth-child(1) {
+  background: #ef4444;
+}
+.dots span:nth-child(2) {
+  background: #eab308;
+}
+.dots span:nth-child(3) {
+  background: #22c55e;
+}
+
+.title {
+  font-family: 'VT323', monospace;
+  font-size: 1.05rem;
+  color: var(--purple-glow);
+  letter-spacing: 0.12em;
+}
+
+.body {
+  padding: 1.6rem;
+}
+
+.group {
+  margin-bottom: 1.2rem;
+}
+
+.label {
+  display: block;
+  font-family: 'VT323', monospace;
+  font-size: 1rem;
+  color: var(--purple-glow);
+  margin-bottom: 0.4rem;
+  letter-spacing: 0.1em;
+}
+
+.label::before {
+  content: '> ';
+}
+
+.group input,
+.group textarea {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--border-2);
+  border-left: 3px solid var(--purple);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  color: var(--text);
+  padding: 0.7rem 1rem;
+  font-family: 'VT323', monospace;
+  font-size: 1.1rem;
+  letter-spacing: 0.04em;
+  outline: none;
+  resize: none;
+  transition: all 0.2s;
+}
+
+.group input:focus,
+.group textarea:focus {
+  border-color: var(--purple-light);
+  background: rgba(124, 58, 237, 0.05);
+  box-shadow: 0 0 16px rgba(124, 58, 237, 0.1);
+}
+
+.group input::placeholder,
+.group textarea::placeholder {
+  color: var(--text-dim);
+}
+
+.submit {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.58rem;
+  padding: 0.95rem 2rem;
+  background: var(--purple);
+  color: white;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  width: 100%;
+  letter-spacing: 0.1em;
+  transition: all 0.2s;
+  margin-top: 0.4rem;
+  position: relative;
+}
+
+.submit::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  right: -5px;
+  width: 100%;
+  height: 100%;
+  background: var(--purple-deep);
+  border-radius: var(--radius-sm);
+  z-index: -1;
+  transition: all 0.15s;
+}
+
+.submit:hover {
+  transform: translate(-3px, -3px);
+  background: var(--purple-mid);
+}
+
+.submit:hover::after {
+  bottom: -8px;
+  right: -8px;
+}
+
+.submit.sent {
+  background: #16a34a;
+}
