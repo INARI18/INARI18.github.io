@@ -15,7 +15,7 @@
 }
 
 .copy h3 {
-  font-family: 'Press Start 2P', monospace;
+  font-family: "Press Start 2P", monospace;
   font-size: clamp(0.75rem, 1.8vw, 1rem);
   color: var(--text);
   line-height: 2;
