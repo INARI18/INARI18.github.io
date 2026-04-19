@@ -1,8 +1,10 @@
 import type { Project } from "types";
-
-// To add an image: drop the file in src/assets/projects/ and import it here,
-// then set `image: <importName>` on the project. Example:
-// import mulitaminer from 'assets/projects/mulitaminer.png';
+import mulita from "assets/projects/mulita.jpg";
+import anon from "assets/projects/anon.jpg";
+import hb from "assets/projects/hb.jpg";
+import pet from "assets/projects/pet.jpg";
+import save from "assets/projects/save.jpg";
+import portfolio from "assets/projects/portfolio.jpg";
 
 export const projects: Project[] = [
   {
@@ -14,7 +16,7 @@ export const projects: Project[] = [
     },
     tags: ["Python", "LLMs", "Vulnerability Scanners"],
     repo: "https://github.com/AnonShield/MulitaMiner",
-    image: "src/assets/projects/mulita.jpg",
+    image: mulita,
   },
   {
     emoji: "🕵️",
@@ -25,7 +27,7 @@ export const projects: Project[] = [
     },
     tags: ["Python", "Presidio", "NLP", "LLMs", "SQLite"],
     repo: "https://github.com/AnonShield/tool",
-    image: "src/assets/projects/anon.jpg",
+    image: anon,
   },
   {
     emoji: "🎮",
@@ -36,7 +38,7 @@ export const projects: Project[] = [
     },
     tags: ["Next.js", "TypeScript", "Firebase"],
     repo: "https://gt-lfi-dev-hackersdb.unihacker.club",
-    image: "src/assets/projects/hb.jpg",
+    image: hb,
   },
   {
     emoji: "🐱",
@@ -47,7 +49,7 @@ export const projects: Project[] = [
     },
     tags: ["Expo Go", "TypeScript", "Firebase", "Figma"],
     repo: "https://github.com/INARI18/My-Daily-Pet-v2",
-    image: "src/assets/projects/pet.jpg",
+    image: pet,
   },
   {
     emoji: "🎓",
@@ -58,7 +60,7 @@ export const projects: Project[] = [
     },
     tags: ["Next.js", "TypeScript", "MongoDB", "Figma"],
     repo: "https://project-jdlbw.vercel.app",
-    image: "src/assets/projects/save.jpg",
+    image: save,
   },
   {
     emoji: "👾",
@@ -69,6 +71,6 @@ export const projects: Project[] = [
     },
     tags: ["React", "TypeScript", "Vite"],
     repo: "https://github.com/INARI18/INARI18.github.io",
-    image: "src/assets/projects/portfolio.jpg",
+    image: portfolio,
   },
 ];
