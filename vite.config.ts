@@ -21,6 +21,7 @@ export default defineConfig({
       styles: r('./src/styles'),
       contexts: r('./src/contexts'),
       i18n: r('./src/i18n'),
+      assets: r('./src/assets'),
     },
   },
 });

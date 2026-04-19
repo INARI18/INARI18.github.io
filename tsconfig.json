@@ -26,7 +26,8 @@
       "styles/*": ["styles/*"],
       "contexts/*": ["contexts/*"],
       "i18n/*": ["i18n/*"],
-      "i18n": ["i18n/index"]
+      "i18n": ["i18n/index"],
+      "assets/*": ["assets/*"]
     }
   },
   "include": ["src"]

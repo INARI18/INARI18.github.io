@@ -12,6 +12,7 @@ export type Experience = {
 
 export type Project = {
   emoji: string;
+  image?: string;
   title: string;
   desc: Bilingual;
   tags: string[];
