@@ -1,8 +1,8 @@
-import type { Stat } from "types";
+import type { Stat } from 'types';
 
 export const stats: Stat[] = [
-  { label: "CYBERSEC", value: 80 },
-  { label: "FULL-STACK", value: 60 },
-  { label: "LLM INTEGRATION", value: 70 },
-  { label: "DATA PROCESSING", value: 90 },
+  { label: { en: 'CYBERSEC', pt: 'CIBERSEG' }, value: 80 },
+  { label: { en: 'FULL-STACK', pt: 'FULL-STACK' }, value: 60 },
+  { label: { en: 'LLM INTEGRATION', pt: 'INTEGRAÇÃO LLM' }, value: 70 },
+  { label: { en: 'DATA PROCESSING', pt: 'PROCESSAMENTO' }, value: 90 },
 ];

@@ -19,6 +19,8 @@ export default defineConfig({
       data: r('./src/data'),
       types: r('./src/types'),
       styles: r('./src/styles'),
+      contexts: r('./src/contexts'),
+      i18n: r('./src/i18n'),
     },
   },
 });

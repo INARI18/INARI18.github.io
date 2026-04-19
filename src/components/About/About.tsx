@@ -1,16 +1,18 @@
-import { CharacterCard } from "components/CharacterCard/CharacterCard";
-import { Reveal } from "components/Reveal/Reveal";
-import { techStack } from "data/techStack";
-import styles from "./About.module.css";
+import { CharacterCard } from 'components/CharacterCard/CharacterCard';
+import { Reveal } from 'components/Reveal/Reveal';
+import { techStack } from 'data/techStack';
+import { useLang } from 'contexts/LanguageContext';
+import styles from './About.module.css';
 
 export function About() {
+  const { t } = useLang();
   return (
     <section id="about" className={styles.section}>
       <div className="container">
         <Reveal>
-          <div className="sec-label">// SECTION 01</div>
+          <div className="sec-label">{t.about.section}</div>
           <div className="sec-title">
-            About <em>Me</em>
+            {t.about.title} <em>{t.about.titleEm}</em>
           </div>
           <div className="sec-bar" />
         </Reveal>
@@ -22,23 +24,18 @@ export function About() {
 
           <Reveal delay={2} className={styles.bio}>
             <h2>
-              Cybersecurity researcher &amp;
+              {t.about.heading1}
               <br />
-              <em>full-stack developer.</em>
+              <em>{t.about.heading2}</em>
             </h2>
-            <p>
-              I&apos;m a Computer Science student at UNIPAMPA, researching how
-              LLMs can extract and anonymize data from real cybersecurity
-              incidents. Co-author of two published papers — one awarded 2nd
-              Best Paper at WRSEG 2025.
-            </p>
+            <p>{t.about.bio}</p>
             <p></p>
             <div className={styles.stackSection}>
-              <div className={styles.stackLabel}>// TECH STACK</div>
+              <div className={styles.stackLabel}>{t.about.techStackLabel}</div>
               <div className={styles.tagCloud}>
-                {techStack.map((t) => (
-                  <span key={t} className={styles.tag}>
-                    {t}
+                {techStack.map((tag) => (
+                  <span key={tag} className={styles.tag}>
+                    {tag}
                   </span>
                 ))}
               </div>

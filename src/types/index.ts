@@ -1,17 +1,19 @@
+import type { Bilingual } from 'i18n/translations';
+
 export type Experience = {
   year: string;
   pg: [string, string];
-  title: string;
-  company: string;
-  desc: string;
+  title: Bilingual;
+  company: Bilingual;
+  desc: Bilingual;
   tech: string[];
-  highlight: string;
+  highlight: Bilingual;
 };
 
 export type Project = {
   emoji: string;
   title: string;
-  desc: string;
+  desc: Bilingual;
   tags: string[];
   repo: string;
 };
@@ -22,6 +24,6 @@ export type Social = {
 };
 
 export type Stat = {
-  label: string;
+  label: Bilingual;
   value: number;
 };

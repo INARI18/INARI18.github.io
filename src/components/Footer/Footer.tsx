@@ -1,9 +1,11 @@
-import styles from "./Footer.module.css";
+import { useLang } from 'contexts/LanguageContext';
+import styles from './Footer.module.css';
 
 export function Footer() {
+  const { t } = useLang();
   return (
     <footer className={styles.footer}>
-      <p>[ last sync: {__BUILD_DATE__} ]</p>
+      <p>[ {t.footer.lastSync}: {__BUILD_DATE__} ]</p>
     </footer>
   );
 }

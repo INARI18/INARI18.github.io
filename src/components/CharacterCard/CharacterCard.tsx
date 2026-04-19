@@ -1,12 +1,14 @@
-import { useState } from "react";
-import { stats } from "data/stats";
-import { socials } from "data/socials";
-import { roles } from "data/roles";
-import styles from "./CharacterCard.module.css";
+import { useState } from 'react';
+import { stats } from 'data/stats';
+import { socials } from 'data/socials';
+import { roles } from 'data/roles';
+import { useLang } from 'contexts/LanguageContext';
+import styles from './CharacterCard.module.css';
 
 const SEG_COUNT = 10;
 
 export function CharacterCard() {
+  const { t, tr } = useLang();
   const [roleIdx, setRoleIdx] = useState(0);
 
   const cycleRole = (dir: 1 | -1) =>
@@ -28,13 +30,14 @@ export function CharacterCard() {
           <div className={styles.stats}>
             {stats.map((s) => {
               const filled = Math.round((s.value / 100) * SEG_COUNT);
+              const label = tr(s.label);
               return (
-                <div key={s.label} className={styles.statRow}>
-                  <span className={styles.statLabel}>{s.label}</span>
+                <div key={label} className={styles.statRow}>
+                  <span className={styles.statLabel}>{label}</span>
                   <div
                     className={styles.segments}
                     role="meter"
-                    aria-label={s.label}
+                    aria-label={label}
                     aria-valuenow={s.value}
                     aria-valuemin={0}
                     aria-valuemax={100}
@@ -43,7 +46,7 @@ export function CharacterCard() {
                       <span
                         key={i}
                         className={`${styles.seg}${
-                          i < filled ? ` ${styles.segOn}` : ""
+                          i < filled ? ` ${styles.segOn}` : ''
                         }`}
                       />
                     ))}
@@ -67,18 +70,18 @@ export function CharacterCard() {
               type="button"
               className={styles.arrow}
               onClick={() => cycleRole(-1)}
-              aria-label="Previous role"
+              aria-label={t.character.previousRole}
             >
               ◀
             </button>
-            <span className={styles.selText} title={roles[roleIdx]}>
-              {roles[roleIdx]}
+            <span className={styles.selText} title={tr(roles[roleIdx])}>
+              {tr(roles[roleIdx])}
             </span>
             <button
               type="button"
               className={styles.arrow}
               onClick={() => cycleRole(1)}
-              aria-label="Next role"
+              aria-label={t.character.nextRole}
             >
               ▶
             </button>

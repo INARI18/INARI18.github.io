@@ -1,4 +1,5 @@
-import { useEffect, useRef, useState, type ReactNode } from 'react';
+import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
+import { useLang } from 'contexts/LanguageContext';
 import styles from './DialogBox.module.css';
 
 type Option = {
@@ -7,70 +8,71 @@ type Option = {
   info: ReactNode;
 };
 
-const DEFAULT_DIALOG =
-  '* Hi! Thanks for stopping by.\n* What would you like to do?';
-
-const OPTIONS: Option[] = [
-  {
-    label: 'Email',
-    dialog: '* Drop a line — I read every email I get.',
-    info: (
-      <>
-        <p className={styles.dialogText}>* Send me a message at:</p>
-        <a
-          className={styles.infoLink}
-          href="mailto:beatrizrolandmachado@gmail.com"
-        >
-          beatrizrolandmachado@gmail.com
-        </a>
-      </>
-    ),
-  },
-  {
-    label: 'GitHub',
-    dialog: '* Take a peek at my code & projects.',
-    info: (
-      <>
-        <p className={styles.dialogText}>* Find my code at:</p>
-        <a
-          className={styles.infoLink}
-          href="https://github.com/INARI18"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          github.com/INARI18
-        </a>
-      </>
-    ),
-  },
-  {
-    label: 'LinkedIn',
-    dialog: "* Let's connect professionally.",
-    info: (
-      <>
-        <p className={styles.dialogText}>* Connect with me at:</p>
-        <a
-          className={styles.infoLink}
-          href="https://www.linkedin.com/in/beatriz18/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          linkedin.com/in/beatriz18
-        </a>
-      </>
-    ),
-  },
-  {
-    label: 'CV',
-    dialog: '* Grab a copy of my resume.',
-    info: <p className={styles.dialogText}>* CV link coming soon!</p>,
-  },
-];
-
 export function DialogBox() {
+  const { t } = useLang();
   const [hovered, setHovered] = useState(-1);
   const [revealed, setRevealed] = useState(-1);
   const boxRef = useRef<HTMLDivElement>(null);
+
+  const OPTIONS = useMemo<Option[]>(
+    () => [
+      {
+        label: t.dialog.email.label,
+        dialog: t.dialog.email.flavor,
+        info: (
+          <>
+            <p className={styles.dialogText}>{t.dialog.email.prompt}</p>
+            <a
+              className={styles.infoLink}
+              href="mailto:beatrizrolandmachado@gmail.com"
+            >
+              beatrizrolandmachado@gmail.com
+            </a>
+          </>
+        ),
+      },
+      {
+        label: t.dialog.github.label,
+        dialog: t.dialog.github.flavor,
+        info: (
+          <>
+            <p className={styles.dialogText}>{t.dialog.github.prompt}</p>
+            <a
+              className={styles.infoLink}
+              href="https://github.com/INARI18"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              github.com/INARI18
+            </a>
+          </>
+        ),
+      },
+      {
+        label: t.dialog.linkedin.label,
+        dialog: t.dialog.linkedin.flavor,
+        info: (
+          <>
+            <p className={styles.dialogText}>{t.dialog.linkedin.prompt}</p>
+            <a
+              className={styles.infoLink}
+              href="https://www.linkedin.com/in/beatriz18/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              linkedin.com/in/beatriz18
+            </a>
+          </>
+        ),
+      },
+      {
+        label: t.dialog.cv.label,
+        dialog: t.dialog.cv.flavor,
+        info: <p className={styles.dialogText}>{t.dialog.cv.soon}</p>,
+      },
+    ],
+    [t],
+  );
 
   useEffect(() => {
     const el = boxRef.current;
@@ -94,7 +96,7 @@ export function DialogBox() {
     };
     el.addEventListener('keydown', onKey);
     return () => el.removeEventListener('keydown', onKey);
-  }, [hovered]);
+  }, [hovered, OPTIONS.length]);
 
   const showFlavor = hovered >= 0 && hovered !== revealed;
   const content = showFlavor ? (
@@ -102,7 +104,7 @@ export function DialogBox() {
   ) : revealed >= 0 ? (
     OPTIONS[revealed].info
   ) : (
-    <p className={styles.dialogText}>{DEFAULT_DIALOG}</p>
+    <p className={styles.dialogText}>{t.dialog.defaultText}</p>
   );
 
   return (
@@ -111,7 +113,7 @@ export function DialogBox() {
       className={styles.box}
       tabIndex={0}
       role="menu"
-      aria-label="Contact options"
+      aria-label={t.dialog.menuLabel}
     >
       <div className={styles.left}>{content}</div>
 

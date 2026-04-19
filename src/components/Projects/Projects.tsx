@@ -1,13 +1,15 @@
-import { useEffect, useState, type CSSProperties } from "react";
-import { projects } from "data/projects";
-import { Reveal } from "components/Reveal/Reveal";
-import { ProjectCard } from "components/ProjectCard/ProjectCard";
-import styles from "./Projects.module.css";
+import { useEffect, useState, type CSSProperties } from 'react';
+import { projects } from 'data/projects';
+import { Reveal } from 'components/Reveal/Reveal';
+import { ProjectCard } from 'components/ProjectCard/ProjectCard';
+import { useLang } from 'contexts/LanguageContext';
+import styles from './Projects.module.css';
 
-type Mode = "fanned" | "focused";
+type Mode = 'fanned' | 'focused';
 
 export function Projects() {
-  const [mode, setMode] = useState<Mode>("fanned");
+  const { t } = useLang();
+  const [mode, setMode] = useState<Mode>('fanned');
   const [selected, setSelected] = useState<number | null>(null);
   const [hovered, setHovered] = useState<number | null>(null);
   const [order, setOrder] = useState<number[]>(() => projects.map((_, i) => i));
@@ -15,12 +17,11 @@ export function Projects() {
   const [redealing, setRedealing] = useState(false);
 
   const shuffle = () => {
-    setMode("fanned");
+    setMode('fanned');
     setSelected(null);
     setHovered(null);
     setGathering(true);
     setTimeout(() => {
-      // pile is uniform, so the order swap is invisible
       setOrder((prev) => {
         const next = [...prev];
         for (let i = next.length - 1; i > 0; i--) {
@@ -29,8 +30,6 @@ export function Projects() {
         }
         return next;
       });
-      // add .redealing on top of .gathering so the transform changes from
-      // gather→fan and the transition actually fires
       setRedealing(true);
       setTimeout(() => {
         setGathering(false);
@@ -40,34 +39,34 @@ export function Projects() {
   };
 
   useEffect(() => {
-    if (mode !== "focused") return;
+    if (mode !== 'focused') return;
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        setMode("fanned");
+      if (e.key === 'Escape') {
+        setMode('fanned');
         setSelected(null);
-      } else if (e.key === "ArrowRight" && selected !== null) {
+      } else if (e.key === 'ArrowRight' && selected !== null) {
         setSelected((selected + 1) % projects.length);
-      } else if (e.key === "ArrowLeft" && selected !== null) {
+      } else if (e.key === 'ArrowLeft' && selected !== null) {
         setSelected((selected - 1 + projects.length) % projects.length);
       }
     };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
   }, [mode, selected]);
 
   const selectCard = (i: number) => {
     setSelected(i);
-    setMode("focused");
+    setMode('focused');
     setHovered(null);
   };
 
   const handleCardClick = (e: React.MouseEvent, i: number) => {
-    if ((e.target as HTMLElement).closest("a")) return;
+    if ((e.target as HTMLElement).closest('a')) return;
     selectCard(i);
   };
 
   const handleKeyDown = (e: React.KeyboardEvent, i: number) => {
-    if (e.key === "Enter" || e.key === " ") {
+    if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault();
       selectCard(i);
     }
@@ -77,29 +76,26 @@ export function Projects() {
     <section id="projects" className={styles.section}>
       <div className="container">
         <Reveal>
-          <div className="sec-label">// SECTION 03</div>
+          <div className="sec-label">{t.projects.section}</div>
           <div className="sec-title">
-            My <em>Projects</em>
+            {t.projects.title} <em>{t.projects.titleEm}</em>
           </div>
           <div className="sec-bar" />
-          <p className={styles.hint}>
-            Hover a card to pull it out · click to focus · Esc / click outside
-            to close
-          </p>
+          <p className={styles.hint}>{t.projects.hint}</p>
         </Reveal>
 
         <Reveal delay={1}>
           <div
             className={`${styles.stage} ${styles[mode]} ${
-              gathering ? styles.gathering : ""
-            } ${redealing ? styles.redealing : ""}`}
-            aria-expanded={mode !== "fanned"}
+              gathering ? styles.gathering : ''
+            } ${redealing ? styles.redealing : ''}`}
+            aria-expanded={mode !== 'fanned'}
           >
-            {mode === "focused" && (
+            {mode === 'focused' && (
               <div
                 className={styles.backdrop}
                 onClick={() => {
-                  setMode("fanned");
+                  setMode('fanned');
                   setSelected(null);
                 }}
                 aria-hidden="true"
@@ -113,24 +109,24 @@ export function Projects() {
                 <div
                   key={p.title}
                   className={`${styles.cardWrap} ${
-                    isHovered ? styles.hovered : ""
-                  } ${isActive ? styles.active : ""}`}
+                    isHovered ? styles.hovered : ''
+                  } ${isActive ? styles.active : ''}`}
                   style={
                     {
-                      "--i": i,
-                      "--n": projects.length,
+                      '--i': i,
+                      '--n': projects.length,
                     } as CSSProperties
                   }
                   onPointerEnter={() => {
-                    if (mode === "fanned") setHovered(i);
+                    if (mode === 'fanned') setHovered(i);
                   }}
                   onPointerLeave={() => setHovered((h) => (h === i ? null : h))}
                   onClick={(e) => handleCardClick(e, i)}
                   onKeyDown={(e) => handleKeyDown(e, i)}
                   tabIndex={0}
                   role="button"
-                  aria-label={`View ${p.title}`}
-                  aria-current={isActive ? "true" : undefined}
+                  aria-label={t.projects.view(p.title)}
+                  aria-current={isActive ? 'true' : undefined}
                 >
                   <ProjectCard project={p} />
                 </div>
@@ -143,9 +139,9 @@ export function Projects() {
               type="button"
               className={styles.shuffleBtn}
               onClick={shuffle}
-              aria-label="Shuffle the deck"
+              aria-label={t.projects.shuffleAria}
             >
-              ▷ press me
+              {t.projects.shuffle}
             </button>
           </div>
         </Reveal>

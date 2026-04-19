@@ -1,12 +1,15 @@
-import { useEffect, useState } from "react";
-import { useTypewriter } from "hooks/useTypewriter";
-import { roles } from "data/roles";
-import { badges } from "data/badges";
-import { RetroMug } from "components/RetroMug/RetroMug";
-import styles from "./Hero.module.css";
+import { useEffect, useMemo, useState } from 'react';
+import { useTypewriter } from 'hooks/useTypewriter';
+import { roles } from 'data/roles';
+import { badges } from 'data/badges';
+import { RetroMug } from 'components/RetroMug/RetroMug';
+import { useLang } from 'contexts/LanguageContext';
+import styles from './Hero.module.css';
 
 export function Hero() {
-  const text = useTypewriter(roles);
+  const { t, tr } = useLang();
+  const localizedRoles = useMemo(() => roles.map(tr), [tr]);
+  const text = useTypewriter(localizedRoles);
   const [badgeIdx, setBadgeIdx] = useState(0);
 
   useEffect(() => {
@@ -21,25 +24,21 @@ export function Hero() {
     <section id="hero" className={styles.hero}>
       <div className={styles.orb} aria-hidden="true" />
       <div className={styles.content}>
-        <div className={styles.badge}>{badges[badgeIdx]}</div>
+        <div className={styles.badge}>{tr(badges[badgeIdx])}</div>
         <h1 className={styles.name}>
-          Hi, I&apos;m <em>Beatriz Machado</em>
+          {t.hero.greeting} <em>Beatriz Machado</em>
         </h1>
         <div className={styles.typewriter}>
           <span>{text}</span>
           <span className={styles.cursor}>_</span>
         </div>
-        <p className={styles.desc}>
-          Computer Science student and cybersecurity researcher building
-          full-stack apps and LLM-powered tools for real-world security
-          problems.
-        </p>
+        <p className={styles.desc}>{t.hero.desc}</p>
         <div className={styles.buttons}>
           <a href="#projects" className={`${styles.btn} ${styles.primary}`}>
-            ▶ VIEW PROJECTS
+            {t.hero.viewProjects}
           </a>
           <a href="#contact" className={`${styles.btn} ${styles.ghost}`}>
-            CONTACT ME
+            {t.hero.contactMe}
           </a>
         </div>
       </div>
