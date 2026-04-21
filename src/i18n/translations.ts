@@ -93,7 +93,7 @@ export const translations: Record<Lang, Dict> = {
       titleEm: "Me",
       heading1: "Cybersecurity researcher &",
       heading2: "full-stack developer",
-      bio: "I'm a Computer Science student at UNIPAMPA, researching how LLMs can extract and anonymize data from real cybersecurity incidents. Co-author of two published papers, one awarded 2nd Best Paper at WRSEG 2025",
+      bio: "I'm a Computer Science student at UNIPAMPA with experience in cybersecurity research and full-stack development. My work involves vulnerability data extraction and analysis, data anonymization, and LLM-based solutions for security applications, with a focus on real-world impact",
       techStackLabel: "// TECH STACK",
     },
     character: {
@@ -177,7 +177,7 @@ export const translations: Record<Lang, Dict> = {
       titleEm: "Mim",
       heading1: "Pesquisadora em cibersegurança &",
       heading2: "desenvolvedora full-stack",
-      bio: "Sou estudante de Ciência da Computação na UNIPAMPA, pesquisando como LLMs podem extrair e anonimizar dados de incidentes reais de cibersegurança. Coautora de dois artigos publicados, um deles premiado como 2º Melhor Artigo no WRSEG 2025",
+      bio: "Sou estudante de Ciência da Computação na UNIPAMPA, com experiência em pesquisa em cibersegurança e desenvolvimento full-stack. Meu trabalho envolve extração e análise de vulnerabilidades, anonimização de dados e o uso de LLMs para aplicações em segurança, com foco em aplicações no mundo real",
       techStackLabel: "// STACK",
     },
     character: {

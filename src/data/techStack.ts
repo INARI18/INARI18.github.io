@@ -5,7 +5,7 @@ export const techStack: string[] = [
   "C",
   "React",
   "Next.js",
-  "Expo Go",
+  "Expo",
   "Firebase",
   "MongoDB",
   "Git",
