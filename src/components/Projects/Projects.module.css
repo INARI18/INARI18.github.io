@@ -28,7 +28,7 @@
 /* ========== CARD WRAPPER ========== */
 .cardWrap {
   --center: calc((var(--n) - 1) / 2);
-  --offset: calc(var(--i) - var(--center));
+  --offset: calc(var(--center) - var(--i));
   --abs: calc(var(--offset) * var(--offset));
 
   position: absolute;
@@ -42,7 +42,7 @@
     translateX(calc(var(--offset) * 70px))
     rotate(calc(var(--offset) * 8deg))
     translateY(calc(var(--abs) * 6px));
-  z-index: calc(10 + var(--i));
+  z-index: calc(10 + var(--n) - var(--i));
   filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.55));
   transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
     filter 0.3s ease, opacity 0.3s ease;

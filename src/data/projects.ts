@@ -14,7 +14,7 @@ export const projects: Project[] = [
       en: "LLM-powered pipeline for extracting and structuring vulnerability data from unstructured security reports at scale. Developed as part of a cybersecurity research project at RNP CT",
       pt: "Pipeline com LLMs para extração e estruturação de dados de vulnerabilidades a partir de relatórios de segurança não estruturados em larga escala. Desenvolvido como parte de um projeto de pesquisa no RNP CT",
     },
-    tags: ["Python", "LLMs", "Vulnerability Scanners"],
+    tags: ["Python", "LLMs", "Vulnerabilities"],
     repo: "https://github.com/AnonShield/MulitaMiner",
     image: mulita,
   },
@@ -44,8 +44,8 @@ export const projects: Project[] = [
     emoji: "🎓",
     title: "SAVE Egress@s",
     desc: {
-      en: "Full-stack web application for tracking and managing alumni data at UNIPAMPA, supporting structured data collection and analysis",
-      pt: "Aplicação web full-stack para acompanhamento e gestão de egressos da UNIPAMPA, com suporte à coleta e análise de dados estruturados",
+      en: "Full-stack web application for tracking and managing alumni data at UNIPAMPA, supporting structured data collection and analysis. Registered software at INPI",
+      pt: "Aplicação web full-stack para acompanhamento e gestão de egressos da UNIPAMPA, com suporte à coleta e análise de dados estruturados. Software com registro no INPI",
     },
     tags: ["Next.js", "TypeScript", "MongoDB", "Figma", "Tailwind"],
     repo: "https://project-jdlbw.vercel.app",
@@ -53,7 +53,7 @@ export const projects: Project[] = [
   },
   {
     emoji: "🐱",
-    title: "MyDailyPet",
+    title: "My Daily Pet",
     desc: {
       en: "Mobile app to track and manage your pets' daily activities",
       pt: "App mobile para acompanhar e gerenciar as atividades diárias dos seus pets",
