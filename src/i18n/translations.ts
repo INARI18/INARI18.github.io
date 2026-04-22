@@ -29,6 +29,8 @@ export type Dict = {
   character: {
     previousRole: string;
     nextRole: string;
+    previousPose: string;
+    nextPose: string;
   };
   experience: {
     section: string;
@@ -99,6 +101,8 @@ export const translations: Record<Lang, Dict> = {
     character: {
       previousRole: "Previous role",
       nextRole: "Next role",
+      previousPose: "Previous pose",
+      nextPose: "Next pose",
     },
     experience: {
       section: "// SECTION 02",
@@ -183,6 +187,8 @@ export const translations: Record<Lang, Dict> = {
     character: {
       previousRole: "Cargo anterior",
       nextRole: "Próximo cargo",
+      previousPose: "Pose anterior",
+      nextPose: "Próxima pose",
     },
     experience: {
       section: "// SEÇÃO 02",

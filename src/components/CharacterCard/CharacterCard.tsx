@@ -1,18 +1,24 @@
-import { useState } from 'react';
-import { stats } from 'data/stats';
-import { socials } from 'data/socials';
-import { roles } from 'data/roles';
-import { useLang } from 'contexts/LanguageContext';
-import styles from './CharacterCard.module.css';
+import { useState } from "react";
+import { stats } from "data/stats";
+import { socials } from "data/socials";
+import { roles } from "data/roles";
+import { useLang } from "contexts/LanguageContext";
+import styles from "./CharacterCard.module.css";
 
 const SEG_COUNT = 10;
+
+const poses = ["/cafe-pose.png", "/cat-pose.png", "/videogame-pose.png"];
 
 export function CharacterCard() {
   const { t, tr } = useLang();
   const [roleIdx, setRoleIdx] = useState(0);
+  const [poseIdx, setPoseIdx] = useState(0);
 
   const cycleRole = (dir: 1 | -1) =>
     setRoleIdx((i) => (i + dir + roles.length) % roles.length);
+
+  const cyclePose = (dir: 1 | -1) =>
+    setPoseIdx((i) => (i + dir + poses.length) % poses.length);
 
   return (
     <div className={styles.card}>
@@ -46,7 +52,7 @@ export function CharacterCard() {
                       <span
                         key={i}
                         className={`${styles.seg}${
-                          i < filled ? ` ${styles.segOn}` : ''
+                          i < filled ? ` ${styles.segOn}` : ""
                         }`}
                       />
                     ))}
@@ -59,8 +65,11 @@ export function CharacterCard() {
 
         <div className={styles.rightCol}>
           <div className={styles.avatarFrame}>
+            <div className={styles.avatarGlow} aria-hidden="true" />
+            <div className={styles.pedestal} aria-hidden="true" />
             <img
-              src="/avatar.jpg"
+              key={poseIdx}
+              src={poses[poseIdx]}
               alt="Beatriz Machado"
               className={styles.avatarImg}
             />
@@ -98,13 +107,32 @@ export function CharacterCard() {
       </div>
 
       <div className={styles.namePicker}>
-        <span className={styles.nameArrow} aria-hidden="true">
+        <button
+          type="button"
+          className={styles.nameArrow}
+          onClick={() => cyclePose(-1)}
+          aria-label={t.character.previousPose}
+        >
           ◀
-        </span>
-        <span className={styles.nameText}>Beatriz Machado</span>
-        <span className={styles.nameArrow} aria-hidden="true">
+        </button>
+        <div className={styles.poseDots} aria-hidden="true">
+          {poses.map((_, i) => (
+            <span
+              key={i}
+              className={`${styles.poseDot}${
+                i === poseIdx ? ` ${styles.poseDotOn}` : ""
+              }`}
+            />
+          ))}
+        </div>
+        <button
+          type="button"
+          className={styles.nameArrow}
+          onClick={() => cyclePose(1)}
+          aria-label={t.character.nextPose}
+        >
           ▶
-        </span>
+        </button>
       </div>
     </div>
   );
