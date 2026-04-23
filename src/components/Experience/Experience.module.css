@@ -18,7 +18,7 @@
   background: var(--bg-card);
   border: 2px solid var(--rose);
   border-radius: var(--radius-md);
-  min-height: 380px;
+  height: 420px;
   position: relative;
   overflow: hidden;
   box-shadow:
@@ -187,6 +187,7 @@
   font-size: 0.88rem;
   color: var(--text-muted);
   line-height: 1.75;
+  white-space: pre-line;
 }
 
 .controls {
@@ -230,6 +231,7 @@
 @media (max-width: 960px) {
   .book {
     grid-template-columns: 1fr;
+    height: auto;
   }
   .book::before,
   .book::after {

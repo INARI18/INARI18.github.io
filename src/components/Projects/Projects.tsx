@@ -1,4 +1,4 @@
-import { useEffect, useState, type CSSProperties } from 'react';
+import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import { projects } from 'data/projects';
 import { Reveal } from 'components/Reveal/Reveal';
 import { ProjectCard } from 'components/ProjectCard/ProjectCard';
@@ -15,6 +15,8 @@ export function Projects() {
   const [order, setOrder] = useState<number[]>(() => projects.map((_, i) => i));
   const [gathering, setGathering] = useState(false);
   const [redealing, setRedealing] = useState(false);
+  const [activeCard, setActiveCard] = useState(0);
+  const stageRef = useRef<HTMLDivElement>(null);
 
   const shuffle = () => {
     setMode('fanned');
@@ -54,6 +56,44 @@ export function Projects() {
     return () => window.removeEventListener('keydown', onKey);
   }, [mode, selected]);
 
+  useEffect(() => {
+    const stage = stageRef.current;
+    if (!stage) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        let best: IntersectionObserverEntry | null = null;
+        for (const entry of entries) {
+          if (!best || entry.intersectionRatio > best.intersectionRatio) {
+            best = entry;
+          }
+        }
+        if (best && best.isIntersecting) {
+          const idx = Number(
+            (best.target as HTMLElement).dataset.cardIdx ?? '0',
+          );
+          setActiveCard(idx);
+        }
+      },
+      { root: stage, threshold: [0.5, 0.75, 1] },
+    );
+    const cards = stage.querySelectorAll<HTMLElement>('[data-card-idx]');
+    cards.forEach((c) => observer.observe(c));
+    return () => observer.disconnect();
+  }, [order]);
+
+  const scrollToCard = (i: number) => {
+    const stage = stageRef.current;
+    if (!stage) return;
+    const target = stage.querySelector<HTMLElement>(
+      `[data-card-idx="${i}"]`,
+    );
+    target?.scrollIntoView({
+      behavior: 'smooth',
+      inline: 'center',
+      block: 'nearest',
+    });
+  };
+
   const selectCard = (i: number) => {
     setSelected(i);
     setMode('focused');
@@ -86,6 +126,7 @@ export function Projects() {
 
         <Reveal delay={1}>
           <div
+            ref={stageRef}
             className={`${styles.stage} ${styles[mode]} ${
               gathering ? styles.gathering : ''
             } ${redealing ? styles.redealing : ''}`}
@@ -108,6 +149,7 @@ export function Projects() {
               return (
                 <div
                   key={p.title}
+                  data-card-idx={i}
                   className={`${styles.cardWrap} ${
                     isHovered ? styles.hovered : ''
                   } ${isActive ? styles.active : ''}`}
@@ -132,6 +174,20 @@ export function Projects() {
                 </div>
               );
             })}
+          </div>
+
+          <div className={styles.dots} aria-hidden="true">
+            {order.map((_, i) => (
+              <button
+                key={i}
+                type="button"
+                className={`${styles.dot} ${
+                  i === activeCard ? styles.dotActive : ''
+                }`}
+                onClick={() => scrollToCard(i)}
+                aria-label={`Go to card ${i + 1}`}
+              />
+            ))}
           </div>
 
           <div className={styles.shuffleWrap}>
