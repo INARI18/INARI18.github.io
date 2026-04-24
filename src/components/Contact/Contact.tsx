@@ -31,7 +31,10 @@ export function Contact() {
           </div>
 
           <div className={styles.dialogColumn}>
-            <Avatar />
+            <div className={styles.dialogHeader}>
+              <div className={styles.namePlate}>Beatriz</div>
+              <Avatar />
+            </div>
             <DialogBox />
           </div>
         </Reveal>
