@@ -1,0 +1,182 @@
+.section {
+  background: linear-gradient(
+    180deg,
+    var(--bg) 0%,
+    rgba(var(--rose-deep-rgb), 0.06) 100%
+  );
+}
+
+.hint {
+  font-family: "VT323", monospace;
+  font-size: 1.2rem;
+  color: var(--rose-glow);
+  letter-spacing: 0.06em;
+  margin-top: -2.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* ---- a single "paper sheet" ---- */
+.sheet {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 1.5rem;
+  align-items: start;
+  background: var(--bg-card);
+  border: 2px solid var(--border-2);
+  border-radius: var(--radius-md);
+  padding: 1.5rem 1.75rem;
+  background-image: radial-gradient(
+    rgba(var(--accent-rgb), 0.04) 1px,
+    transparent 1px
+  );
+  background-size: 16px 16px;
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.sheet:hover {
+  transform: translateX(4px);
+  border-color: var(--rose);
+  box-shadow:
+    -4px 0 0 0 var(--rose),
+    0 14px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* dog-ear folded corner */
+.fold {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 18px 18px 0;
+  border-color: transparent var(--rose) transparent transparent;
+  opacity: 0.7;
+}
+
+.side {
+  padding-top: 0.15rem;
+}
+
+.year {
+  display: inline-block;
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.55rem;
+  color: var(--rose-light);
+  background: rgba(var(--accent-rgb), 0.12);
+  border: 1px solid var(--rose);
+  border-radius: var(--radius-sm);
+  padding: 0.3rem 0.55rem;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.4;
+  margin-bottom: 0.6rem;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: "VT323", monospace;
+  font-size: 1.15rem;
+  color: var(--rose-glow);
+  letter-spacing: 0.04em;
+  margin-bottom: 0.75rem;
+}
+
+.award {
+  font-family: "VT323", monospace;
+  font-size: 1.05rem;
+  color: var(--rose-pale);
+  background: rgba(var(--accent-rgb), 0.12);
+  border: 1px solid var(--rose);
+  border-radius: var(--radius-sm);
+  padding: 0.05rem 0.5rem;
+  letter-spacing: 0.03em;
+}
+
+.desc {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.75;
+  margin-bottom: 0.9rem;
+  max-width: 60ch;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.tag {
+  font-family: "VT323", monospace;
+  font-size: 0.95rem;
+  padding: 0.05rem 0.5rem;
+  background: rgba(var(--accent-rgb), 0.08);
+  border: 1px solid var(--border-2);
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+}
+
+.action {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  white-space: nowrap;
+}
+
+.read {
+  display: inline-block;
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.5rem;
+  padding: 0.65rem 0.9rem;
+  background: transparent;
+  border: 2px solid var(--rose);
+  border-radius: var(--radius-sm);
+  color: var(--rose-light);
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  text-align: center;
+  transition: all 0.2s;
+}
+
+.read:hover {
+  background: var(--rose);
+  color: var(--text);
+}
+
+.soon {
+  font-family: "VT323", monospace;
+  font-size: 1.05rem;
+  color: var(--text-dim);
+  letter-spacing: 0.05em;
+}
+
+@media (max-width: 720px) {
+  .sheet {
+    grid-template-columns: 1fr;
+    gap: 0.9rem;
+  }
+  .action {
+    align-self: start;
+  }
+}

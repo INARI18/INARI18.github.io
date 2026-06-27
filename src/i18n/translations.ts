@@ -6,6 +6,7 @@ export type Dict = {
   nav: {
     about: string;
     experience: string;
+    publications: string;
     projects: string;
     contact: string;
     toggleTheme: string;
@@ -43,6 +44,14 @@ export type Dict = {
     prevAria: string;
     nextAria: string;
   };
+  publications: {
+    section: string;
+    title: string;
+    titleEm: string;
+    hint: string;
+    read: string;
+    soon: string;
+  };
   projects: {
     section: string;
     title: string;
@@ -78,6 +87,7 @@ export const translations: Record<Lang, Dict> = {
     nav: {
       about: "About",
       experience: "Experience",
+      publications: "Papers",
       projects: "Projects",
       contact: "Contact",
       toggleTheme: "Toggle theme",
@@ -115,8 +125,16 @@ export const translations: Record<Lang, Dict> = {
       prevAria: "Previous experience",
       nextAria: "Next experience",
     },
-    projects: {
+    publications: {
       section: "// SECTION 03",
+      title: "Published",
+      titleEm: "Papers",
+      hint: "▶ Peer-reviewed research",
+      read: "Read paper →",
+      soon: "Link soon",
+    },
+    projects: {
+      section: "// SECTION 04",
       title: "My",
       titleEm: "Projects",
       hint: "▶ Pick a card",
@@ -126,7 +144,7 @@ export const translations: Record<Lang, Dict> = {
       code: "⌥ Code",
     },
     contact: {
-      section: "// SECTION 04",
+      section: "// SECTION 05",
       title: "Say",
       titleEm: "Hello",
       heading: ["LET'S BUILD", "SOMETHING", "TOGETHER!"],
@@ -164,6 +182,7 @@ export const translations: Record<Lang, Dict> = {
     nav: {
       about: "Sobre",
       experience: "Experiência",
+      publications: "Artigos",
       projects: "Projetos",
       contact: "Contato",
       toggleTheme: "Alternar tema",
@@ -201,8 +220,16 @@ export const translations: Record<Lang, Dict> = {
       prevAria: "Experiência anterior",
       nextAria: "Próxima experiência",
     },
-    projects: {
+    publications: {
       section: "// SEÇÃO 03",
+      title: "Artigos",
+      titleEm: "Publicados",
+      hint: "▶ Pesquisa revisada por pares",
+      read: "Ler artigo →",
+      soon: "Link em breve",
+    },
+    projects: {
+      section: "// SEÇÃO 04",
       title: "Meus",
       titleEm: "Projetos",
       hint: "▶ Escolha uma carta",
@@ -212,7 +239,7 @@ export const translations: Record<Lang, Dict> = {
       code: "⌥ Código",
     },
     contact: {
-      section: "// SEÇÃO 04",
+      section: "// SEÇÃO 05",
       title: "Mande um",
       titleEm: "Oi",
       heading: ["VAMOS CRIAR", "ALGO", "JUNTOS!"],

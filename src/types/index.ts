@@ -19,6 +19,16 @@ export type Project = {
   repo: string;
 };
 
+export type Publication = {
+  year: string;
+  title: string;
+  venue: string;
+  award?: Bilingual;
+  desc: Bilingual;
+  tags: string[];
+  link: string;
+};
+
 export type Social = {
   label: string;
   href: string;
