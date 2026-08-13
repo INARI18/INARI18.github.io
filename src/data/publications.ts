@@ -3,6 +3,18 @@ export const publications: Publication[] = [
   {
     year: "2026",
     title:
+      "Vulnerabilities, Secrets and Misconfiguration in the Highest-Exposure Docker Hub Images",
+    venue: "arXiv",
+    desc: {
+      en: "ChimangoScan, a pipeline that crawls the whole Docker Hub namespace (12.7M repositories, 663.8B pulls), reconstructs the image layer graph, ranks images by an exposure score and scans the 52,895 highest-exposure repositories with six scanners, yielding 170.4M findings. 96.3% of images carry a known vulnerability and 98.0% a CIS Docker Benchmark misconfiguration, yet only 2.7% of (vulnerability, package) groups are flagged by all three vulnerability scanners, showing how tool-dependent the reported posture is.",
+      pt: "ChimangoScan, um pipeline que percorre todo o namespace do Docker Hub (12,7M repositórios, 663,8B pulls), reconstrói o grafo de camadas das imagens, ordena as imagens por um score de exposição e escaneia os 52.895 repositórios de maior exposição com seis scanners, gerando 170,4M de achados. 96,3% das imagens têm alguma vulnerabilidade conhecida e 98,0% alguma má configuração do CIS Docker Benchmark, mas apenas 2,7% dos grupos (vulnerabilidade, pacote) são apontados pelos três scanners de vulnerabilidade, mostrando o quanto o diagnóstico depende da ferramenta.",
+    },
+    tags: ["Docker Hub", "Containers", "Vulnerability Scanners", "Secrets", "CIS Benchmark"],
+    link: "https://arxiv.org/abs/2608.02669",
+  },
+  {
+    year: "2026",
+    title:
       "MulitaMiner: Transforming Heterogeneous Technical Reports into Structured Data Using LLMs",
     venue: "Zenodo",
     desc: {
