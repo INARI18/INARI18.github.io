@@ -16,18 +16,17 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "baseUrl": "./src",
     "paths": {
-      "components/*": ["components/*"],
-      "hooks/*": ["hooks/*"],
-      "data/*": ["data/*"],
-      "types": ["types/index"],
-      "types/*": ["types/*"],
-      "styles/*": ["styles/*"],
-      "contexts/*": ["contexts/*"],
-      "i18n/*": ["i18n/*"],
-      "i18n": ["i18n/index"],
-      "assets/*": ["assets/*"]
+      "components/*": ["./src/components/*"],
+      "hooks/*": ["./src/hooks/*"],
+      "data/*": ["./src/data/*"],
+      "types": ["./src/types/index"],
+      "types/*": ["./src/types/*"],
+      "styles/*": ["./src/styles/*"],
+      "contexts/*": ["./src/contexts/*"],
+      "i18n/*": ["./src/i18n/*"],
+      "i18n": ["./src/i18n/index"],
+      "assets/*": ["./src/assets/*"]
     }
   },
   "include": ["src"]
