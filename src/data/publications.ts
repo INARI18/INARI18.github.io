@@ -3,6 +3,18 @@ export const publications: Publication[] = [
   {
     year: "2026",
     title:
+      "MulitaMiner: A Multi-Version Evaluation of LLM-Based Vulnerability Report Extraction",
+    venue: "SBSeg 2026",
+    desc: {
+      en: "An LLM-based pipeline for structured vulnerability extraction from heterogeneous scanner PDFs, hardened across three versions (V1-V3) that evolve from a functional baseline, to scanner-aware segmentation, and finally to per-LLM tuning with few-shot prompting. Across 450 runs with five LLMs (DeepSeek, GPT-4, GPT-5, LLaMA 3, LLaMA 4) on three curated OpenVAS baselines, Exact Record Match rises from 37.5% to 90.4% and vulnerability-level omission falls from 20.5% to 1.7%, showing that pipeline engineering, not model substitution, is the primary lever for extraction quality.",
+      pt: "Pipeline baseado em LLMs para extração estruturada de vulnerabilidades a partir de PDFs heterogêneos de scanners, refinado ao longo de três versões (V1-V3) que evoluem de um baseline funcional para segmentação ciente do scanner e, por fim, ajuste por LLM com prompting few-shot. Em 450 execuções com cinco LLMs (DeepSeek, GPT-4, GPT-5, LLaMA 3, LLaMA 4) sobre três baselines OpenVAS curados manualmente, o Exact Record Match sobe de 37,5% para 90,4% e a omissão em nível de vulnerabilidade cai de 20,5% para 1,7%, mostrando que a engenharia do pipeline, e não a troca de modelo, é o principal fator de qualidade da extração.",
+    },
+    tags: ["LLMs", "Vulnerability Extraction", "OpenVAS", "Prompt Engineering", "Benchmarking"],
+    link: "https://sol.sbc.org.br/index.php/sbseg/article/view/44328",
+  },
+  {
+    year: "2026",
+    title:
       "Vulnerabilities, Secrets and Misconfiguration in the Highest-Exposure Docker Hub Images",
     venue: "arXiv",
     desc: {
