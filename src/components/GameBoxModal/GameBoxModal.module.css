@@ -1,0 +1,431 @@
+/* The dialog itself is invisible; the open case is the visual. */
+.dialog {
+  margin: auto; /* global reset zeroes the UA margin that centers <dialog> */
+  width: min(1000px, calc(100vw - 2rem));
+  max-height: calc(100vh - 2rem);
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--text);
+  overflow: visible;
+}
+
+.dialog::backdrop {
+  background: rgba(0, 0, 0, 0.74);
+}
+
+/* ---- the open case: front | hinge | back ---- */
+.case {
+  /* one size for every project; the back cover scrolls if content ever exceeds it */
+  --case-h: 740px;
+  position: relative;
+  display: grid;
+  grid-template-columns: 290px 26px 1fr;
+  align-items: stretch;
+  height: min(var(--case-h), calc(100vh - 2rem));
+  perspective: 1600px;
+  filter: drop-shadow(0 24px 40px rgba(0, 0, 0, 0.65));
+}
+
+/* shared plastic-case surface */
+.front,
+.hinge,
+.back {
+  background: linear-gradient(160deg, var(--case-top) 0%, var(--case-mid) 55%, var(--case-bottom) 100%);
+  border: 2px solid rgba(var(--accent-rgb), 0.35);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.5);
+}
+
+.front {
+  --desc-lines: 7;
+  border-radius: 6px 0 0 6px;
+  border-right: none;
+  padding: 10px;
+  font-size: 20px;
+}
+
+/* the cover already draws its own frame; inside the case it fills the panel */
+.front > * {
+  height: 100%;
+}
+
+.hinge {
+  border-left: none;
+  border-right: none;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.6), rgba(255, 255, 255, 0.04) 50%, rgba(0, 0, 0, 0.6));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hinge span {
+  writing-mode: vertical-rl;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.15em;
+  color: rgba(255, 255, 255, 0.3);
+  white-space: nowrap;
+}
+
+.back {
+  border-radius: 0 6px 6px 0;
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow-y: auto;
+  transform-origin: left center;
+  animation: unfold 0.35s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+@keyframes unfold {
+  from {
+    transform: rotateY(-60deg);
+    opacity: 0.3;
+  }
+  to {
+    transform: rotateY(0deg);
+    opacity: 1;
+  }
+}
+
+/* sits on the case's top-right corner, outside the back cover content */
+.close {
+  position: absolute;
+  top: -0.9rem;
+  right: -0.9rem;
+  z-index: 2;
+  width: 2rem;
+  height: 2rem;
+  background: var(--bg);
+  border: 1px solid rgba(var(--accent-rgb), 0.5);
+  border-radius: 3px;
+  color: var(--text-muted);
+  font-family: 'VT323', monospace;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus-visible {
+  color: var(--accent);
+  border-color: var(--accent);
+  outline: none;
+}
+
+/* ---- back cover: screenshots strip ---- */
+/* screenshots keep their aspect ratio: one landscape print shows wide,
+   several phone prints line up narrow */
+.gallery {
+  flex: 0 0 auto; /* a scroll container would otherwise shrink to nothing when the back overflows */
+  display: flex;
+  gap: 6px;
+  height: 170px;
+  padding: 10px 10px 0;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.thumb {
+  flex: 0 1 auto;
+  min-width: 0;
+  height: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 3px;
+  overflow: hidden;
+  background: var(--window-bg);
+  position: relative;
+  transition: border-color 0.15s;
+}
+
+.thumb::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(var(--rose-deep-rgb), 0.05), rgba(var(--rose-deep-rgb), 0.3));
+  pointer-events: none;
+}
+
+.thumb:hover,
+.thumb:focus-visible {
+  border-color: var(--rose-light);
+  outline: none;
+}
+
+.thumb img {
+  width: auto;
+  height: 100%;
+  display: block;
+}
+
+/* ---- back cover: text ---- */
+.backBody {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  padding: 1.5rem 3.25rem 1.25rem 1.5rem;
+}
+
+.title {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 1.15;
+  color: var(--text);
+}
+
+.meta {
+  font-family: 'VT323', monospace;
+  font-size: 1.15rem;
+  letter-spacing: 0.12em;
+  color: var(--rose-light);
+  margin-top: -0.6rem;
+}
+
+.org {
+  font-family: 'VT323', monospace;
+  font-size: 1.1rem;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  margin-top: -0.6rem;
+}
+
+.desc {
+  font-size: 0.95rem;
+  color: var(--text);
+  line-height: 1.6;
+}
+
+.details {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+  margin-top: -0.3rem;
+}
+
+.result {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.6rem 0.9rem;
+  border: 1px solid rgba(var(--accent-rgb), 0.4);
+  border-radius: 3px;
+  background: rgba(0, 0, 0, 0.3);
+  font-size: 0.9rem;
+  color: var(--text);
+}
+
+.resultIcon {
+  flex: 0 0 auto;
+  font-size: 1.3rem;
+  color: var(--rose-light);
+  filter: drop-shadow(0 0 6px rgba(var(--accent-rgb), 0.6));
+}
+
+.resultLabel {
+  display: block;
+  font-family: 'VT323', monospace;
+  font-size: 0.95rem;
+  letter-spacing: 0.15em;
+  color: var(--text-muted);
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.tag {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.78rem;
+  padding: 0.15rem 0.7rem;
+  border: 1px solid rgba(var(--accent-rgb), 0.6);
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.35);
+  color: var(--text);
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+.link {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.06em;
+  padding: 0.75rem 1rem;
+  background: var(--rose);
+  color: var(--text);
+  text-decoration: none;
+  border: 2px solid var(--rose);
+  border-radius: var(--radius-sm);
+  box-shadow: 4px 4px 0 var(--rose-deep);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.linkGhost {
+  background: transparent;
+  color: var(--rose-light);
+  box-shadow: 4px 4px 0 var(--border-2);
+}
+
+.link:hover,
+.link:focus-visible {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--rose-deep);
+  outline: none;
+}
+
+/* ---- back cover: bottom bar ---- */
+.backFoot {
+  position: sticky; /* stays visible while the back cover scrolls */
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1.5rem;
+  border-top: 1px solid rgba(var(--accent-rgb), 0.3);
+  background: var(--case-mid);
+  font-family: 'VT323', monospace;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+}
+
+.barcode {
+  flex: 0 0 auto;
+  width: 64px;
+  height: 22px;
+  opacity: 0.6;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--text) 0 2px,
+    transparent 2px 4px,
+    var(--text) 4px 5px,
+    transparent 5px 8px,
+    var(--text) 8px 11px,
+    transparent 11px 13px,
+    var(--text) 13px 14px,
+    transparent 14px 17px
+  );
+}
+
+.footMeta {
+  font-size: 1.05rem;
+}
+
+.nav {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.navBtn {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.5rem;
+  padding: 0.6rem 0.8rem;
+  background: transparent;
+  border: 2px solid var(--rose);
+  border-radius: var(--radius-sm);
+  color: var(--rose-light);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.navBtn:hover,
+.navBtn:focus-visible {
+  background: rgba(var(--accent-rgb), 0.12);
+  outline: none;
+}
+
+.counter {
+  font-size: 1.15rem;
+  letter-spacing: 0.2em;
+}
+
+/* ---- mobile: full-screen sheet, halves stacked ---- */
+@media (max-width: 768px) {
+  .dialog {
+    width: 100vw;
+    max-width: 100vw;
+    height: 100dvh;
+    max-height: 100dvh;
+    margin: 0;
+  }
+  .case {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 14px 1fr;
+    height: 100dvh;
+    max-height: 100dvh;
+    filter: none;
+  }
+  .close {
+    top: 0.6rem;
+    right: 0.6rem;
+  }
+  .front {
+    --desc-lines: 4;
+    border-radius: 0;
+    border-right: 2px solid rgba(var(--accent-rgb), 0.35);
+    border-bottom: none;
+    padding: 2.75rem 1rem 0.75rem;
+    font-size: 13px;
+    display: flex;
+    justify-content: center;
+  }
+  .front > * {
+    width: 180px;
+    height: 245px;
+  }
+  .hinge {
+    border-top: none;
+    border-bottom: none;
+    border-left: 2px solid rgba(var(--accent-rgb), 0.35);
+    border-right: 2px solid rgba(var(--accent-rgb), 0.35);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.6), rgba(255, 255, 255, 0.04) 50%, rgba(0, 0, 0, 0.6));
+  }
+  .hinge span {
+    display: none;
+  }
+  .back {
+    border-radius: 0;
+    border-left: 2px solid rgba(var(--accent-rgb), 0.35);
+    border-top: none;
+    animation: none;
+  }
+  .backBody {
+    padding: 1.25rem 1rem;
+  }
+  .gallery {
+    height: 150px;
+  }
+  .backFoot {
+    flex-wrap: wrap;
+    padding: 0.75rem 1rem;
+  }
+  .nav {
+    margin-left: 0;
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .back {
+    animation: none;
+  }
+  .link,
+  .navBtn,
+  .thumb {
+    transition: none;
+  }
+}

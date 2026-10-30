@@ -1,0 +1,145 @@
+/* Plastic game case: translucent frame with an inner highlight, a spine strip
+   on the left, gradient surfaces instead of flat fills. Sized in em so the
+   same markup works on the shelf (16px) and in the modal (19px). */
+.cover {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  background: linear-gradient(160deg, var(--case-top) 0%, var(--case-mid) 55%, var(--case-bottom) 100%);
+  border: 2px solid rgba(var(--accent-rgb), 0.35);
+  border-radius: 6px;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  text-align: left;
+}
+
+/* spine strip of the case, with the title printed sideways */
+.edge {
+  flex: 0 0 0.9em;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.55), rgba(255, 255, 255, 0.03));
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+  writing-mode: vertical-rl;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.3em;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.25);
+  padding: 1.2em 0;
+  white-space: nowrap;
+  overflow: hidden;
+  user-select: none;
+}
+
+.inner {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 0.55em 0.6em 0.5em;
+  gap: 0.4em;
+}
+
+.head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.4em;
+}
+
+.title {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 0.95em;
+  line-height: 1.15;
+  color: var(--text);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.badge {
+  flex: 0 0 auto;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.32em;
+  letter-spacing: 0.1em;
+  color: var(--rose-light);
+  border: 1px solid rgba(var(--accent-rgb), 0.5);
+  border-radius: 3px;
+  padding: 0.5em 0.6em;
+  margin-top: 0.2em;
+}
+
+.window {
+  flex: 0 0 auto;
+  aspect-ratio: 16 / 10;
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 3px;
+  background: var(--window-bg);
+  overflow: hidden;
+}
+
+/* very light tint: the cover art is already in the palette */
+.window::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(var(--rose-deep-rgb), 0.02), rgba(var(--rose-deep-rgb), 0.12));
+  pointer-events: none;
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: left top;
+  display: block;
+}
+
+.desc {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.6em;
+  line-height: 1.4;
+  color: var(--text-muted);
+  display: -webkit-box;
+  -webkit-line-clamp: var(--desc-lines, 4);
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3em;
+}
+
+.tag {
+  flex: 0 0 auto;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.58em;
+  padding: 0.2em 0.65em;
+  border: 1px solid rgba(var(--accent-rgb), 0.6);
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.35);
+  color: var(--text);
+}
+
+.foot {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: auto;
+}
+
+.year {
+  font-family: 'VT323', monospace;
+  font-size: 0.85em;
+  letter-spacing: 0.12em;
+  color: var(--rose-light);
+  border: 1px solid rgba(var(--accent-rgb), 0.5);
+  border-radius: 3px;
+  padding: 0 0.45em;
+  line-height: 1.3;
+}

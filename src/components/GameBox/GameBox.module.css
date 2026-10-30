@@ -1,0 +1,182 @@
+/* A box standing on the shelf. Sizes come from the shelf: --spine-w (depth),
+   --box-w (cover width), --box-h (height).
+
+   Geometry: the spine face sits on the z=0 plane; the cover face is hinged on
+   the spine's right edge and goes back into the shelf (rotateY(90deg)).
+   When turned (active or hovered) the body rotates around that hinge, so the
+   cover comes to the front and the spine shows as a sliver. */
+.box {
+  --spine-accent: var(--rose);
+  width: var(--spine-w);
+  height: var(--box-h);
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: inherit;
+  font-size: 20px;
+  cursor: pointer;
+  position: relative;
+  perspective: 1200px;
+  transition: width 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+  flex: 0 0 auto;
+}
+
+.research {
+  --spine-accent: var(--rose-light);
+}
+.app {
+  --spine-accent: var(--rose-mid);
+}
+.web {
+  --spine-accent: var(--rose-deep);
+}
+
+.body {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: calc(var(--spine-w) + var(--box-w));
+  transform-style: preserve-3d;
+  transform-origin: var(--spine-w) 50%;
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.spine,
+.coverFace {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.spine {
+  left: 0;
+  width: var(--spine-w);
+  background: linear-gradient(180deg, var(--case-top) 0%, var(--case-mid) 60%, var(--case-bottom) 100%);
+  border: 1px solid rgba(var(--accent-rgb), 0.28);
+  border-radius: 3px;
+  /* thin label line at the top and a lit base, plus a plastic highlight on the left edge */
+  box-shadow:
+    inset 0 3px 0 var(--spine-accent),
+    inset 0 -2px 0 rgba(var(--accent-rgb), 0.55),
+    inset 1px 0 0 rgba(255, 255, 255, 0.07);
+  transition: border-color 0.2s;
+  display: flex;
+  /* writing-mode flips the axes: row = top to bottom here */
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.2em;
+  padding: 1em 0 0.7em;
+  writing-mode: vertical-rl;
+  text-align: center;
+  overflow: hidden;
+}
+
+.spineBottom {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.spineIcon {
+  writing-mode: horizontal-tb;
+  font-size: 0.9em;
+  color: var(--rose-light);
+}
+
+.spineYear,
+.spineTag {
+  font-family: 'VT323', monospace;
+  font-size: 1em;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+}
+
+.spineTag {
+  color: var(--rose-light);
+}
+
+.spineTitle {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.6em;
+  line-height: 1.35;
+  color: var(--text);
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.8);
+  /* long titles wrap into a second column instead of being cut */
+  overflow: hidden;
+  /* let the title shrink along the (vertical) main axis instead of pushing the icon */
+  min-width: 0;
+  min-height: 0;
+  flex: 0 1 auto;
+}
+
+.coverFace {
+  left: var(--spine-w);
+  width: var(--box-w);
+  transform-origin: left center;
+  transform: rotateY(90deg);
+}
+
+/* ---- turned: active (selected) or hover / focus ---- */
+.active,
+.box:hover,
+.box:focus-visible {
+  width: calc(var(--spine-w) + var(--box-w));
+  outline: none;
+  z-index: 2;
+}
+
+.active .body,
+.box:hover .body,
+.box:focus-visible .body {
+  /* a few degrees short of 90 keeps the spine visible as a sliver */
+  transform: rotateY(-78deg);
+}
+
+.box:hover .spine,
+.box:focus-visible .spine {
+  border-color: var(--rose);
+}
+
+.box:focus-visible .coverFace > * {
+  outline: 2px solid var(--rose-glow);
+  outline-offset: 2px;
+}
+
+/* no hover on touch: only the selected box is turned, tap opens the modal */
+@media (hover: none) {
+  .box:not(.active):hover {
+    width: var(--spine-w);
+  }
+  .box:not(.active):hover .body {
+    transform: none;
+  }
+}
+
+/* phones: no room for a turned box, the selected one is marked on its spine */
+@media (max-width: 768px) {
+  .box {
+    font-size: 14px;
+  }
+  .active {
+    width: var(--spine-w);
+  }
+  .active .body {
+    transform: none;
+  }
+  .active .spine {
+    border-color: var(--rose-light);
+    box-shadow:
+      inset 0 3px 0 var(--spine-accent),
+      inset 0 -2px 0 rgba(var(--accent-rgb), 0.55),
+      0 0 12px rgba(var(--accent-rgb), 0.3);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .box,
+  .body {
+    transition: none;
+  }
+}

@@ -10,13 +10,22 @@ export type Experience = {
   highlight: Bilingual;
 };
 
+export type ProjectCategory = 'research' | 'app' | 'web';
+export type ProjectLinkKind = 'code' | 'demo' | 'apk' | 'paper';
+export type ProjectLink = { kind: ProjectLinkKind; href: string };
+
 export type Project = {
-  emoji: string;
-  image?: string;
   title: string;
-  desc: Bilingual;
+  org?: Bilingual;      // who it was built for / with
+  desc: Bilingual;      // one-liner, shown on the cover
+  details?: Bilingual;  // longer text, shown only on the back cover
   tags: string[];
-  repo: string;
+  year: string;
+  category: ProjectCategory;
+  cover: string;
+  links: ProjectLink[];
+  result?: Bilingual;
+  gallery?: string[];
 };
 
 export type Publication = {

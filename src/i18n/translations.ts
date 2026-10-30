@@ -1,3 +1,5 @@
+import type { ProjectCategory, ProjectLinkKind } from "types";
+
 export type Lang = "en" | "pt";
 
 export type Bilingual = Record<Lang, string>;
@@ -56,11 +58,13 @@ export type Dict = {
     section: string;
     title: string;
     titleEm: string;
-    hint: string;
-    shuffle: string;
-    shuffleAria: string;
-    view: (name: string) => string;
-    code: string;
+    open: (name: string) => string;
+    close: string;
+    prev: string;
+    next: string;
+    result: string;
+    category: Record<ProjectCategory, string>;
+    link: Record<ProjectLinkKind, string>;
   };
   contact: {
     section: string;
@@ -137,11 +141,13 @@ export const translations: Record<Lang, Dict> = {
       section: "// SECTION 04",
       title: "My",
       titleEm: "Projects",
-      hint: "▶ Pick a card",
-      shuffle: "▷ press me",
-      shuffleAria: "Shuffle the deck",
-      view: (name) => `View ${name}`,
-      code: "⌥ Code",
+      open: (name) => `Open ${name}`,
+      close: "Close",
+      prev: "◀ PREV",
+      next: "NEXT ▶",
+      result: "// RESULT",
+      category: { research: "RESEARCH", app: "APP", web: "WEB" },
+      link: { code: "⌥ Code", demo: "▶ Live", apk: "⇩ APK", paper: "¶ Paper" },
     },
     contact: {
       section: "// SECTION 05",
@@ -232,11 +238,13 @@ export const translations: Record<Lang, Dict> = {
       section: "// SEÇÃO 04",
       title: "Meus",
       titleEm: "Projetos",
-      hint: "▶ Escolha uma carta",
-      shuffle: "▷ clique aqui",
-      shuffleAria: "Embaralhar as cartas",
-      view: (name) => `Ver ${name}`,
-      code: "⌥ Código",
+      open: (name) => `Abrir ${name}`,
+      close: "Fechar",
+      prev: "◀ ANT",
+      next: "PRÓX ▶",
+      result: "// RESULTADO",
+      category: { research: "PESQUISA", app: "APP", web: "WEB" },
+      link: { code: "⌥ Código", demo: "▶ Ao vivo", apk: "⇩ APK", paper: "¶ Artigo" },
     },
     contact: {
       section: "// SEÇÃO 05",

@@ -1,0 +1,44 @@
+/* Boxes stand side by side showing their spines. The row wraps when it runs
+   out of room; the shelf board under each row is drawn on the background
+   with a gradient whose period equals one row. */
+.shelf {
+  --spine-w: 64px;
+  --box-w: 280px;
+  --box-h: 380px;
+  --row-gap: 56px;
+  --board-h: 14px;
+  --period: calc(var(--box-h) + var(--row-gap));
+
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: center;
+  column-gap: 4px;
+  row-gap: var(--row-gap);
+  padding: 0 1rem calc(var(--row-gap) - var(--board-h));
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent var(--box-h),
+    var(--rose-deep) var(--box-h),
+    var(--rose-deep) calc(var(--box-h) + 2px),
+    var(--border-2) calc(var(--box-h) + 2px),
+    var(--border-2) calc(var(--box-h) + var(--board-h) - 3px),
+    var(--border) calc(var(--box-h) + var(--board-h) - 3px),
+    var(--border) calc(var(--box-h) + var(--board-h)),
+    transparent calc(var(--box-h) + var(--board-h)),
+    transparent var(--period)
+  );
+}
+
+@media (max-width: 768px) {
+  .shelf {
+    --spine-w: 54px;
+    --box-w: 150px;
+    --box-h: 290px;
+    --row-gap: 44px;
+    --board-h: 10px;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
