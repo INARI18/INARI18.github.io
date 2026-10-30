@@ -20,6 +20,9 @@ export type Dict = {
     desc: string;
     viewProjects: string;
     contactMe: string;
+    fillMug: string;
+    coffees: (n: number) => string;
+    overflow: string;
   };
   about: {
     section: string;
@@ -104,6 +107,9 @@ export const translations: Record<Lang, Dict> = {
       desc: "Computer Science student and cybersecurity researcher building full-stack apps and LLM-powered tools for real-world security problems",
       viewProjects: "▶ VIEW PROJECTS",
       contactMe: "CONTACT ME",
+      fillMug: "Fill the mug",
+      coffees: (n) => `COFFEES TODAY: ${n}`,
+      overflow: "OVERFLOW!",
     },
     about: {
       section: "// SECTION 01",
@@ -202,6 +208,9 @@ export const translations: Record<Lang, Dict> = {
       desc: "Estudante de Ciência da Computação e pesquisadora em cibersegurança construindo apps full-stack e ferramentas com LLMs para problemas reais de segurança",
       viewProjects: "▶ VER PROJETOS",
       contactMe: "ENTRE EM CONTATO",
+      fillMug: "Encher a caneca",
+      coffees: (n) => `CAFÉS HOJE: ${n}`,
+      overflow: "TRANSBORDOU!",
     },
     about: {
       section: "// SEÇÃO 01",
