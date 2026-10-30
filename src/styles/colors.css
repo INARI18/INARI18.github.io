@@ -1,5 +1,7 @@
 /* ============================================================
-   PALETTE — edit colors here; used across the whole app
+   PALETTE: edit colors here; used across the whole app.
+   Three themes share the same variable names; html[data-theme]
+   picks one (set before paint by the inline script in index.html).
    ============================================================ */
 :root {
   --bg: #141414;
@@ -33,4 +35,56 @@
   --radius-sm: 2px; /* buttons, tags, small chips */
   --radius-md: 4px; /* cards, panels, frames */
   --radius-none: 0; /* stat segments, pixel-literal elements */
+}
+
+/* violet */
+html[data-theme='violet'] {
+  --bg: #131118;
+  --bg-card: #1a1722;
+  --bg-card-2: #241f30;
+  --rose-deep: #3b2359;
+  --rose: #5b3a8c;
+  --rose-mid: #7c52c4;
+  --rose-light: #a78bfa;
+  --rose-glow: #c4b0ff;
+  --rose-pale: #e6dcff;
+  --accent: #a78bfa;
+  --text: #e6e0f0;
+  --text-muted: #a39bb5;
+  --text-dim: #574f66;
+  --border: #231e2e;
+  --border-2: #3a3050;
+  --case-top: #1d1726;
+  --case-mid: #14101b;
+  --case-bottom: #0e0b13;
+  --window-bg: #0d0620;
+  --nav-bg: rgba(10, 8, 16, 0.88);
+  --accent-rgb: 167, 139, 250;
+  --rose-deep-rgb: 59, 35, 89;
+}
+
+/* ice: cold CRT cyan */
+html[data-theme='ice'] {
+  --bg: #0e1418;
+  --bg-card: #141c22;
+  --bg-card-2: #1c262e;
+  --rose-deep: #0f3a46;
+  --rose: #176273;
+  --rose-mid: #1f8fa8;
+  --rose-light: #4dd4f0;
+  --rose-glow: #8ae8ff;
+  --rose-pale: #d2f6ff;
+  --accent: #4dd4f0;
+  --text: #dbe8ee;
+  --text-muted: #93a8b3;
+  --text-dim: #4b5c65;
+  --border: #1a262c;
+  --border-2: #2b4049;
+  --case-top: #16222a;
+  --case-mid: #0f171c;
+  --case-bottom: #0a1013;
+  --window-bg: #071a20;
+  --nav-bg: rgba(6, 10, 13, 0.88);
+  --accent-rgb: 77, 212, 240;
+  --rose-deep-rgb: 15, 58, 70;
 }

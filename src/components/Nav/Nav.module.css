@@ -8,7 +8,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: rgba(7, 7, 15, 0.88);
+  background: var(--nav-bg);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
 }
@@ -56,6 +56,56 @@
 
 .links a:hover::after {
   width: 100%;
+}
+
+.tools {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+/* theme swatches: each square shows its own theme's accent */
+.themes {
+  display: inline-flex;
+  gap: 0.35rem;
+  height: 34px;
+  padding: 0 0.45rem;
+  align-items: center;
+  border: 1px solid var(--border-2);
+  border-radius: var(--radius-sm);
+}
+
+.swatch {
+  width: 14px;
+  height: 14px;
+  padding: 0;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  opacity: 0.55;
+  transition: opacity 0.15s, transform 0.15s;
+}
+
+.swatch:hover,
+.swatch:focus-visible {
+  opacity: 1;
+  transform: translateY(-1px);
+  outline: none;
+}
+
+.swatchActive {
+  opacity: 1;
+  box-shadow: 0 0 0 1px var(--text), 0 0 8px var(--accent);
+}
+
+.rose {
+  background: #eb4b69;
+}
+.violet {
+  background: #a78bfa;
+}
+.ice {
+  background: #4dd4f0;
 }
 
 .langBtn {

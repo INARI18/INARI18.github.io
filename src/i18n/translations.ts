@@ -13,6 +13,7 @@ export type Dict = {
     contact: string;
     toggleTheme: string;
     toggleLanguage: string;
+    themes: { rose: string; violet: string; ice: string };
   };
   hero: {
     greeting: string;
@@ -94,8 +95,9 @@ export const translations: Record<Lang, Dict> = {
       publications: "Papers",
       projects: "Projects",
       contact: "Contact",
-      toggleTheme: "Toggle theme",
+      toggleTheme: "Theme",
       toggleLanguage: "Switch language",
+      themes: { rose: "Rose theme", violet: "Violet theme", ice: "Ice theme" },
     },
     hero: {
       greeting: "Hi, I'm",
@@ -191,8 +193,9 @@ export const translations: Record<Lang, Dict> = {
       publications: "Artigos",
       projects: "Projetos",
       contact: "Contato",
-      toggleTheme: "Alternar tema",
+      toggleTheme: "Tema",
       toggleLanguage: "Trocar idioma",
+      themes: { rose: "Tema rosa", violet: "Tema roxo", ice: "Tema gelo" },
     },
     hero: {
       greeting: "Oi, eu sou a",
