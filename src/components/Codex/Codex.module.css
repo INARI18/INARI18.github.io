@@ -18,8 +18,8 @@
 /* ========== THE BOOK: two pages and a spiral spine ========== */
 .book {
   display: grid;
-  grid-template-columns: minmax(0, 5fr) 40px minmax(0, 7fr);
-  min-height: 560px;
+  grid-template-columns: minmax(0, 5fr) 24px minmax(0, 7fr);
+  height: 640px;
   border: 2px solid var(--rose);
   border-radius: var(--radius-md);
   background: var(--bg-card);
@@ -48,6 +48,9 @@
 .right {
   box-shadow: inset 24px 0 30px -24px rgba(0, 0, 0, 0.6);
   animation: pageIn 0.25s ease-out;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-2) transparent;
 }
 
 @keyframes pageIn {
@@ -61,13 +64,22 @@
   }
 }
 
-/* spiral rings down the middle */
+/* the fold: a thin glowing seam with shadow falling into both pages */
 .spine {
-  background:
-    radial-gradient(circle at 50% 50%, var(--bg) 0 5px, var(--border-2) 5px 8px, transparent 8.5px) 0 14px /
-      100% 34px repeat-y,
-    linear-gradient(90deg, rgba(0, 0, 0, 0.5), transparent 45%, transparent 55%, rgba(0, 0, 0, 0.5));
-  background-color: var(--rose-deep);
+  position: relative;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.55), transparent 50%, rgba(0, 0, 0, 0.55));
+}
+
+.spine::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  transform: translateX(-50%);
+  background: linear-gradient(180deg, var(--rose-deep), var(--rose), var(--rose-deep));
+  box-shadow: 0 0 10px var(--rose);
 }
 
 .pageHead {
@@ -347,15 +359,24 @@
 @media (max-width: 760px) {
   .book {
     grid-template-columns: 1fr;
-    min-height: 0;
+    height: auto;
+  }
+  .right {
+    overflow: visible;
   }
   .spine {
-    height: 28px;
-    background:
-      radial-gradient(circle at 50% 50%, var(--bg) 0 5px, var(--border-2) 5px 8px, transparent 8.5px) 14px 0 /
-        34px 100% repeat-x,
-      linear-gradient(180deg, rgba(0, 0, 0, 0.5), transparent 45%, transparent 55%, rgba(0, 0, 0, 0.5));
-    background-color: var(--rose-deep);
+    height: 16px;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.55), transparent 50%, rgba(0, 0, 0, 0.55));
+  }
+  .spine::after {
+    left: 0;
+    right: 0;
+    top: 50%;
+    bottom: auto;
+    width: auto;
+    height: 2px;
+    transform: translateY(-50%);
+    background: linear-gradient(90deg, var(--rose-deep), var(--rose), var(--rose-deep));
   }
   .left,
   .right {
