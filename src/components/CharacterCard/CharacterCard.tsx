@@ -1,24 +1,24 @@
 import { useState } from "react";
-import { stats } from "data/stats";
 import { socials } from "data/socials";
 import { roles } from "data/roles";
+import { techStack } from "data/techStack";
+import { since, awards, equipped } from "data/character";
+import { PixelIcon } from "components/PixelIcon/PixelIcon";
 import { useLang } from "contexts/LanguageContext";
 import styles from "./CharacterCard.module.css";
 
-const SEG_COUNT = 10;
-
+// one pose per class, same order as data/roles
 const poses = ["/cafe-pose.png", "/cat-pose.png", "/videogame-pose.png"];
 
+const inventory = techStack.filter((item) => !equipped.some((e) => e.item === item));
+
+/** Trainer card: identity, badges and equipment. Facts only, no self-scored stats. */
 export function CharacterCard() {
   const { t, tr } = useLang();
   const [roleIdx, setRoleIdx] = useState(0);
-  const [poseIdx, setPoseIdx] = useState(0);
 
   const cycleRole = (dir: 1 | -1) =>
     setRoleIdx((i) => (i + dir + roles.length) % roles.length);
-
-  const cyclePose = (dir: 1 | -1) =>
-    setPoseIdx((i) => (i + dir + poses.length) % poses.length);
 
   return (
     <div className={styles.card}>
@@ -32,69 +32,104 @@ export function CharacterCard() {
       </div>
 
       <div className={styles.body}>
-        <div className={styles.leftCol}>
-          <div className={styles.stats}>
-            {stats.map((s) => {
-              const filled = Math.round((s.value / 100) * SEG_COUNT);
-              const label = tr(s.label);
-              return (
-                <div key={label} className={styles.statRow}>
-                  <span className={styles.statLabel}>{label}</span>
-                  <div
-                    className={styles.segments}
-                    role="meter"
-                    aria-label={label}
-                    aria-valuenow={s.value}
-                    aria-valuemin={0}
-                    aria-valuemax={100}
-                  >
-                    {Array.from({ length: SEG_COUNT }).map((_, i) => (
-                      <span
-                        key={i}
-                        className={`${styles.seg}${
-                          i < filled ? ` ${styles.segOn}` : ""
-                        }`}
-                      />
-                    ))}
-                  </div>
-                </div>
-              );
-            })}
+        <dl className={styles.fields}>
+          <div className={styles.field}>
+            <dt className={styles.fieldLabel}>{t.character.name}</dt>
+            <dd className={styles.fieldValue}>Beatriz Machado</dd>
           </div>
-        </div>
 
-        <div className={styles.rightCol}>
-          <div className={styles.avatarFrame}>
-            <div className={styles.avatarGlow} aria-hidden="true" />
-            <div className={styles.pedestal} aria-hidden="true" />
-            <img
-              key={poseIdx}
-              src={poses[poseIdx]}
-              alt="Beatriz Machado"
-              className={styles.avatarImg}
-            />
+          <div className={styles.field}>
+            <dt className={styles.fieldLabel}>{t.character.class}</dt>
+            <dd className={styles.selector}>
+              <button
+                type="button"
+                className={styles.arrow}
+                onClick={() => cycleRole(-1)}
+                aria-label={t.character.previousRole}
+              >
+                ◀
+              </button>
+              <span className={styles.selText} aria-live="polite">
+                {tr(roles[roleIdx])}
+              </span>
+              <button
+                type="button"
+                className={styles.arrow}
+                onClick={() => cycleRole(1)}
+                aria-label={t.character.nextRole}
+              >
+                ▶
+              </button>
+            </dd>
           </div>
-          <div className={styles.selector}>
-            <button
-              type="button"
-              className={styles.arrow}
-              onClick={() => cycleRole(-1)}
-              aria-label={t.character.previousRole}
-            >
-              ◀
-            </button>
-            <span className={styles.selText} title={tr(roles[roleIdx])}>
-              {tr(roles[roleIdx])}
+
+          <div className={styles.field}>
+            <dt className={styles.fieldLabel}>{t.character.since}</dt>
+            <dd className={styles.fieldValue}>{since}</dd>
+          </div>
+
+          <div className={styles.field}>
+            <dt className={styles.fieldLabel}>{t.character.badges}</dt>
+            <dd className={styles.badges}>
+              {awards.map((a) => {
+                const inner = (
+                  <>
+                    <PixelIcon name={a.icon} className={styles.badgeIcon} />
+                    {a.short}
+                  </>
+                );
+                return a.href ? (
+                  <a
+                    key={a.short}
+                    className={styles.badge}
+                    href={a.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    title={tr(a.label)}
+                    aria-label={tr(a.label)}
+                  >
+                    {inner}
+                  </a>
+                ) : (
+                  <span key={a.short} className={styles.badge} title={tr(a.label)}>
+                    {inner}
+                  </span>
+                );
+              })}
+            </dd>
+          </div>
+        </dl>
+
+        <div className={styles.avatarFrame}>
+          <div className={styles.avatarGlow} aria-hidden="true" />
+          <div className={styles.pedestal} aria-hidden="true" />
+          <img
+            key={roleIdx}
+            src={poses[roleIdx]}
+            alt="Beatriz Machado"
+            className={styles.avatarImg}
+          />
+        </div>
+      </div>
+
+      <div className={styles.gear}>
+        <div className={styles.gearLabel}>{t.character.equipped}</div>
+        <dl className={styles.slots}>
+          {equipped.map((e) => (
+            <div key={e.item} className={styles.slot}>
+              <dt className={styles.slotName}>{tr(e.slot)}</dt>
+              <dd className={styles.slotItem}>{e.item}</dd>
+            </div>
+          ))}
+        </dl>
+
+        <div className={styles.gearLabel}>{t.character.inventory}</div>
+        <div className={styles.items}>
+          {inventory.map((item) => (
+            <span key={item} className={styles.item}>
+              {item}
             </span>
-            <button
-              type="button"
-              className={styles.arrow}
-              onClick={() => cycleRole(1)}
-              aria-label={t.character.nextRole}
-            >
-              ▶
-            </button>
-          </div>
+          ))}
         </div>
       </div>
 
@@ -104,35 +139,6 @@ export function CharacterCard() {
             {s.label}
           </a>
         ))}
-      </div>
-
-      <div className={styles.namePicker}>
-        <button
-          type="button"
-          className={styles.nameArrow}
-          onClick={() => cyclePose(-1)}
-          aria-label={t.character.previousPose}
-        >
-          ◀
-        </button>
-        <div className={styles.poseDots} aria-hidden="true">
-          {poses.map((_, i) => (
-            <span
-              key={i}
-              className={`${styles.poseDot}${
-                i === poseIdx ? ` ${styles.poseDotOn}` : ""
-              }`}
-            />
-          ))}
-        </div>
-        <button
-          type="button"
-          className={styles.nameArrow}
-          onClick={() => cyclePose(1)}
-          aria-label={t.character.nextPose}
-        >
-          ▶
-        </button>
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
 /* 8x8 pixel icons drawn as SVG rects. Add a name here and a row map below. */
-export type PixelIconName = 'research' | 'app' | 'web' | 'trophy';
+export type PixelIconName = 'research' | 'app' | 'web' | 'trophy' | 'shield' | 'flag';
 
 const PIXELS: Record<PixelIconName, string[]> = {
   research: [
@@ -41,6 +41,26 @@ const PIXELS: Record<PixelIconName, string[]> = {
     '...X....',
     '..XXX...',
     '.XXXXX..',
+  ],
+  shield: [
+    'XXXXXXXX',
+    'X.XXXX.X',
+    'X.XXXX.X',
+    'XX.XX.XX',
+    'XX.XX.XX',
+    '.XX..XX.',
+    '..XXXX..',
+    '...XX...',
+  ],
+  flag: [
+    'X.......',
+    'XXXXXXX.',
+    'XXXXXXXX',
+    'XXXXXXX.',
+    'XXXXX...',
+    'X.......',
+    'X.......',
+    'X.......',
   ],
 };
 

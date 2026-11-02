@@ -31,24 +31,26 @@ export type Dict = {
     heading1: string;
     heading2: string;
     bio: string;
-    techStackLabel: string;
   };
   character: {
+    name: string;
+    class: string;
+    since: string;
+    badges: string;
+    equipped: string;
+    inventory: string;
     previousRole: string;
     nextRole: string;
-    previousPose: string;
-    nextPose: string;
   };
   experience: {
     section: string;
     titleEm: string;
-    page: string;
+    start: string;
+    log: string;
     techUsed: string;
-    keyWin: string;
-    prev: string;
-    next: string;
-    prevAria: string;
-    nextAria: string;
+    reward: string;
+    select: (name: string) => string;
+    viewProject: (name: string) => string;
   };
   publications: {
     section: string;
@@ -57,6 +59,7 @@ export type Dict = {
     hint: string;
     read: string;
     soon: string;
+    viewProject: string;
   };
   projects: {
     section: string;
@@ -118,24 +121,26 @@ export const translations: Record<Lang, Dict> = {
       heading1: "Cybersecurity researcher &",
       heading2: "full-stack developer",
       bio: "I'm a Computer Science student at UNIPAMPA with experience in cybersecurity research and full-stack development. My work involves vulnerability data extraction and analysis, data anonymization, and LLM-based solutions for security applications, with a focus on real-world impact",
-      techStackLabel: "// TECH STACK",
     },
     character: {
-      previousRole: "Previous role",
-      nextRole: "Next role",
-      previousPose: "Previous pose",
-      nextPose: "Next pose",
+      name: "NAME",
+      class: "CLASS",
+      since: "SINCE",
+      badges: "BADGES",
+      equipped: "// EQUIPPED",
+      inventory: "// INVENTORY",
+      previousRole: "Previous class",
+      nextRole: "Next class",
     },
     experience: {
       section: "// SECTION 02",
       titleEm: "Experience",
-      page: "PAGE",
+      start: "START",
+      log: "// QUEST LOG",
       techUsed: "// TECH USED",
-      keyWin: "// KEY WIN",
-      prev: "◀ PREV",
-      next: "NEXT ▶",
-      prevAria: "Previous experience",
-      nextAria: "Next experience",
+      reward: "// REWARD",
+      select: (name) => `Show ${name}`,
+      viewProject: (name) => `▶ ${name}`,
     },
     publications: {
       section: "// SECTION 03",
@@ -144,6 +149,7 @@ export const translations: Record<Lang, Dict> = {
       hint: "▶ Peer-reviewed research",
       read: "Read paper →",
       soon: "Link soon",
+      viewProject: "▶ Project",
     },
     projects: {
       section: "// SECTION 04",
@@ -219,24 +225,26 @@ export const translations: Record<Lang, Dict> = {
       heading1: "Pesquisadora em cibersegurança &",
       heading2: "desenvolvedora full-stack",
       bio: "Sou estudante de Ciência da Computação na UNIPAMPA, com experiência em pesquisa em cibersegurança e desenvolvimento full-stack. Meu trabalho envolve extração e análise de vulnerabilidades, anonimização de dados e o uso de LLMs para aplicações em segurança, com foco em aplicações no mundo real",
-      techStackLabel: "// STACK",
     },
     character: {
-      previousRole: "Cargo anterior",
-      nextRole: "Próximo cargo",
-      previousPose: "Pose anterior",
-      nextPose: "Próxima pose",
+      name: "NOME",
+      class: "CLASSE",
+      since: "DESDE",
+      badges: "BADGES",
+      equipped: "// EQUIPADO",
+      inventory: "// INVENTÁRIO",
+      previousRole: "Classe anterior",
+      nextRole: "Próxima classe",
     },
     experience: {
       section: "// SEÇÃO 02",
       titleEm: "Experiência",
-      page: "PÁGINA",
+      start: "START",
+      log: "// QUEST LOG",
       techUsed: "// TECNOLOGIAS",
-      keyWin: "// DESTAQUE",
-      prev: "◀ ANT",
-      next: "PRÓX ▶",
-      prevAria: "Experiência anterior",
-      nextAria: "Próxima experiência",
+      reward: "// RECOMPENSA",
+      select: (name) => `Mostrar ${name}`,
+      viewProject: (name) => `▶ ${name}`,
     },
     publications: {
       section: "// SEÇÃO 03",
@@ -245,6 +253,7 @@ export const translations: Record<Lang, Dict> = {
       hint: "▶ Pesquisa revisada por pares",
       read: "Ler artigo →",
       soon: "Link em breve",
+      viewProject: "▶ Projeto",
     },
     projects: {
       section: "// SEÇÃO 04",

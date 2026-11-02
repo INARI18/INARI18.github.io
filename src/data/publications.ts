@@ -11,6 +11,7 @@ export const publications: Publication[] = [
     },
     tags: ["LLMs", "Vulnerability Extraction", "OpenVAS", "Prompt Engineering", "Benchmarking"],
     link: "https://sol.sbc.org.br/index.php/sbseg/article/view/44328",
+    project: "MulitaMiner",
   },
   {
     year: "2026",
@@ -35,6 +36,7 @@ export const publications: Publication[] = [
     },
     tags: ["LLMs", "Vulnerability Extraction", "OpenVAS", "BERTScore", "ROUGE-L"],
     link: "https://zenodo.org/records/19539374",
+    project: "MulitaMiner",
   },
   {
     year: "2026",
@@ -48,6 +50,7 @@ export const publications: Publication[] = [
     },
     tags: ["Pseudonymization", "NER", "GPU", "Privacy", "CSIRT"],
     link: "https://sol.sbc.org.br/index.php/sbrc_estendido/article/view/42580",
+    project: "AnonLFI 2.0",
   },
   {
     year: "2025",
@@ -61,6 +64,7 @@ export const publications: Publication[] = [
     },
     tags: ["LLMs", "OpenVAS", "Tenable WAS", "Vulnerability Extraction", "ROUGE-L"],
     link: "https://sol.sbc.org.br/index.php/errc/article/view/39195",
+    project: "MulitaMiner",
   },
   {
     year: "2025",
@@ -73,5 +77,6 @@ export const publications: Publication[] = [
     },
     tags: ["Pseudonymization", "PII", "OCR", "HMAC-SHA256", "CSIRT"],
     link: "https://sol.sbc.org.br/index.php/errc/article/view/39186",
+    project: "AnonLFI 2.0",
   },
 ];

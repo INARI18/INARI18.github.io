@@ -1,6 +1,7 @@
 import { publications } from 'data/publications';
 import { Reveal } from 'components/Reveal/Reveal';
 import { useLang } from 'contexts/LanguageContext';
+import { openProject } from 'components/Projects/openProject';
 import styles from './PublicationsList.module.css';
 
 export function PublicationsList() {
@@ -63,6 +64,16 @@ export function PublicationsList() {
                       </a>
                     ) : (
                       <span className={styles.soon}>{t.publications.soon}</span>
+                    )}
+                    {p.project && (
+                      <button
+                        type="button"
+                        className={styles.project}
+                        onClick={() => openProject(p.project!)}
+                        aria-label={`${t.publications.viewProject}: ${p.project}`}
+                      >
+                        {t.publications.viewProject}
+                      </button>
                     )}
                   </div>
                 </article>

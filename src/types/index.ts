@@ -1,13 +1,13 @@
 import type { Bilingual } from 'i18n/translations';
 
-export type Experience = {
-  year: string;
-  pg: [string, string];
+export type Quest = {
+  period: Bilingual;    // "2024", "2025 · today"
   title: Bilingual;
-  company: Bilingual;
+  org: Bilingual;
   desc: Bilingual;
   tech: string[];
-  highlight: Bilingual;
+  reward?: Bilingual;   // awards and registrations earned in this role
+  projects?: string[];  // titles of boxes on the shelf
 };
 
 export type ProjectCategory = 'research' | 'app' | 'web';
@@ -36,6 +36,7 @@ export type Publication = {
   desc: Bilingual;
   tags: string[];
   link: string;
+  project?: string;     // title of the related box on the shelf
 };
 
 export type Social = {
@@ -43,7 +44,14 @@ export type Social = {
   href: string;
 };
 
-export type Stat = {
+export type Award = {
   label: Bilingual;
-  value: number;
+  short: string;
+  icon: 'trophy' | 'shield';
+  href?: string;
+};
+
+export type Equipment = {
+  slot: Bilingual;
+  item: string;
 };

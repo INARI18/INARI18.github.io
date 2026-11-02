@@ -33,42 +33,6 @@
   margin-bottom: 1.1rem;
 }
 
-.stackSection {
-  margin-top: 2rem;
-}
-
-.stackLabel {
-  font-family: 'VT323', monospace;
-  font-size: 1.3rem;
-  color: var(--rose-glow);
-  letter-spacing: 0.12em;
-  margin-bottom: 0.9rem;
-}
-
-.tagCloud {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.45rem;
-}
-
-.tag {
-  font-family: 'VT323', monospace;
-  font-size: 1.1rem;
-  padding: 0.2rem 0.75rem;
-  background: rgba(var(--accent-rgb), 0.08);
-  border: 1px solid var(--rose);
-  border-radius: var(--radius-sm);
-  color: var(--rose-pale);
-  letter-spacing: 0.04em;
-  cursor: default;
-  transition: all 0.2s;
-}
-
-.tag:hover {
-  background: rgba(var(--accent-rgb), 0.28);
-  box-shadow: 0 0 12px rgba(var(--accent-rgb), 0.3);
-}
-
 @media (max-width: 960px) {
   .grid {
     grid-template-columns: 1fr;

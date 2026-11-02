@@ -1,6 +1,5 @@
 import { CharacterCard } from 'components/CharacterCard/CharacterCard';
 import { Reveal } from 'components/Reveal/Reveal';
-import { techStack } from 'data/techStack';
 import { useLang } from 'contexts/LanguageContext';
 import styles from './About.module.css';
 
@@ -29,17 +28,6 @@ export function About() {
               <em>{t.about.heading2}</em>
             </h2>
             <p>{t.about.bio}</p>
-            <p></p>
-            <div className={styles.stackSection}>
-              <div className={styles.stackLabel}>{t.about.techStackLabel}</div>
-              <div className={styles.tagCloud}>
-                {techStack.map((tag) => (
-                  <span key={tag} className={styles.tag}>
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </div>
           </Reveal>
         </div>
       </div>

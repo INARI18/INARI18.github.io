@@ -1,0 +1,422 @@
+.section {
+  background: linear-gradient(
+    180deg,
+    rgba(var(--rose-deep-rgb), 0.06) 0%,
+    var(--bg) 100%
+  );
+}
+
+.wrap {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* ========== THE PATH ========== */
+.path {
+  list-style: none;
+  margin: 0;
+  padding: 7rem 6rem 8.5rem 1rem;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+/* dashed trail behind the checkpoints */
+.path::before {
+  content: '';
+  position: absolute;
+  left: 1.5rem;
+  right: 6.75rem;
+  top: 50%;
+  border-top: 3px dashed var(--border-2);
+  z-index: 0;
+}
+
+.start,
+.stop {
+  position: relative;
+  z-index: 1;
+}
+
+.stop {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.start {
+  display: flex;
+  align-items: center;
+}
+
+.startMark {
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-dim);
+  font-size: 18px;
+  background: var(--bg);
+}
+
+.startLabel {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 0.6rem;
+  font-family: 'VT323', monospace;
+  font-size: 0.95rem;
+  color: var(--text-dim);
+  letter-spacing: 0.12em;
+  white-space: nowrap;
+}
+
+/* ---- a checkpoint: diamond on the trail, label above or below ---- */
+.node {
+  position: relative;
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  display: block;
+}
+
+.node:focus-visible {
+  outline: none;
+}
+
+.node:focus-visible .diamond {
+  outline: 2px solid var(--rose-glow);
+  outline-offset: 4px;
+}
+
+.diamond {
+  position: absolute;
+  inset: 4px;
+  background: var(--bg);
+  border: 3px solid var(--rose);
+  transform: rotate(45deg);
+  transition:
+    background 0.2s,
+    box-shadow 0.2s,
+    transform 0.2s;
+}
+
+.node:hover .diamond {
+  transform: rotate(45deg) scale(1.15);
+}
+
+.nodeActive .diamond {
+  background: var(--rose-light);
+  border-color: var(--rose-glow);
+  box-shadow: 0 0 16px rgba(var(--accent-rgb), 0.7);
+}
+
+/* the blinking menu cursor over the selected checkpoint */
+.cursor {
+  position: absolute;
+  left: 50%;
+  bottom: 100%;
+  transform: translateX(-50%);
+  margin-bottom: 2px;
+  font-family: 'VT323', monospace;
+  font-size: 1rem;
+  color: var(--rose-glow);
+  opacity: 0;
+}
+
+.nodeActive .cursor {
+  opacity: 1;
+  animation: blink 1s steps(2) infinite;
+}
+
+.below .cursor {
+  bottom: auto;
+  top: 100%;
+  margin: 2px 0 0;
+  transform: translateX(-50%) rotate(180deg);
+}
+
+@keyframes blink {
+  to {
+    opacity: 0;
+  }
+}
+
+.label {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 190px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  text-align: center;
+  pointer-events: none;
+}
+
+.above .label {
+  bottom: 100%;
+  margin-bottom: 1.4rem;
+}
+
+.below .label {
+  top: 100%;
+  margin-top: 1.4rem;
+}
+
+.period {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.5rem;
+  color: var(--rose-light);
+  letter-spacing: 0.06em;
+}
+
+.name {
+  font-family: 'VT323', monospace;
+  font-size: 1.15rem;
+  line-height: 1.1;
+  color: var(--text);
+  letter-spacing: 0.04em;
+}
+
+.org {
+  font-family: 'VT323', monospace;
+  font-size: 0.95rem;
+  line-height: 1.15;
+  color: var(--text-dim);
+  letter-spacing: 0.04em;
+}
+
+.nodeActive .name {
+  color: var(--rose-glow);
+}
+
+/* ========== QUEST LOG ========== */
+.log {
+  background: var(--bg-card);
+  border: 2px solid var(--rose);
+  border-radius: var(--radius-md);
+  padding: 1.75rem 2rem 2rem;
+  background-image: radial-gradient(
+    rgba(var(--accent-rgb), 0.04) 1px,
+    transparent 1px
+  );
+  background-size: 18px 18px;
+  box-shadow:
+    0 0 40px rgba(var(--accent-rgb), 0.1),
+    inset 0 0 40px rgba(0, 0, 0, 0.35);
+  animation: logIn 0.25s ease-out;
+}
+
+@keyframes logIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.logHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 1.1rem;
+}
+
+.logTag {
+  font-family: 'VT323', monospace;
+  font-size: 1.15rem;
+  color: var(--rose-glow);
+  letter-spacing: 0.12em;
+}
+
+.counter {
+  font-family: 'VT323', monospace;
+  font-size: 1.05rem;
+  color: var(--text-dim);
+  letter-spacing: 0.15em;
+}
+
+.title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0 0 0.25rem;
+}
+
+.meta {
+  font-family: 'VT323', monospace;
+  font-size: 1.15rem;
+  color: var(--rose-glow);
+  letter-spacing: 0.06em;
+  margin-bottom: 0.9rem;
+}
+
+.desc {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+  margin: 0 0 1.4rem;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.blockLabel {
+  font-family: 'VT323', monospace;
+  font-size: 0.95rem;
+  color: var(--text-dim);
+  letter-spacing: 0.12em;
+  margin-bottom: 0.5rem;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.chip {
+  font-family: 'VT323', monospace;
+  font-size: 1rem;
+  padding: 0.1rem 0.55rem;
+  background: rgba(var(--accent-rgb), 0.1);
+  border: 1px solid var(--border-2);
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+}
+
+.reward {
+  background: rgba(var(--accent-rgb), 0.06);
+  border-left: 3px solid var(--rose);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding: 0.7rem 0.9rem;
+}
+
+.rewardText {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: 0.88rem;
+  color: var(--text);
+  line-height: 1.6;
+}
+
+.rewardIcon {
+  flex: 0 0 auto;
+  font-size: 1rem;
+  margin-top: 0.2rem;
+  color: var(--rose-light);
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.4rem;
+}
+
+.link {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.5rem;
+  padding: 0.65rem 0.9rem;
+  background: transparent;
+  border: 2px solid var(--border-2);
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  cursor: pointer;
+  letter-spacing: 0.05em;
+  transition: all 0.2s;
+}
+
+.link:hover,
+.link:focus-visible {
+  border-color: var(--rose);
+  color: var(--rose-light);
+}
+
+/* ========== MOBILE: vertical trail ========== */
+@media (max-width: 720px) {
+  .path {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0.5rem 0 1.5rem 0.25rem;
+    gap: 2.4rem;
+  }
+  .path::before {
+    left: 12px;
+    right: auto;
+    top: 0.75rem;
+    bottom: 1.5rem;
+    border-top: none;
+    border-left: 3px dashed var(--border-2);
+  }
+  .start {
+    align-items: center;
+  }
+  .startLabel {
+    position: static;
+    margin: 0 0 0 0.9rem;
+  }
+  .stop {
+    justify-content: flex-start;
+    align-items: center;
+  }
+  .node {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-align: left;
+  }
+  .diamond {
+    position: static;
+    flex: 0 0 auto;
+    width: 18px;
+    height: 18px;
+    margin: 0 4px;
+  }
+  .cursor,
+  .below .cursor {
+    display: none;
+  }
+  .label,
+  .above .label,
+  .below .label {
+    position: static;
+    transform: none;
+    width: auto;
+    margin: 0;
+    text-align: left;
+    padding-right: 1.5rem;
+  }
+  .log {
+    padding: 1.4rem 1.2rem 1.6rem;
+  }
+  .row {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nodeActive .cursor {
+    animation: none;
+  }
+  .log {
+    animation: none;
+  }
+  .diamond {
+    transition: none;
+  }
+}

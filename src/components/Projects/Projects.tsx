@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { projects } from 'data/projects';
 import { Reveal } from 'components/Reveal/Reveal';
 import { Shelf } from 'components/Shelf/Shelf';
 import { GameBoxModal } from 'components/GameBoxModal/GameBoxModal';
+import { OPEN_PROJECT_EVENT } from './openProject';
 import { useLang } from 'contexts/LanguageContext';
 import styles from './Projects.module.css';
 
@@ -16,6 +17,15 @@ export function Projects() {
     setSelected(i);
     setOpen(true);
   };
+
+  useEffect(() => {
+    const onRequest = (e: Event) => {
+      const i = projects.findIndex((p) => p.title === (e as CustomEvent<string>).detail);
+      if (i >= 0) openAt(i);
+    };
+    window.addEventListener(OPEN_PROJECT_EVENT, onRequest);
+    return () => window.removeEventListener(OPEN_PROJECT_EVENT, onRequest);
+  }, []);
 
   return (
     <section id="projects" className={styles.section}>

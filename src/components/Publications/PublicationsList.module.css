@@ -164,6 +164,25 @@
   color: var(--text);
 }
 
+.project {
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.5rem;
+  padding: 0.65rem 0.9rem;
+  background: transparent;
+  border: 2px solid var(--border-2);
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  cursor: pointer;
+  letter-spacing: 0.05em;
+  text-align: center;
+  transition: all 0.2s;
+}
+
+.project:hover {
+  border-color: var(--rose);
+  color: var(--rose-light);
+}
+
 .soon {
   font-family: "VT323", monospace;
   font-size: 1.05rem;
