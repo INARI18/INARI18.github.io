@@ -13,9 +13,9 @@ const pad = (n: number) => String(n).padStart(2, '0');
 
 function EntryIcon({ icon, size }: { icon: PublicationIcon; size: number }) {
   if (icon === 'shield') return <PixelIcon name="shield" className={styles.pixelIcon} />;
-  if (icon === 'whale') return <TechIcon name="Docker" size={size} />;
-  if (icon === 'robot') return <TechIcon name="LLMs" size={size} />;
-  return <TechIcon rows={CODEX_ICONS[icon]} size={size} />;
+  if (icon === 'whale') return <TechIcon name="Docker" size={size} fit />;
+  if (icon === 'robot') return <TechIcon name="LLMs" size={size} fit />;
+  return <TechIcon rows={CODEX_ICONS[icon]} size={size} fit />;
 }
 
 /** Publications as a codex: the left page lists the entries, the right page shows the selected one. */
@@ -70,7 +70,7 @@ export function Codex() {
                       </span>
                       <span className={styles.no}>{pad(i + 1)}</span>
                       <span className={styles.entryIcon}>
-                        <EntryIcon icon={pub.icon} size={20} />
+                        <EntryIcon icon={pub.icon} size={22} />
                       </span>
                       <span className={styles.short}>{pub.short}</span>
                       <span className={styles.entryYear}>{pub.year}</span>
@@ -96,7 +96,7 @@ export function Codex() {
             </div>
 
             <div className={styles.portrait}>
-              <EntryIcon icon={p.icon} size={40} />
+              <EntryIcon icon={p.icon} size={44} />
             </div>
 
             <h3 className={styles.title}>{p.title}</h3>

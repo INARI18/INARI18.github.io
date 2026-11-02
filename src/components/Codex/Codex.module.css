@@ -117,7 +117,7 @@
 .entry {
   width: 100%;
   display: grid;
-  grid-template-columns: 14px auto 24px minmax(0, 1fr) auto auto;
+  grid-template-columns: 14px auto 26px minmax(0, 1fr) auto auto;
   align-items: center;
   gap: 0.6rem;
   padding: 0.5rem 0.6rem;
@@ -177,6 +177,8 @@
 }
 
 .entryIcon {
+  width: 26px;
+  height: 26px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -184,7 +186,7 @@
 }
 
 .pixelIcon {
-  font-size: 18px;
+  font-size: 22px;
   display: block;
 }
 
@@ -228,7 +230,7 @@
 }
 
 .portrait .pixelIcon {
-  font-size: 36px;
+  font-size: 44px;
 }
 
 .title {
@@ -386,7 +388,7 @@
     padding: 1.2rem 1rem 1.4rem;
   }
   .entry {
-    grid-template-columns: 12px auto 22px minmax(0, 1fr) auto;
+    grid-template-columns: 12px auto 26px minmax(0, 1fr) auto;
     gap: 0.45rem;
   }
   .entryTrophy {
