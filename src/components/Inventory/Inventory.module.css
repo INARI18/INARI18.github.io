@@ -1,40 +1,15 @@
-/* ========== PANEL: same chrome as the quest log and the codex ========== */
+/* ========== PANE ========== */
 .panel {
-  position: relative;
+  flex: 1;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
-  border: 2px solid var(--rose);
-  border-radius: var(--radius-md);
-  background: var(--bg-card);
-  box-shadow:
-    0 0 40px rgba(var(--accent-rgb), 0.15),
-    inset 0 0 40px rgba(0, 0, 0, 0.3);
-}
-
-/* same glowing top edge as the character card */
-.panel::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--rose), var(--rose-glow), var(--rose));
-  animation: topGlow 3s ease-in-out infinite;
-  z-index: 2;
 }
 
 .body {
   flex: 1;
   display: flex;
   flex-direction: column;
-  padding: 1rem 1.25rem 1.25rem;
-  background-image: radial-gradient(
-    rgba(var(--accent-rgb), 0.04) 1px,
-    transparent 1px
-  );
-  background-size: 18px 18px;
+  padding: 1.1rem 1.25rem 1.25rem;
 }
 
 .head {
@@ -349,9 +324,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .panel::before {
-    animation: none;
-  }
   .slot,
   .tab,
   .use {

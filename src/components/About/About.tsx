@@ -1,5 +1,6 @@
 import { CharacterCard } from 'components/CharacterCard/CharacterCard';
 import { Inventory } from 'components/Inventory/Inventory';
+import { WindowHead } from 'components/WindowHead/WindowHead';
 import { Reveal } from 'components/Reveal/Reveal';
 import { useLang } from 'contexts/LanguageContext';
 import styles from './About.module.css';
@@ -26,15 +27,18 @@ export function About() {
           <p>{t.about.bio}</p>
         </Reveal>
 
-        {/* character and bag side by side, same height */}
-        <div className={styles.row}>
-          <Reveal delay={2} className={styles.cell}>
-            <CharacterCard />
-          </Reveal>
-          <Reveal delay={3} className={styles.cell}>
-            <Inventory />
-          </Reveal>
-        </div>
+        {/* one status screen: the character on the left, the bag on the right */}
+        <Reveal delay={2} className={styles.window}>
+          <WindowHead url="beatriz.dev/status" />
+          <div className={styles.panes}>
+            <div className={styles.pane}>
+              <CharacterCard />
+            </div>
+            <div className={styles.pane}>
+              <Inventory />
+            </div>
+          </div>
+        </Reveal>
       </div>
     </section>
   );

@@ -1,31 +1,7 @@
 .card {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  background: var(--bg-card);
-  border: 2px solid var(--rose);
-  border-radius: var(--radius-md);
-  position: relative;
-  overflow: hidden;
-  box-shadow:
-    0 0 40px rgba(var(--accent-rgb), 0.15),
-    inset 0 0 40px rgba(0, 0, 0, 0.3);
-}
-
-.card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(
-    90deg,
-    var(--rose),
-    var(--rose-glow),
-    var(--rose)
-  );
-  animation: topGlow 3s ease-in-out infinite;
-  z-index: 2;
 }
 
 /* ========== BODY (2-col: fields | avatar) ========== */
@@ -292,7 +268,6 @@ a.badge:hover {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .card::before,
   .avatarGlow,
   .avatarImg {
     animation: none;

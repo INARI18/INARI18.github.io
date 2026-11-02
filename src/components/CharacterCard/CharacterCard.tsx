@@ -6,14 +6,13 @@ import { socials } from "data/socials";
 import { roles } from "data/roles";
 import { since, awards } from "data/character";
 import { PixelIcon } from "components/PixelIcon/PixelIcon";
-import { WindowHead } from "components/WindowHead/WindowHead";
 import { useLang } from "contexts/LanguageContext";
 import styles from "./CharacterCard.module.css";
 
 // one pose per class, same order as data/roles
 const poses = [cafePose, catPose, videogamePose];
 
-/** Trainer card: identity and badges. Facts only, no self-scored stats. */
+/** Trainer card pane of the status window: identity and badges. Facts only, no self-scored stats. */
 export function CharacterCard() {
   const { t, tr } = useLang();
   const [roleIdx, setRoleIdx] = useState(0);
@@ -23,7 +22,6 @@ export function CharacterCard() {
 
   return (
     <div className={styles.card}>
-      <WindowHead url="beatriz.dev/character" />
 
       <div className={styles.body}>
         <dl className={styles.fields}>

@@ -104,7 +104,7 @@ export function Codex() {
                 <PixelIcon name="trophy" className={styles.sealIcon} />
                 <span>
                   <span className={styles.sealLabel}>{t.publications.award}</span>
-                  {tr(p.award)}
+                  {tr(p.award)} · {p.venue}
                 </span>
               </div>
             )}

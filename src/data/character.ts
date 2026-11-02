@@ -17,7 +17,7 @@ export const awards: Award[] = [
     href: "https://sol.sbc.org.br/index.php/sbrc_estendido/article/view/42580",
   },
   {
-    label: { en: "SBSeg 2026 · all 4 CTA artifact badges", pt: "SBSeg 2026 · 4 selos de artefato do CTA" },
+    label: { en: "SBSeg 2026 · all 4 CTA artifact badges on two papers", pt: "SBSeg 2026 · 4 selos de artefato do CTA em dois artigos" },
     short: "SBSeg 2026",
     icon: "trophy",
     href: "https://doi.org/10.5753/sbseg_estendido.2026.29879",

@@ -3,7 +3,6 @@ import type { TechCategory } from 'types';
 import { techStack } from 'data/techStack';
 import { projects } from 'data/projects';
 import { openProject } from 'components/Projects/openProject';
-import { WindowHead } from 'components/WindowHead/WindowHead';
 import { useLang } from 'contexts/LanguageContext';
 import { TechIcon } from './TechIcon';
 import styles from './Inventory.module.css';
@@ -17,7 +16,7 @@ const pad = (n: number) => String(n).padStart(2, '0');
 const usedIn = (name: string) =>
   projects.filter((p) => p.tags.some((tag) => tag === name || tag.startsWith(`${name} `))).map((p) => p.title);
 
-/** RPG bag: category tabs, an icon grid and an inspection sheet for the selected item. */
+/** Bag pane of the status window: category tabs, an icon grid and an inspection sheet for the selected item. */
 export function Inventory() {
   const { t, tr } = useLang();
   const [tab, setTab] = useState<TechCategory | 'all'>('all');
@@ -54,7 +53,6 @@ export function Inventory() {
 
   return (
     <div className={styles.panel}>
-      <WindowHead url="beatriz.dev/inventory" />
       <div className={styles.body}>
       <div className={styles.head}>
         <span>{t.inventory.title}</span>
