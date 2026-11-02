@@ -1,6 +1,7 @@
 /* ========== PANEL: same chrome as the quest log and the codex ========== */
 .panel {
-  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
   border: 2px solid var(--rose);
   border-radius: var(--radius-md);
   background: var(--bg-card);
@@ -82,7 +83,7 @@
 
 .bag {
   list-style: none;
-  margin: 0;
+  margin: 0 0 0.85rem;
   padding: 0;
   display: grid;
   grid-template-columns: repeat(8, minmax(0, 1fr));
@@ -196,8 +197,10 @@
   display: grid;
   grid-template-columns: repeat(8, minmax(0, 1fr));
   gap: 0.5rem;
-  align-items: stretch;
-  margin-top: 0.85rem;
+  align-items: center;
+  align-content: center;
+  flex: 1;
+  margin-top: 0;
   padding-top: 0.85rem;
   border-top: 1px dashed var(--border-2);
 }

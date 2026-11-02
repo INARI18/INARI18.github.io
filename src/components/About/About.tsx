@@ -17,18 +17,21 @@ export function About() {
           <div className="sec-bar" />
         </Reveal>
 
-        <div className={styles.grid}>
-          <Reveal delay={1}>
+        <Reveal delay={1} className={styles.intro}>
+          <h2>
+            {t.about.heading1}
+            <br />
+            <em>{t.about.heading2}</em>
+          </h2>
+          <p>{t.about.bio}</p>
+        </Reveal>
+
+        {/* character and bag side by side, same height */}
+        <div className={styles.row}>
+          <Reveal delay={2} className={styles.cell}>
             <CharacterCard />
           </Reveal>
-
-          <Reveal delay={2} className={styles.bio}>
-            <h2>
-              {t.about.heading1}
-              <br />
-              <em>{t.about.heading2}</em>
-            </h2>
-            <p>{t.about.bio}</p>
+          <Reveal delay={3} className={styles.cell}>
             <Inventory />
           </Reveal>
         </div>

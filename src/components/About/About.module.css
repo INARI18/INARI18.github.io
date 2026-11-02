@@ -6,14 +6,12 @@
   );
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: 360px 1fr;
-  gap: 3rem;
-  align-items: start;
+.intro {
+  max-width: 820px;
+  margin-bottom: 2.5rem;
 }
 
-.bio h2 {
+.intro h2 {
   font-family: 'Press Start 2P', monospace;
   font-size: clamp(1rem, 2vw, 1.3rem);
   color: var(--text);
@@ -21,20 +19,41 @@
   margin-bottom: 1.5rem;
 }
 
-.bio h2 em {
+.intro h2 em {
   color: var(--rose-light);
   font-style: normal;
 }
 
-.bio p {
+.intro p {
   color: var(--text-muted);
   line-height: 1.95;
   font-size: 1rem;
-  margin-bottom: 1.1rem;
+  margin: 0;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 360px minmax(0, 1fr);
+  gap: 3rem;
+  align-items: stretch;
+}
+
+/* the reveal wrapper has to pass the row height down to the card and the panel */
+.cell {
+  display: flex;
+  flex-direction: column;
+}
+
+.cell > * {
+  flex: 1;
 }
 
 @media (max-width: 960px) {
-  .grid {
+  .row {
     grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .cell > * {
+    flex: none;
   }
 }
