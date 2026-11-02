@@ -8,11 +8,11 @@ const SHADES: Record<string, string> = {
   o: 'var(--text-muted)',
 };
 
-type Props = { name: string; size: number; className?: string };
+type Props = { name?: string; rows?: string[]; size: number; className?: string };
 
 /** Pixel icon from the grid in techIcons.ts. Finer grids (24+) carry their own margins, so they get a bigger box. */
-export function TechIcon({ name, size, className }: Props) {
-  const rows = TECH_ICONS[name];
+export function TechIcon({ name, rows: given, size, className }: Props) {
+  const rows = given ?? (name ? TECH_ICONS[name] : undefined);
   if (!rows) return null;
   const n = rows.length;
   const px = n > 16 ? Math.round(size * 1.23) : size;

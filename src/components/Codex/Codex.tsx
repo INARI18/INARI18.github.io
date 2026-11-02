@@ -4,6 +4,7 @@ import { publications } from 'data/publications';
 import { Reveal } from 'components/Reveal/Reveal';
 import { PixelIcon } from 'components/PixelIcon/PixelIcon';
 import { TechIcon } from 'components/Inventory/TechIcon';
+import { CODEX_ICONS } from './codexIcons';
 import { openProject } from 'components/Projects/openProject';
 import { useLang } from 'contexts/LanguageContext';
 import styles from './Codex.module.css';
@@ -11,8 +12,10 @@ import styles from './Codex.module.css';
 const pad = (n: number) => String(n).padStart(2, '0');
 
 function EntryIcon({ icon, size }: { icon: PublicationIcon; size: number }) {
-  if (icon === 'privacy') return <PixelIcon name="shield" className={styles.pixelIcon} />;
-  return <TechIcon name={icon === 'llm' ? 'LLMs' : 'Docker'} size={size} />;
+  if (icon === 'shield') return <PixelIcon name="shield" className={styles.pixelIcon} />;
+  if (icon === 'whale') return <TechIcon name="Docker" size={size} />;
+  if (icon === 'robot') return <TechIcon name="LLMs" size={size} />;
+  return <TechIcon rows={CODEX_ICONS[icon]} size={size} />;
 }
 
 /** Publications as a codex: the left page lists the entries, the right page shows the selected one. */

@@ -28,7 +28,9 @@ export type Project = {
   gallery?: string[];
 };
 
-export type PublicationIcon = 'llm' | 'privacy' | 'containers';
+export type PublicationIcon =
+  | 'armadillo' | 'chart' | 'chip' | 'tag' | 'document' | 'mask' // codexIcons.ts
+  | 'shield' | 'whale' | 'robot';                                   // shared icons
 
 export type Publication = {
   year: string;

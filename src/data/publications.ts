@@ -6,7 +6,7 @@ export const publications: Publication[] = [
       "MulitaMiner: A Multi-Version Evaluation of LLM-Based Vulnerability Report Extraction",
     venue: "SBSeg 2026",
     short: "MulitaMiner V1-V3",
-    icon: "llm",
+    icon: "chart",
     desc: {
       en: "An LLM-based pipeline for structured vulnerability extraction from heterogeneous scanner PDFs, hardened across three versions (V1-V3) that evolve from a functional baseline, to scanner-aware segmentation, and finally to per-LLM tuning with few-shot prompting. Across 450 runs with five LLMs (DeepSeek, GPT-4, GPT-5, LLaMA 3, LLaMA 4) on three curated OpenVAS baselines, Exact Record Match rises from 37.5% to 90.4% and vulnerability-level omission falls from 20.5% to 1.7%, showing that pipeline engineering, not model substitution, is the primary lever for extraction quality.",
       pt: "Pipeline baseado em LLMs para extração estruturada de vulnerabilidades a partir de PDFs heterogêneos de scanners, refinado ao longo de três versões (V1-V3) que evoluem de um baseline funcional para segmentação ciente do scanner e, por fim, ajuste por LLM com prompting few-shot. Em 450 execuções com cinco LLMs (DeepSeek, GPT-4, GPT-5, LLaMA 3, LLaMA 4) sobre três baselines OpenVAS curados manualmente, o Exact Record Match sobe de 37,5% para 90,4% e a omissão em nível de vulnerabilidade cai de 20,5% para 1,7%, mostrando que a engenharia do pipeline, e não a troca de modelo, é o principal fator de qualidade da extração.",
@@ -21,7 +21,7 @@ export const publications: Publication[] = [
       "On-Premise vs. Cloud: Local LLMs for Vulnerability Extraction from Security Scanner Reports",
     venue: "SBSeg 2026",
     short: "Local LLMs vs cloud",
-    icon: "llm",
+    icon: "chip",
     award: { en: "All 4 CTA artifact badges", pt: "4 selos de artefato do CTA" },
     desc: {
       en: "Cloud LLMs extract structured data from vulnerability-scanner reports accurately, but each report maps an organization's attack surface, so routing it to a third-party API trades confidentiality for that accuracy. We evaluate nine local models (4B to 21B) against a DeepSeek cloud reference on three ground-truth baselines. The best local model, on a consumer GPU, trails the cloud by only 1.2 points in free-text fidelity and matches it on structured fields; the spread across local models far exceeds this gap, making model choice the decisive factor for private, on-premise extraction.",
@@ -36,7 +36,7 @@ export const publications: Publication[] = [
     title: "ZeroLINC: Training-Free Local Classification of Security Incident Reports",
     venue: "SBSeg 2026",
     short: "ZeroLINC",
-    icon: "llm",
+    icon: "tag",
     award: { en: "All 4 CTA artifact badges", pt: "4 selos de artefato do CTA" },
     desc: {
       en: "Security operations centers must classify large volumes of incident reports. Recent work automates this by prompting commercial LLMs, which charge per call and receive sensitive incident data, or locally hosted models with billions of parameters, which demand a GPU server. ZeroLINC is an open-source tool that lets a SOC or CSIRT analyst assign each incoming report to one of 12 NIST categories on a single local GPU, with no gradient training and no external API. Its instance-memory engine labels each ticket by similarity to the nearest already-labeled tickets: with 89 labeled examples it reaches 90.8% mean test accuracy over the eight categories the corpus populates, matching the band prior work reached only with a commercial LLM. A second engine works with no labeled data at all, up to 70.9%. The engines were selected with a systematic benchmark of 293 runs on 182 expert-labeled tickets from real incident response teams. Classifying the whole corpus takes seconds and under 3 Wh on one GPU.",
@@ -51,7 +51,7 @@ export const publications: Publication[] = [
       "Vulnerabilities, Secrets and Misconfiguration in the Highest-Exposure Docker Hub Images",
     venue: "arXiv",
     short: "Docker Hub exposure",
-    icon: "containers",
+    icon: "whale",
     desc: {
       en: "ChimangoScan, a pipeline that crawls the whole Docker Hub namespace (12.7M repositories, 663.8B pulls), reconstructs the image layer graph, ranks images by an exposure score and scans the 52,895 highest-exposure repositories with six scanners, yielding 170.4M findings. 96.3% of images carry a known vulnerability and 98.0% a CIS Docker Benchmark misconfiguration, yet only 2.7% of (vulnerability, package) groups are flagged by all three vulnerability scanners, showing how tool-dependent the reported posture is.",
       pt: "ChimangoScan, um pipeline que percorre todo o namespace do Docker Hub (12,7M repositórios, 663,8B pulls), reconstrói o grafo de camadas das imagens, ordena as imagens por um score de exposição e escaneia os 52.895 repositórios de maior exposição com seis scanners, gerando 170,4M de achados. 96,3% das imagens têm alguma vulnerabilidade conhecida e 98,0% alguma má configuração do CIS Docker Benchmark, mas apenas 2,7% dos grupos (vulnerabilidade, pacote) são apontados pelos três scanners de vulnerabilidade, mostrando o quanto o diagnóstico depende da ferramenta.",
@@ -65,7 +65,7 @@ export const publications: Publication[] = [
       "MulitaMiner: Transforming Heterogeneous Technical Reports into Structured Data Using LLMs",
     venue: "Zenodo",
     short: "MulitaMiner tool",
-    icon: "llm",
+    icon: "armadillo",
     desc: {
       en: "An LLM-based tool that extracts and transforms vulnerability information from heterogeneous reports into structured data, evaluated against structured baselines with semantic similarity metrics (ROUGE-L, BERTScore). Validated on a dataset of 6,700 vulnerabilities extracted from 129 OpenVAS reports on DockerHub containers.",
       pt: "Ferramenta baseada em LLMs que extrai e transforma informações de vulnerabilidades de relatórios heterogêneos em dados estruturados, avaliada contra baselines estruturados com métricas de similaridade semântica (ROUGE-L, BERTScore). Validada em um dataset de 6.700 vulnerabilidades extraídas de 129 relatórios OpenVAS de containers do DockerHub.",
@@ -80,7 +80,7 @@ export const publications: Publication[] = [
       "AnonShield: Scalable On-Premise Pseudonymization for CSIRT Network Vulnerability Data",
     venue: "SBRC 2026",
     short: "AnonShield",
-    icon: "privacy",
+    icon: "shield",
     award: { en: "Best Artifact", pt: "Melhor Artefato" },
     desc: {
       en: "A high-throughput, on-premise pseudonymization system for network vulnerability scan reports, combining GPU-accelerated NER, streaming processing, caching, and schema-aware configuration. Reaches up to 738× speedup on datasets up to 550 MB while achieving F1 = 94.2% and recall = 96.4%.",
@@ -96,7 +96,7 @@ export const publications: Publication[] = [
       "Structured Extraction of Vulnerabilities in OpenVAS and Tenable WAS Reports Using LLMs",
     venue: "WRSEG 2025",
     short: "OpenVAS & Tenable",
-    icon: "llm",
+    icon: "document",
     award: { en: "2nd Best Paper", pt: "2º Melhor Artigo" },
     desc: {
       en: "An automated LLM-based method to extract and structure vulnerabilities from OpenVAS and Tenable WAS scanner reports, converting unstructured data into a standardized format for risk management. In an evaluation with 34 vulnerabilities, GPT-4.1 and DeepSeek reached the highest similarity to the baseline (ROUGE-L > 0.7).",
@@ -112,7 +112,7 @@ export const publications: Publication[] = [
       "AnonLFI 2.0: Extensible Architecture for PII Pseudonymization in CSIRTs with OCR and Technical Recognizers",
     venue: "WRSEG 2025",
     short: "AnonLFI 2.0",
-    icon: "privacy",
+    icon: "mask",
     desc: {
       en: "A modular pseudonymization framework for CSIRTs that uses HMAC-SHA256 to generate strong, reversible pseudonyms, preserves the structural integrity of XML and JSON documents, and integrates OCR and specialized technical recognizers for PII and security artifacts. Achieved 100% precision and F1 scores of 76.5% and 92.13% across two case studies.",
       pt: "Framework modular de pseudonimização para CSIRTs que usa HMAC-SHA256 para gerar pseudônimos fortes e reversíveis, preserva a integridade estrutural de documentos XML e JSON e integra OCR e reconhecedores técnicos especializados para PII e artefatos de segurança. Alcançou 100% de precisão e F1 de 76,5% e 92,13% em dois estudos de caso.",
