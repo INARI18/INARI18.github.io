@@ -7,6 +7,9 @@ const CAPACITY = 16;
 const bag = techStack;
 const pad = (n: number) => String(n).padStart(2, '0');
 
+// grid characters: X = accent, x = darker shade, o = neutral (stems, metal)
+const SHADES: Record<string, string> = { X: 'currentColor', x: 'var(--rose)', o: 'var(--text-muted)' };
+
 function TechIcon({ name }: { name: string }) {
   const rows = TECH_ICONS[name];
   if (!rows) return <span className={styles.fallback}>{name[0]}</span>;
@@ -14,7 +17,7 @@ function TechIcon({ name }: { name: string }) {
     <svg viewBox={`0 0 ${rows.length} ${rows.length}`} className={`${styles.icon}${rows.length > 16 ? ` ${styles.iconFine}` : ''}`} aria-hidden="true" shapeRendering="crispEdges">
       {rows.flatMap((row, y) =>
         [...row].map((c, x) =>
-          c === 'X' ? <rect key={`${x}-${y}`} x={x} y={y} width="1" height="1" fill="currentColor" /> : null,
+          c in SHADES ? <rect key={`${x}-${y}`} x={x} y={y} width="1" height="1" fill={SHADES[c]} /> : null,
         ),
       )}
     </svg>
