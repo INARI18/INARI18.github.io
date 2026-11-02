@@ -28,9 +28,13 @@ export type Project = {
   gallery?: string[];
 };
 
+export type PublicationIcon = 'llm' | 'privacy' | 'containers';
+
 export type Publication = {
   year: string;
   title: string;
+  short: string;          // index entry on the codex page
+  icon: PublicationIcon;
   venue: string;
   award?: Bilingual;
   desc: Bilingual;

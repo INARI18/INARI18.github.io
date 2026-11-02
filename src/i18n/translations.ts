@@ -57,6 +57,11 @@ export type Dict = {
     title: string;
     titleEm: string;
     hint: string;
+    codex: string;
+    entry: string;
+    award: string;
+    abstract: string;
+    select: (name: string) => string;
     read: string;
     soon: string;
     viewProject: string;
@@ -146,7 +151,12 @@ export const translations: Record<Lang, Dict> = {
       section: "// SECTION 03",
       title: "Published",
       titleEm: "Papers",
-      hint: "▶ Peer-reviewed research",
+      hint: "▶ Pick an entry",
+      codex: "// CODEX",
+      entry: "ENTRY",
+      award: "// AWARD",
+      abstract: "// ABSTRACT",
+      select: (name) => `Show ${name}`,
       read: "Read paper →",
       soon: "Link soon",
       viewProject: "▶ Project",
@@ -250,7 +260,12 @@ export const translations: Record<Lang, Dict> = {
       section: "// SEÇÃO 03",
       title: "Artigos",
       titleEm: "Publicados",
-      hint: "▶ Pesquisa revisada por pares",
+      hint: "▶ Escolha um registro",
+      codex: "// CODEX",
+      entry: "REGISTRO",
+      award: "// PRÊMIO",
+      abstract: "// RESUMO",
+      select: (name) => `Mostrar ${name}`,
       read: "Ler artigo →",
       soon: "Link em breve",
       viewProject: "▶ Projeto",

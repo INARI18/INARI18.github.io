@@ -3,7 +3,7 @@ import { Nav } from 'components/Nav/Nav';
 import { Hero } from 'components/Hero/Hero';
 import { About } from 'components/About/About';
 import { QuestPath } from 'components/QuestPath/QuestPath';
-import { PublicationsList } from 'components/Publications/PublicationsList';
+import { Codex } from 'components/Codex/Codex';
 import { Projects } from 'components/Projects/Projects';
 import { Contact } from 'components/Contact/Contact';
 import { Footer } from 'components/Footer/Footer';
@@ -21,7 +21,7 @@ export default function App() {
         <SectionDivider />
         <QuestPath />
         <SectionDivider />
-        <PublicationsList />
+        <Codex />
         <SectionDivider />
         <Projects />
         <SectionDivider />

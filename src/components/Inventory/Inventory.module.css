@@ -73,21 +73,6 @@
 }
 
 .icon {
-  width: 26px;
-  height: 26px;
-  color: var(--rose-light);
-}
-
-/* finer grids (24x24) have built-in margins, so they get a bigger box to match */
-.iconFine {
-  width: 32px;
-  height: 32px;
-  margin: -3px 0;
-}
-
-.fallback {
-  font-family: 'Press Start 2P', monospace;
-  font-size: 0.8rem;
   color: var(--rose-light);
 }
 
