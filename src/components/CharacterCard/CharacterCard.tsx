@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { socials } from "data/socials";
 import { roles } from "data/roles";
-import { techStack } from "data/techStack";
-import { since, awards, equipped } from "data/character";
+import { since, awards } from "data/character";
 import { PixelIcon } from "components/PixelIcon/PixelIcon";
 import { useLang } from "contexts/LanguageContext";
 import styles from "./CharacterCard.module.css";
@@ -10,9 +9,7 @@ import styles from "./CharacterCard.module.css";
 // one pose per class, same order as data/roles
 const poses = ["/cafe-pose.png", "/cat-pose.png", "/videogame-pose.png"];
 
-const inventory = techStack.filter((item) => !equipped.some((e) => e.item === item));
-
-/** Trainer card: identity, badges and equipment. Facts only, no self-scored stats. */
+/** Trainer card: identity and badges. Facts only, no self-scored stats. */
 export function CharacterCard() {
   const { t, tr } = useLang();
   const [roleIdx, setRoleIdx] = useState(0);
@@ -109,27 +106,6 @@ export function CharacterCard() {
             alt="Beatriz Machado"
             className={styles.avatarImg}
           />
-        </div>
-      </div>
-
-      <div className={styles.gear}>
-        <div className={styles.gearLabel}>{t.character.equipped}</div>
-        <dl className={styles.slots}>
-          {equipped.map((e) => (
-            <div key={e.item} className={styles.slot}>
-              <dt className={styles.slotName}>{tr(e.slot)}</dt>
-              <dd className={styles.slotItem}>{e.item}</dd>
-            </div>
-          ))}
-        </dl>
-
-        <div className={styles.gearLabel}>{t.character.inventory}</div>
-        <div className={styles.items}>
-          {inventory.map((item) => (
-            <span key={item} className={styles.item}>
-              {item}
-            </span>
-          ))}
         </div>
       </div>
 

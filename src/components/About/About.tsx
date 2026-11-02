@@ -1,4 +1,5 @@
 import { CharacterCard } from 'components/CharacterCard/CharacterCard';
+import { Inventory } from 'components/Inventory/Inventory';
 import { Reveal } from 'components/Reveal/Reveal';
 import { useLang } from 'contexts/LanguageContext';
 import styles from './About.module.css';
@@ -28,6 +29,7 @@ export function About() {
               <em>{t.about.heading2}</em>
             </h2>
             <p>{t.about.bio}</p>
+            <Inventory />
           </Reveal>
         </div>
       </div>

@@ -1,0 +1,194 @@
+.wrap {
+  margin-top: 2.25rem;
+}
+
+.label {
+  font-family: 'VT323', monospace;
+  font-size: 1.3rem;
+  color: var(--rose-glow);
+  letter-spacing: 0.12em;
+}
+
+.labelRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-top: 1.6rem;
+}
+
+.count {
+  font-family: 'VT323', monospace;
+  font-size: 1.05rem;
+  color: var(--text-dim);
+  letter-spacing: 0.15em;
+}
+
+/* ---- slots: bevelled squares, like a pixel RPG bag ---- */
+.equipped,
+.bag {
+  list-style: none;
+  margin: 0.8rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.equipped {
+  grid-template-columns: repeat(3, 92px);
+}
+
+.bag {
+  grid-template-columns: repeat(auto-fill, 72px);
+}
+
+.slot {
+  --slot-fg: var(--rose-pale);
+  position: relative;
+  width: 72px;
+  height: 72px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+  background: var(--bg-card-2);
+  border: 2px solid var(--border-2);
+  border-radius: var(--radius-sm);
+  /* pixel bevel: light top-left, dark bottom-right */
+  box-shadow:
+    inset 2px 2px 0 rgba(255, 255, 255, 0.05),
+    inset -2px -2px 0 rgba(0, 0, 0, 0.45);
+  color: var(--slot-fg);
+  cursor: default;
+  transition:
+    border-color 0.15s,
+    transform 0.15s,
+    box-shadow 0.15s;
+}
+
+.slotBig {
+  width: 92px;
+  height: 92px;
+  gap: 0.3rem;
+}
+
+.empty {
+  background: rgba(0, 0, 0, 0.25);
+  border-style: dashed;
+  box-shadow: none;
+}
+
+.icon {
+  width: 26px;
+  height: 26px;
+  color: var(--rose-light);
+}
+
+.slotBig .icon {
+  width: 32px;
+  height: 32px;
+}
+
+.fallback {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.8rem;
+  color: var(--rose-light);
+}
+
+.itemName {
+  font-family: 'VT323', monospace;
+  font-size: 0.85rem;
+  line-height: 1;
+  color: var(--text-muted);
+  letter-spacing: 0.02em;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 0 3px;
+}
+
+.slotBig .itemName {
+  font-size: 1rem;
+  color: var(--text);
+}
+
+.slotName {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.4rem;
+  color: var(--text-dim);
+  letter-spacing: 0.06em;
+}
+
+/* Zelda-style bracket cursor on hover */
+.slot:not(.empty):hover {
+  border-color: var(--rose);
+  transform: translateY(-2px);
+  box-shadow:
+    inset 2px 2px 0 rgba(255, 255, 255, 0.05),
+    inset -2px -2px 0 rgba(0, 0, 0, 0.45),
+    0 0 14px rgba(var(--accent-rgb), 0.35);
+}
+
+.slot:not(.empty)::before,
+.slot:not(.empty)::after {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border: 2px solid var(--rose-glow);
+  opacity: 0;
+  transition: opacity 0.15s;
+  pointer-events: none;
+}
+
+.slot::before {
+  top: -6px;
+  left: -6px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.slot::after {
+  bottom: -6px;
+  right: -6px;
+  border-left: none;
+  border-top: none;
+}
+
+.slot:not(.empty):hover::before,
+.slot:not(.empty):hover::after {
+  opacity: 1;
+}
+
+.slot:not(.empty):hover .itemName {
+  color: var(--rose-glow);
+}
+
+@media (max-width: 540px) {
+  .equipped {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .slotBig {
+    width: 100%;
+  }
+  .bag {
+    grid-template-columns: repeat(auto-fill, 66px);
+  }
+  .slot:not(.slotBig) {
+    width: 66px;
+    height: 66px;
+  }
+  .itemName {
+    font-size: 0.8rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .slot {
+    transition: none;
+  }
+  .slot:not(.empty):hover {
+    transform: none;
+  }
+}
