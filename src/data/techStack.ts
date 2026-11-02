@@ -5,10 +5,13 @@ export const techStack: string[] = [
   "C",
   "React",
   "Next.js",
+  "Vite",
   "Expo",
   "Firebase",
   "MongoDB",
   "Git",
+  "Docker",
   "Figma",
   "LLMs",
+  "Hugging Face",
 ];
