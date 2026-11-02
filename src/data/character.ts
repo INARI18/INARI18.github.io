@@ -1,4 +1,4 @@
-import type { Award, Equipment } from "types";
+import type { Award } from "types";
 
 // trainer card: facts only, no self-scored stats
 export const since = "2023";
@@ -21,10 +21,4 @@ export const awards: Award[] = [
     short: "INPI",
     icon: "shield",
   },
-];
-
-export const equipped: Equipment[] = [
-  { slot: { en: "WEAPON", pt: "ARMA" }, item: "Python" },
-  { slot: { en: "ARMOR", pt: "ARMADURA" }, item: "TypeScript" },
-  { slot: { en: "ITEM", pt: "ITEM" }, item: "LLMs" },
 ];

@@ -13,7 +13,6 @@
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  margin-top: 1.6rem;
 }
 
 .count {
@@ -24,17 +23,12 @@
 }
 
 /* ---- slots: bevelled squares, like a pixel RPG bag ---- */
-.equipped,
 .bag {
   list-style: none;
   margin: 0.8rem 0 0;
   padding: 0;
   display: grid;
   gap: 0.5rem;
-}
-
-.equipped {
-  grid-template-columns: repeat(3, 92px);
 }
 
 .bag {
@@ -66,12 +60,6 @@
     box-shadow 0.15s;
 }
 
-.slotBig {
-  width: 92px;
-  height: 92px;
-  gap: 0.3rem;
-}
-
 .empty {
   background: rgba(0, 0, 0, 0.25);
   border-style: dashed;
@@ -82,11 +70,6 @@
   width: 26px;
   height: 26px;
   color: var(--rose-light);
-}
-
-.slotBig .icon {
-  width: 32px;
-  height: 32px;
 }
 
 .fallback {
@@ -106,18 +89,6 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   padding: 0 3px;
-}
-
-.slotBig .itemName {
-  font-size: 1rem;
-  color: var(--text);
-}
-
-.slotName {
-  font-family: 'Press Start 2P', monospace;
-  font-size: 0.4rem;
-  color: var(--text-dim);
-  letter-spacing: 0.06em;
 }
 
 /* Zelda-style bracket cursor on hover */
@@ -166,16 +137,10 @@
 }
 
 @media (max-width: 540px) {
-  .equipped {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  .slotBig {
-    width: 100%;
-  }
   .bag {
     grid-template-columns: repeat(auto-fill, 66px);
   }
-  .slot:not(.slotBig) {
+  .slot {
     width: 66px;
     height: 66px;
   }

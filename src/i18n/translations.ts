@@ -37,7 +37,6 @@ export type Dict = {
     class: string;
     since: string;
     badges: string;
-    equipped: string;
     inventory: string;
     previousRole: string;
     nextRole: string;
@@ -128,7 +127,6 @@ export const translations: Record<Lang, Dict> = {
       class: "CLASS",
       since: "SINCE",
       badges: "BADGES",
-      equipped: "// EQUIPPED",
       inventory: "// INVENTORY",
       previousRole: "Previous class",
       nextRole: "Next class",
@@ -233,7 +231,6 @@ export const translations: Record<Lang, Dict> = {
       class: "CLASSE",
       since: "DESDE",
       badges: "BADGES",
-      equipped: "// EQUIPADO",
       inventory: "// INVENTÁRIO",
       previousRole: "Classe anterior",
       nextRole: "Próxima classe",

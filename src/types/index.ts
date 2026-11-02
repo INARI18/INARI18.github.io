@@ -50,8 +50,3 @@ export type Award = {
   icon: 'trophy' | 'shield';
   href?: string;
 };
-
-export type Equipment = {
-  slot: Bilingual;
-  item: string;
-};

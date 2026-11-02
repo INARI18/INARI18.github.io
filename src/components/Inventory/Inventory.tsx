@@ -1,11 +1,10 @@
 import { techStack } from 'data/techStack';
-import { equipped } from 'data/character';
 import { useLang } from 'contexts/LanguageContext';
 import { TECH_ICONS } from './techIcons';
 import styles from './Inventory.module.css';
 
 const CAPACITY = 16;
-const bag = techStack.filter((item) => !equipped.some((e) => e.item === item));
+const bag = techStack;
 const pad = (n: number) => String(n).padStart(2, '0');
 
 function TechIcon({ name }: { name: string }) {
@@ -22,22 +21,11 @@ function TechIcon({ name }: { name: string }) {
   );
 }
 
-/** Equipment screen: three equipped slots and a Stardew-style bag grid for the rest of the stack. */
+/** Stardew-style bag grid for the tech stack, with a few empty slots to close the last row. */
 export function Inventory() {
-  const { t, tr } = useLang();
+  const { t } = useLang();
   return (
     <div className={styles.wrap}>
-      <div className={styles.label}>{t.character.equipped}</div>
-      <ul className={styles.equipped}>
-        {equipped.map((e) => (
-          <li key={e.item} className={`${styles.slot} ${styles.slotBig}`} title={e.item}>
-            <span className={styles.slotName}>{tr(e.slot)}</span>
-            <TechIcon name={e.item} />
-            <span className={styles.itemName}>{e.item}</span>
-          </li>
-        ))}
-      </ul>
-
       <div className={styles.labelRow}>
         <span className={styles.label}>{t.character.inventory}</span>
         <span className={styles.count}>
@@ -47,8 +35,8 @@ export function Inventory() {
       <ul className={styles.bag}>
         {bag.map((item) => (
           <li key={item} className={styles.slot} title={item}>
-            <TechIcon name={item} />
             <span className={styles.itemName}>{item}</span>
+            <TechIcon name={item} />
           </li>
         ))}
         {Array.from({ length: Math.max(0, CAPACITY - bag.length) }).map((_, i) => (
