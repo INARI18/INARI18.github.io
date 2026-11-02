@@ -1,4 +1,4 @@
-/* Icons for codex entries, one per paper subject (16x16, armadillo 24x24). X = accent, x = darker shade. Hand drawn. */
+/* Icons for codex entries, one per paper subject (16x16; armadillo and tag 24x24). X = accent, x = darker shade. Hand drawn. */
 export const CODEX_ICONS: Record<string, string[]> = {
   // the armadillo MulitaMiner is named after
   armadillo: [
@@ -66,23 +66,33 @@ export const CODEX_ICONS: Record<string, string[]> = {
     '................',
   ],
   // classification label
+  // price tag rasterized from a rotated rectangle, 24x24
+  // price tag rasterized from a rotated rectangle, 24x24
   tag: [
-    '...........XXXX.',
-    '..........XXXXXX',
-    '.........XXX.XXX',
-    '........XXXX.XXX',
-    '.......XXXXXXXX.',
-    '......XXXXXXXX..',
-    '.....XXXXXXXX...',
-    '....XXXXXXXX....',
-    '...XXXXXXXX.....',
-    '..XXXXXXXX......',
-    '.XXXXXXXX.......',
-    'XXXXXXXX........',
-    '.XXXXXX.........',
-    '..XXXX..........',
-    '...XX...........',
-    '................',
+    '........................',
+    '........................',
+    '........................',
+    '........................',
+    '.............X.....X....',
+    '............XXX...X.....',
+    '...........XXXXX.X......',
+    '..........XXXXXXX.......',
+    '.........XXXX...XX......',
+    '........XXXXX...XXX.....',
+    '.......XXXXXXX..XXXX....',
+    '......XXXXXXXXXXXXX.....',
+    '.....XXXxxXXXXXXXX......',
+    '....XXXxxXXXXXXXX.......',
+    '...XXXxxXXxxXXXX........',
+    '..XXXxxXXxxxXXX.........',
+    '.XXXXxXXxxxXXX..........',
+    '..XXXXXxxxXXX...........',
+    '...XXXXxxXXX............',
+    '....XXXXXXX.............',
+    '.....XXXXX..............',
+    '......XXX...............',
+    '.......X................',
+    '........................',
   ],
   // scanner report
   document: [
