@@ -11,7 +11,7 @@ function TechIcon({ name }: { name: string }) {
   const rows = TECH_ICONS[name];
   if (!rows) return <span className={styles.fallback}>{name[0]}</span>;
   return (
-    <svg viewBox="0 0 16 16" className={styles.icon} aria-hidden="true" shapeRendering="crispEdges">
+    <svg viewBox={`0 0 ${rows.length} ${rows.length}`} className={`${styles.icon}${rows.length > 16 ? ` ${styles.iconFine}` : ''}`} aria-hidden="true" shapeRendering="crispEdges">
       {rows.flatMap((row, y) =>
         [...row].map((c, x) =>
           c === 'X' ? <rect key={`${x}-${y}`} x={x} y={y} width="1" height="1" fill="currentColor" /> : null,

@@ -1,4 +1,7 @@
 import { useState } from "react";
+import cafePose from "assets/poses/cafe-pose.png";
+import catPose from "assets/poses/cat-pose.png";
+import videogamePose from "assets/poses/videogame-pose.png";
 import { socials } from "data/socials";
 import { roles } from "data/roles";
 import { since, awards } from "data/character";
@@ -7,7 +10,7 @@ import { useLang } from "contexts/LanguageContext";
 import styles from "./CharacterCard.module.css";
 
 // one pose per class, same order as data/roles
-const poses = ["/cafe-pose.png", "/cat-pose.png", "/videogame-pose.png"];
+const poses = [cafePose, catPose, videogamePose];
 
 /** Trainer card: identity and badges. Facts only, no self-scored stats. */
 export function CharacterCard() {
