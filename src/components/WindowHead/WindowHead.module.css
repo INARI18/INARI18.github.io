@@ -1,0 +1,41 @@
+.head {
+  background: var(--rose-deep);
+  padding: 0.45rem 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  border-bottom: 1px solid var(--rose);
+}
+
+.url {
+  font-family: 'VT323', monospace;
+  font-size: 1.05rem;
+  color: var(--rose-glow);
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.btns {
+  display: flex;
+  gap: 0.35rem;
+  flex-shrink: 0;
+}
+
+.btn {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.55rem;
+  color: var(--rose-glow);
+  background: transparent;
+  border: 1px solid var(--rose);
+  border-radius: var(--radius-sm);
+  width: 18px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  cursor: default;
+}

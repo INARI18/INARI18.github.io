@@ -6,6 +6,7 @@ import { socials } from "data/socials";
 import { roles } from "data/roles";
 import { since, awards } from "data/character";
 import { PixelIcon } from "components/PixelIcon/PixelIcon";
+import { WindowHead } from "components/WindowHead/WindowHead";
 import { useLang } from "contexts/LanguageContext";
 import styles from "./CharacterCard.module.css";
 
@@ -22,14 +23,7 @@ export function CharacterCard() {
 
   return (
     <div className={styles.card}>
-      <div className={styles.head}>
-        <span className={styles.headUrl}>beatriz.dev/character</span>
-        <div className={styles.headBtns} aria-hidden="true">
-          <span className={styles.headBtn}>_</span>
-          <span className={styles.headBtn}>□</span>
-          <span className={styles.headBtn}>×</span>
-        </div>
-      </div>
+      <WindowHead url="beatriz.dev/character" />
 
       <div className={styles.body}>
         <dl className={styles.fields}>

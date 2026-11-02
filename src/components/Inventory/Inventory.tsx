@@ -3,6 +3,7 @@ import type { TechCategory } from 'types';
 import { techStack } from 'data/techStack';
 import { projects } from 'data/projects';
 import { openProject } from 'components/Projects/openProject';
+import { WindowHead } from 'components/WindowHead/WindowHead';
 import { useLang } from 'contexts/LanguageContext';
 import { TechIcon } from './TechIcon';
 import styles from './Inventory.module.css';
@@ -53,6 +54,8 @@ export function Inventory() {
 
   return (
     <div className={styles.panel}>
+      <WindowHead url="beatriz.dev/inventory" />
+      <div className={styles.body}>
       <div className={styles.head}>
         <span>{t.inventory.title}</span>
         <span className={styles.count}>
@@ -121,6 +124,7 @@ export function Inventory() {
             </div>
           )}
         </div>
+      </div>
       </div>
     </div>
   );
