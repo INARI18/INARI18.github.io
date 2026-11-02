@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, type KeyboardEvent } from 'react';
 import { quests, QUEST_START } from 'data/quests';
 import { Reveal } from 'components/Reveal/Reveal';
 import { PixelIcon } from 'components/PixelIcon/PixelIcon';
@@ -14,6 +14,13 @@ export function QuestPath() {
   const [selected, setSelected] = useState(quests.length - 1);
   const q = quests[selected];
 
+  const onKeyDown = (e: KeyboardEvent<HTMLOListElement>) => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') setSelected((i) => Math.min(quests.length - 1, i + 1));
+    else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') setSelected((i) => Math.max(0, i - 1));
+    else return;
+    e.preventDefault();
+  };
+
   return (
     <section id="experience" className={styles.section}>
       <div className="container">
@@ -23,10 +30,11 @@ export function QuestPath() {
             <em>{t.experience.titleEm}</em>
           </div>
           <div className="sec-bar" />
+          <p className={styles.hint}>{t.experience.hint}</p>
         </Reveal>
 
         <Reveal delay={1} className={styles.wrap}>
-          <ol className={styles.path}>
+          <ol className={styles.path} onKeyDown={onKeyDown}>
             <li className={styles.start}>
               <span className={styles.startMark} aria-hidden="true">
                 <PixelIcon name="flag" />

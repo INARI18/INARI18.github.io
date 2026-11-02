@@ -45,6 +45,7 @@ export type Dict = {
   experience: {
     section: string;
     titleEm: string;
+    hint: string;
     start: string;
     log: string;
     techUsed: string;
@@ -135,6 +136,7 @@ export const translations: Record<Lang, Dict> = {
     experience: {
       section: "// SECTION 02",
       titleEm: "Experience",
+      hint: "▶ Pick a checkpoint",
       start: "START",
       log: "// QUEST LOG",
       techUsed: "// TECH USED",
@@ -239,6 +241,7 @@ export const translations: Record<Lang, Dict> = {
     experience: {
       section: "// SEÇÃO 02",
       titleEm: "Experiência",
+      hint: "▶ Escolha um ponto do caminho",
       start: "START",
       log: "// QUEST LOG",
       techUsed: "// TECNOLOGIAS",

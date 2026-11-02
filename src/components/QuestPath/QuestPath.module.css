@@ -6,6 +6,15 @@
   );
 }
 
+.hint {
+  font-family: 'VT323', monospace;
+  font-size: 1.2rem;
+  color: var(--rose-glow);
+  letter-spacing: 0.06em;
+  margin-top: -2.5rem;
+  margin-bottom: 1rem;
+}
+
 .wrap {
   max-width: 900px;
   margin: 0 auto;
@@ -15,7 +24,7 @@
 .path {
   list-style: none;
   margin: 0;
-  padding: 7rem 6rem 8.5rem 1rem;
+  padding: 8rem 6rem 8.5rem 1rem;
   display: flex;
   align-items: center;
   position: relative;
@@ -105,8 +114,23 @@
     transform 0.2s;
 }
 
+.node:not(.nodeActive) .diamond {
+  animation: pulse 2.4s ease-in-out infinite;
+}
+
 .node:hover .diamond {
   transform: rotate(45deg) scale(1.15);
+  background: rgba(var(--accent-rgb), 0.35);
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 rgba(var(--accent-rgb), 0);
+  }
+  50% {
+    box-shadow: 0 0 12px rgba(var(--accent-rgb), 0.55);
+  }
 }
 
 .nodeActive .diamond {
@@ -155,17 +179,37 @@
   flex-direction: column;
   gap: 0.15rem;
   text-align: center;
-  pointer-events: none;
+  padding: 0.5rem 0.6rem 0.55rem;
+  background: rgba(var(--accent-rgb), 0.05);
+  border: 1px dashed var(--border-2);
+  border-radius: var(--radius-sm);
+  transition:
+    border-color 0.2s,
+    background 0.2s,
+    box-shadow 0.2s;
+}
+
+.node:hover .label {
+  border-style: solid;
+  border-color: var(--rose);
+  background: rgba(var(--accent-rgb), 0.12);
+}
+
+.nodeActive .label {
+  border-style: solid;
+  border-color: var(--rose);
+  background: rgba(var(--accent-rgb), 0.1);
+  box-shadow: 0 0 18px rgba(var(--accent-rgb), 0.2);
 }
 
 .above .label {
   bottom: 100%;
-  margin-bottom: 1.4rem;
+  margin-bottom: 1.1rem;
 }
 
 .below .label {
   top: 100%;
-  margin-top: 1.4rem;
+  margin-top: 1.1rem;
 }
 
 .period {
@@ -399,7 +443,8 @@
     width: auto;
     margin: 0;
     text-align: left;
-    padding-right: 1.5rem;
+    flex: 1;
+    padding: 0.5rem 0.75rem 0.55rem;
   }
   .log {
     padding: 1.4rem 1.2rem 1.6rem;
@@ -410,7 +455,8 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .nodeActive .cursor {
+  .nodeActive .cursor,
+  .node:not(.nodeActive) .diamond {
     animation: none;
   }
   .log {
