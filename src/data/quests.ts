@@ -40,8 +40,8 @@ export const quests: Quest[] = [
     },
     tech: ["Python", "LLMs", "NLP", "Presidio", "Vulnerability Scanners"],
     reward: {
-      en: "2nd Best Paper at WRSEG 2025 · Best Artifact at SBRC 2026",
-      pt: "2º Melhor Artigo no WRSEG 2025 · Melhor Artefato no SBRC 2026",
+      en: "2nd Best Paper at WRSEG 2025 · Best Artifact at SBRC 2026 · 4 CTA artifact badges at SBSeg 2026",
+      pt: "2º Melhor Artigo no WRSEG 2025 · Melhor Artefato no SBRC 2026 · 4 selos de artefato do CTA no SBSeg 2026",
     },
     projects: ["MulitaMiner", "AnonLFI 2.0"],
   },

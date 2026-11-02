@@ -18,6 +18,22 @@ export const publications: Publication[] = [
   {
     year: "2026",
     title:
+      "On-Premise vs. Cloud: Local LLMs for Vulnerability Extraction from Security Scanner Reports",
+    venue: "SBSeg 2026",
+    short: "Local LLMs vs cloud",
+    icon: "llm",
+    award: { en: "All 4 CTA artifact badges", pt: "4 selos de artefato do CTA" },
+    desc: {
+      en: "Cloud LLMs extract structured data from vulnerability-scanner reports accurately, but each report maps an organization's attack surface, so routing it to a third-party API trades confidentiality for that accuracy. We evaluate nine local models (4B to 21B) against a DeepSeek cloud reference on three ground-truth baselines. The best local model, on a consumer GPU, trails the cloud by only 1.2 points in free-text fidelity and matches it on structured fields; the spread across local models far exceeds this gap, making model choice the decisive factor for private, on-premise extraction.",
+      pt: "LLMs em nuvem extraem dados estruturados de relatórios de scanners de vulnerabilidade com precisão, mas cada relatório mapeia a superfície de ataque de uma organização, então enviá-lo a uma API de terceiros troca confidencialidade por essa precisão. Avaliamos nove modelos locais (4B a 21B) contra uma referência em nuvem (DeepSeek) em três baselines com ground truth. O melhor modelo local, numa GPU de consumo, fica apenas 1,2 ponto atrás da nuvem em fidelidade de texto livre e empata nos campos estruturados; a variação entre os modelos locais supera em muito essa diferença, tornando a escolha do modelo o fator decisivo para extração privada e on-premise.",
+    },
+    tags: ["Local LLMs", "On-Premise", "Vulnerability Extraction", "Privacy", "Benchmarking"],
+    link: "https://doi.org/10.5753/sbseg_estendido.2026.29879",
+    project: "MulitaMiner",
+  },
+  {
+    year: "2026",
+    title:
       "Vulnerabilities, Secrets and Misconfiguration in the Highest-Exposure Docker Hub Images",
     venue: "arXiv",
     short: "Docker Hub exposure",

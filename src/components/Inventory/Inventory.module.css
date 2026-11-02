@@ -34,9 +34,9 @@
 
 /* ---- category tabs ---- */
 .tabs {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.35rem;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.5rem;
   margin-bottom: 0.85rem;
 }
 
@@ -44,7 +44,11 @@
   font-family: 'Press Start 2P', monospace;
   font-size: 0.45rem;
   letter-spacing: 0.06em;
-  padding: 0.5rem 0.65rem;
+  padding: 0.55rem 0.4rem;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   background: transparent;
   border: 1px solid var(--border-2);
   border-radius: var(--radius-sm);
@@ -81,14 +85,14 @@
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fill, 64px);
+  grid-template-columns: repeat(8, minmax(0, 1fr));
   gap: 0.5rem;
 }
 
 .slot {
   position: relative;
-  width: 64px;
-  height: 64px;
+  width: 100%;
+  aspect-ratio: 1;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -187,21 +191,20 @@
   }
 }
 
-/* ---- inspection sheet ---- */
+/* ---- inspection sheet: same 8 columns, portrait takes one slot ---- */
 .sheet {
-  display: flex;
-  gap: 1rem;
-  align-items: flex-start;
-  margin-top: 1rem;
-  padding-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  gap: 0.5rem;
+  align-items: stretch;
+  margin-top: 0.85rem;
+  padding-top: 0.85rem;
   border-top: 1px dashed var(--border-2);
-  min-height: 96px;
 }
 
 .portrait {
-  flex: 0 0 auto;
-  width: 72px;
-  height: 72px;
+  grid-column: span 1;
+  aspect-ratio: 1;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -215,10 +218,13 @@
 }
 
 .sheetBody {
+  grid-column: span 7;
   min-width: 0;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 0.45rem;
+  padding-left: 0.5rem;
   animation: sheetIn 0.2s ease-out;
 }
 
@@ -303,26 +309,18 @@
     padding: 0.9rem 0.85rem 1rem;
   }
   .tabs {
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    scrollbar-width: none;
-    margin-left: -0.85rem;
-    margin-right: -0.85rem;
-    padding: 0 0.85rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
   .tab {
-    flex: 0 0 auto;
+    white-space: normal;
+    line-height: 1.5;
   }
-  .bag {
-    grid-template-columns: repeat(auto-fill, 60px);
+  .bag,
+  .sheet {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
-  .slot {
-    width: 60px;
-    height: 60px;
-  }
-  .portrait {
-    width: 60px;
-    height: 60px;
+  .sheetBody {
+    grid-column: span 3;
   }
 }
 

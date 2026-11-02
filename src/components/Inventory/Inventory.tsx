@@ -8,6 +8,7 @@ import { TechIcon } from './TechIcon';
 import styles from './Inventory.module.css';
 
 const CAPACITY = 16;
+const COLS = 8; // slots per row on desktop; mobile uses 4, which divides it
 const CATEGORIES: TechCategory[] = ['lang', 'dev', 'infra', 'ai'];
 const pad = (n: number) => String(n).padStart(2, '0');
 
@@ -92,10 +93,11 @@ export function Inventory() {
             </li>
           );
         })}
-        {tab === 'all' &&
-          Array.from({ length: Math.max(0, CAPACITY - techStack.length) }).map((_, i) => (
-            <li key={`empty-${i}`} className={`${styles.slot} ${styles.empty}`} aria-hidden="true" />
-          ))}
+        {Array.from({
+          length: tab === 'all' ? CAPACITY - techStack.length : (COLS - (items.length % COLS)) % COLS,
+        }).map((_, i) => (
+          <li key={`empty-${i}`} className={`${styles.slot} ${styles.empty}`} aria-hidden="true" />
+        ))}
       </ul>
 
       <div className={styles.sheet} aria-live="polite">
