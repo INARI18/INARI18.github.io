@@ -23,6 +23,10 @@
 }
 
 /* ---- slots: bevelled squares, like a pixel RPG bag ---- */
+.cell {
+  display: contents;
+}
+
 .bag {
   list-style: none;
   margin: 0.8rem 0 0;
@@ -53,7 +57,9 @@
     inset 2px 2px 0 rgba(255, 255, 255, 0.05),
     inset -2px -2px 0 rgba(0, 0, 0, 0.45);
   color: var(--slot-fg);
-  cursor: default;
+  font: inherit;
+  padding: 0;
+  cursor: pointer;
   transition:
     border-color 0.15s,
     transform 0.15s,
@@ -141,6 +147,44 @@
   color: var(--rose-glow);
 }
 
+/* click: squash, stretch, land */
+.used {
+  animation: useItem 0.38s cubic-bezier(0.3, 0.9, 0.4, 1.2);
+}
+
+.used .itemName {
+  animation: blinkName 0.38s steps(2);
+}
+
+@keyframes useItem {
+  0% {
+    transform: scale(1, 1);
+  }
+  25% {
+    transform: scale(1.2, 0.8) translateY(5px);
+  }
+  55% {
+    transform: scale(0.9, 1.15) translateY(-9px);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
+@keyframes blinkName {
+  from {
+    color: var(--rose-glow);
+  }
+  to {
+    color: var(--text-muted);
+  }
+}
+
+.slot:focus-visible {
+  outline: 2px solid var(--rose-glow);
+  outline-offset: 3px;
+}
+
 @media (max-width: 540px) {
   .bag {
     grid-template-columns: repeat(auto-fill, 66px);
@@ -160,5 +204,9 @@
   }
   .slot:not(.empty):hover {
     transform: none;
+  }
+  .used,
+  .used .itemName {
+    animation: none;
   }
 }

@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { techStack } from 'data/techStack';
 import { useLang } from 'contexts/LanguageContext';
 import { TECH_ICONS } from './techIcons';
@@ -8,7 +9,12 @@ const bag = techStack;
 const pad = (n: number) => String(n).padStart(2, '0');
 
 // grid characters: X = accent, x = darker shade, o = neutral (stems, metal)
-const SHADES: Record<string, string> = { X: 'currentColor', x: 'var(--rose)', o: 'var(--text-muted)' };
+const SHADES: Record<string, string> = {
+  X: 'currentColor',
+  x: 'var(--rose)',
+  Y: 'var(--rose-pale)',
+  o: 'var(--text-muted)',
+};
 
 function TechIcon({ name }: { name: string }) {
   const rows = TECH_ICONS[name];
@@ -27,6 +33,12 @@ function TechIcon({ name }: { name: string }) {
 /** Stardew-style bag grid for the tech stack, with a few empty slots to close the last row. */
 export function Inventory() {
   const { t } = useLang();
+  // the item that was just clicked does a little squash-and-stretch hop
+  const [used, setUsed] = useState<string | null>(null);
+  const use = (item: string) => {
+    setUsed(null);
+    requestAnimationFrame(() => setUsed(item));
+  };
   return (
     <div className={styles.wrap}>
       <div className={styles.labelRow}>
@@ -37,9 +49,17 @@ export function Inventory() {
       </div>
       <ul className={styles.bag}>
         {bag.map((item) => (
-          <li key={item} className={styles.slot} title={item}>
-            <span className={styles.itemName}>{item}</span>
-            <TechIcon name={item} />
+          <li key={item} className={styles.cell}>
+            <button
+              type="button"
+              className={`${styles.slot}${used === item ? ` ${styles.used}` : ''}`}
+              title={item}
+              onClick={() => use(item)}
+              onAnimationEnd={() => setUsed(null)}
+            >
+              <span className={styles.itemName}>{item}</span>
+              <TechIcon name={item} />
+            </button>
           </li>
         ))}
         {Array.from({ length: Math.max(0, CAPACITY - bag.length) }).map((_, i) => (
