@@ -43,6 +43,14 @@ export type Publication = {
   project?: string;     // title of the related box on the shelf
 };
 
+export type TechCategory = 'lang' | 'dev' | 'infra' | 'ai';
+
+export type Tech = {
+  name: string;
+  category: TechCategory;
+  note?: Bilingual;      // optional fact shown on the item sheet
+};
+
 export type Social = {
   label: string;
   href: string;

@@ -1,54 +1,97 @@
-.wrap {
-  margin-top: 2.25rem;
+/* ========== PANEL: same chrome as the quest log and the codex ========== */
+.panel {
+  margin-top: 2rem;
+  border: 2px solid var(--rose);
+  border-radius: var(--radius-md);
+  background: var(--bg-card);
+  background-image: radial-gradient(
+    rgba(var(--accent-rgb), 0.04) 1px,
+    transparent 1px
+  );
+  background-size: 18px 18px;
+  box-shadow:
+    0 0 40px rgba(var(--accent-rgb), 0.1),
+    inset 0 0 40px rgba(0, 0, 0, 0.35);
+  padding: 1rem 1.25rem 1.25rem;
 }
 
-.label {
-  font-family: 'VT323', monospace;
-  font-size: 1.3rem;
-  color: var(--rose-glow);
-  letter-spacing: 0.12em;
-}
-
-.labelRow {
+.head {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
+  font-family: 'VT323', monospace;
+  font-size: 1.2rem;
+  letter-spacing: 0.12em;
+  color: var(--rose-glow);
+  margin-bottom: 0.7rem;
 }
 
 .count {
-  font-family: 'VT323', monospace;
   font-size: 1.05rem;
   color: var(--text-dim);
   letter-spacing: 0.15em;
 }
 
-/* ---- slots: bevelled squares, like a pixel RPG bag ---- */
+/* ---- category tabs ---- */
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-bottom: 0.85rem;
+}
+
+.tab {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.45rem;
+  letter-spacing: 0.06em;
+  padding: 0.5rem 0.65rem;
+  background: transparent;
+  border: 1px solid var(--border-2);
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.tab:hover {
+  border-color: var(--rose);
+  color: var(--rose-light);
+}
+
+.tabActive {
+  background: rgba(var(--accent-rgb), 0.14);
+  border-color: var(--rose);
+  color: var(--rose-glow);
+}
+
+.tab:focus-visible,
+.slot:focus-visible,
+.use:focus-visible {
+  outline: 2px solid var(--rose-glow);
+  outline-offset: 2px;
+}
+
+/* ---- slots: bevelled squares, icon only ---- */
 .cell {
   display: contents;
 }
 
 .bag {
   list-style: none;
-  margin: 0.8rem 0 0;
+  margin: 0;
   padding: 0;
   display: grid;
+  grid-template-columns: repeat(auto-fill, 64px);
   gap: 0.5rem;
 }
 
-.bag {
-  grid-template-columns: repeat(auto-fill, 72px);
-}
-
 .slot {
-  --slot-fg: var(--rose-pale);
   position: relative;
-  width: 72px;
-  height: 72px;
+  width: 64px;
+  height: 64px;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.45rem;
   background: var(--bg-card-2);
   border: 2px solid var(--border-2);
   border-radius: var(--radius-sm);
@@ -56,53 +99,47 @@
   box-shadow:
     inset 2px 2px 0 rgba(255, 255, 255, 0.05),
     inset -2px -2px 0 rgba(0, 0, 0, 0.45);
-  color: var(--slot-fg);
-  font: inherit;
   padding: 0;
   cursor: pointer;
   transition:
     border-color 0.15s,
-    transform 0.15s,
-    box-shadow 0.15s;
+    background 0.15s,
+    transform 0.15s;
 }
 
 .empty {
   background: rgba(0, 0, 0, 0.25);
   border-style: dashed;
   box-shadow: none;
+  cursor: default;
 }
 
 .icon {
   color: var(--rose-light);
+  display: block;
 }
 
-.itemName {
-  font-family: 'VT323', monospace;
-  font-size: 0.85rem;
-  line-height: 0.95;
-  color: var(--text-muted);
-  letter-spacing: 0.02em;
-  max-width: 100%;
-  text-align: center;
-  padding: 0 3px;
-}
-
-/* Zelda-style bracket cursor on hover */
 .slot:not(.empty):hover {
   border-color: var(--rose);
   transform: translateY(-2px);
+}
+
+.slotActive {
+  border-color: var(--rose-light);
+  background: rgba(var(--accent-rgb), 0.16);
   box-shadow:
     inset 2px 2px 0 rgba(255, 255, 255, 0.05),
     inset -2px -2px 0 rgba(0, 0, 0, 0.45),
     0 0 14px rgba(var(--accent-rgb), 0.35);
 }
 
+/* Zelda-style bracket cursor: on hover, and fixed on the selected slot */
 .slot:not(.empty)::before,
 .slot:not(.empty)::after {
   content: '';
   position: absolute;
-  width: 8px;
-  height: 8px;
+  width: 9px;
+  height: 9px;
   border: 2px solid var(--rose-glow);
   opacity: 0;
   transition: opacity 0.15s;
@@ -124,24 +161,18 @@
 }
 
 .slot:not(.empty):hover::before,
-.slot:not(.empty):hover::after {
+.slot:not(.empty):hover::after,
+.slotActive::before,
+.slotActive::after {
   opacity: 1;
 }
 
-.slot:not(.empty):hover .itemName {
-  color: var(--rose-glow);
-}
-
 /* click: squash, stretch, land */
-.used {
-  animation: useItem 0.38s cubic-bezier(0.3, 0.9, 0.4, 1.2);
+.hop {
+  animation: hop 0.38s cubic-bezier(0.3, 0.9, 0.4, 1.2);
 }
 
-.used .itemName {
-  animation: blinkName 0.38s steps(2);
-}
-
-@keyframes useItem {
+@keyframes hop {
   0% {
     transform: scale(1, 1);
   }
@@ -156,42 +187,156 @@
   }
 }
 
-@keyframes blinkName {
+/* ---- inspection sheet ---- */
+.sheet {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--border-2);
+  min-height: 96px;
+}
+
+.portrait {
+  flex: 0 0 auto;
+  width: 72px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-card-2);
+  border: 2px solid var(--rose);
+  border-radius: var(--radius-sm);
+  box-shadow:
+    inset 2px 2px 0 rgba(255, 255, 255, 0.05),
+    inset -2px -2px 0 rgba(0, 0, 0, 0.45),
+    0 0 14px rgba(var(--accent-rgb), 0.2);
+}
+
+.sheetBody {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  animation: sheetIn 0.2s ease-out;
+}
+
+@keyframes sheetIn {
   from {
-    color: var(--rose-glow);
+    opacity: 0;
+    transform: translateX(4px);
   }
   to {
-    color: var(--text-muted);
+    opacity: 1;
+    transform: none;
   }
 }
 
-.slot:focus-visible {
-  outline: 2px solid var(--rose-glow);
-  outline-offset: 3px;
+.sheetHead {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.itemName {
+  font-family: 'VT323', monospace;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--text);
+  letter-spacing: 0.04em;
+}
+
+.itemCat {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.42rem;
+  letter-spacing: 0.08em;
+  color: var(--rose-light);
+  border: 1px solid var(--rose);
+  border-radius: var(--radius-sm);
+  padding: 0.3rem 0.45rem;
+}
+
+.note {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.uses {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.usesLabel {
+  font-family: 'VT323', monospace;
+  font-size: 0.95rem;
+  color: var(--text-dim);
+  letter-spacing: 0.12em;
+  margin-right: 0.2rem;
+}
+
+.use {
+  font-family: 'VT323', monospace;
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+  padding: 0.15rem 0.6rem;
+  background: rgba(var(--accent-rgb), 0.08);
+  border: 1px solid var(--border-2);
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.use:hover {
+  border-color: var(--rose);
+  color: var(--rose-light);
 }
 
 @media (max-width: 540px) {
+  .panel {
+    padding: 0.9rem 0.85rem 1rem;
+  }
+  .tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+    margin-left: -0.85rem;
+    margin-right: -0.85rem;
+    padding: 0 0.85rem;
+  }
+  .tab {
+    flex: 0 0 auto;
+  }
   .bag {
-    grid-template-columns: repeat(auto-fill, 66px);
+    grid-template-columns: repeat(auto-fill, 60px);
   }
   .slot {
-    width: 66px;
-    height: 66px;
+    width: 60px;
+    height: 60px;
   }
-  .itemName {
-    font-size: 0.8rem;
+  .portrait {
+    width: 60px;
+    height: 60px;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .slot {
+  .slot,
+  .tab,
+  .use {
     transition: none;
   }
   .slot:not(.empty):hover {
     transform: none;
   }
-  .used,
-  .used .itemName {
+  .hop,
+  .sheetBody {
     animation: none;
   }
 }

@@ -1,4 +1,4 @@
-import type { ProjectCategory, ProjectLinkKind } from "types";
+import type { ProjectCategory, ProjectLinkKind, TechCategory } from "types";
 
 export type Lang = "en" | "pt";
 
@@ -37,9 +37,15 @@ export type Dict = {
     class: string;
     since: string;
     badges: string;
-    inventory: string;
     previousRole: string;
     nextRole: string;
+  };
+  inventory: {
+    title: string;
+    all: string;
+    usedIn: string;
+    select: (name: string) => string;
+    category: Record<TechCategory, string>;
   };
   experience: {
     section: string;
@@ -132,9 +138,15 @@ export const translations: Record<Lang, Dict> = {
       class: "CLASS",
       since: "SINCE",
       badges: "BADGES",
-      inventory: "// INVENTORY",
       previousRole: "Previous class",
       nextRole: "Next class",
+    },
+    inventory: {
+      title: "// INVENTORY",
+      all: "ALL",
+      usedIn: "USED IN",
+      select: (name) => `Inspect ${name}`,
+      category: { lang: "LANGUAGES", dev: "DEV", infra: "INFRA & DATA", ai: "AI" },
     },
     experience: {
       section: "// SECTION 02",
@@ -241,9 +253,15 @@ export const translations: Record<Lang, Dict> = {
       class: "CLASSE",
       since: "DESDE",
       badges: "BADGES",
-      inventory: "// INVENTÁRIO",
       previousRole: "Classe anterior",
       nextRole: "Próxima classe",
+    },
+    inventory: {
+      title: "// INVENTÁRIO",
+      all: "TUDO",
+      usedIn: "USADO EM",
+      select: (name) => `Inspecionar ${name}`,
+      category: { lang: "LINGUAGENS", dev: "DEV", infra: "INFRA & DADOS", ai: "IA" },
     },
     experience: {
       section: "// SEÇÃO 02",
