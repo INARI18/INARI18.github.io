@@ -34,7 +34,8 @@
 .body {
   position: absolute;
   inset: 0 auto 0 0;
-  width: calc(var(--spine-w) + var(--box-w));
+  /* only as wide as the spine: the hidden cover must not widen the page on phones */
+  width: var(--spine-w);
   transform-style: preserve-3d;
   transform-origin: var(--spine-w) 50%;
   transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
